@@ -1,6 +1,6 @@
 import socket, threading
 socket.setdefaulttimeout(2)
-
+f = open("portscandata.txt", "w")
 host = input("ip:")
 
 def TCP_connect(ip, port_number, delay, output):
@@ -37,7 +37,7 @@ def scan_ports(host_ip, delay):
 			#print("no data found for " + str(i))
 			continue
 		else:
-			print(str(i) + ': ' + str(output[i]))
+			f.write(str(i) + ': ' + str(output[i]))
 
 scan_ports(host, 2)
 
