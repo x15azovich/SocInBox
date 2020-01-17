@@ -17,7 +17,7 @@ def scan_ports(host_ip, delay):
 	
 	threads = []        # To run TCP_connect concurrently
 	output = {}         # For printing purposes
-
+	data = ""
     # Spawning threads to scan ports
 	for i in range(10000):
 		t = threading.Thread(target=TCP_connect, args=(host_ip, i, delay, output))
@@ -37,8 +37,8 @@ def scan_ports(host_ip, delay):
 			#print("no data found for " + str(i))
 			continue
 		else:
-			f.write(str(i) + ': ' + str(output[i]))
+			data += (str(i) + ': ' + str(output[i])) + '\n'
+	return data
 
-scan_ports(host, 2)
-
-
+f.write(scan_ports(host, 2))
+f.close()
