@@ -1,6 +1,7 @@
-import re
+import re, os
 
-f = open("/root/SocInBox/scanning/portscandata.txt", "r")
+myDirectory = os.path.expanduser("~/SocInBox/scanning/portscandata.txt")
+f = open(myDirectory, "r")
 
 while True:
 	#reading each line of the file
