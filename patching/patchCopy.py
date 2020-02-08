@@ -12,4 +12,7 @@ while True:
 
 	#using regex to grab port number and banner 	
 	x = re.findall(r'([\d]+): b[\'\"](.*)[\'\"]', line)[0]
-	print (x[0] + " " + x[1])
+	port = x[0]
+	banner = x[1]
+	strippedBanner = re.sub('[(){}\[\]\\\<> :#\-,*]', '', banner)
+	print (strippedBanner)
