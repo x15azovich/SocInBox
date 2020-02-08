@@ -1,0 +1,11 @@
+<form action="/frontEnd/temp" method="POST">{% csrf_token %}
+  <button name="buttonOne" id="buttonOne">buttonOne</button>
+  <button name="buttonTwo" id="buttonTwo">ButtonTwo</button>
+  <button name="buttonThree" id="buttonThree">ButtonThree</button>
+  <button name="buttonFour" id="buttonFour">ButtonFour</button>
+  <button name="buttonFive" id="buttonFive">buttonFive</button>
+  <button name="buttonSix" id="buttonSix">ButtonSix</button>
+  <button name="buttonSeven" id="buttonSeven">ButtonSeven</button>
+  <button name="buttonEight" id="buttonEight">ButtonEight</button>
+</form>
+<h1>{{context.buttonPressed}}</h1>
