@@ -1,12 +1,19 @@
 from django.shortcuts import render
+import re, os, sys
 
-
-
+import importlib.util
 # Create your views here.
 from django.http import HttpResponse
 from django.template import loader
 from django import forms
-#from ../../scanning/portScanner import TCP_connect
+# from os.path.expanduser("~/SocInBox/scanning/portscanner.py") import portScanner
+#from os.path.expanduser("~/SocInBox/scanning/portScanner.py") import portScanner
+#mc = module_from_file("portScanner", "../scanning/portScanner.py")
+#from sys.path.append('../../')
+#from sys.path.insert(0, '../../scanning/portscanner') import portScanner
+#import portScanner
+#import testing.py
+import testing
 
 def index(request):
     return HttpResponse("Hello, world. Your at the front end")
