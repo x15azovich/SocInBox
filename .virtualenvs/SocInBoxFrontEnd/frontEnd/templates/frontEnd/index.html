@@ -1,4 +1,5 @@
 <form action="/frontEnd/temp" method="POST">{% csrf_token %}
+  <input type="text" name="ipInput" id="ipInput" />
   <button name="buttonOne" id="buttonOne">buttonOne</button>
   <button name="buttonTwo" id="buttonTwo">ButtonTwo</button>
   <button name="buttonThree" id="buttonThree">ButtonThree</button>
@@ -8,4 +9,7 @@
   <button name="buttonSeven" id="buttonSeven">ButtonSeven</button>
   <button name="buttonEight" id="buttonEight">ButtonEight</button>
 </form>
-<h1>{{context.buttonPressed}}</h1>
+{% block content %}
+<h1>{{buttonPressed}}</h1>
+<h1>{{ipNumber}}</h1>
+{% endblock %}
