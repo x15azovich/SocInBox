@@ -1,3 +1,0 @@
-import portScanner
-
-testImport.funcOne()

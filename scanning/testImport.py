@@ -1,2 +1,0 @@
-def funcOne():
-	print ("succeed")

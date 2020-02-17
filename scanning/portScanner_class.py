@@ -25,7 +25,7 @@ class portScanner:
 		data = ""
 	    # Spawning threads to scan ports
 		for i in range(10000):
-			t = threading.Thread(target=TCP_connect, args=(host_ip, i, delay, output))
+			t = threading.Thread(target=portScanner.TCP_connect, args=(host_ip, i, delay, output))
 			threads.append(t)
 
 	    # Starting threads
