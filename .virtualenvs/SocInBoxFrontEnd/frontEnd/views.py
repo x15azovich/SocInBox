@@ -1,3 +1,5 @@
+
+
 from django.shortcuts import render
 import re, os, sys
 
@@ -13,7 +15,13 @@ from django import forms
 #from sys.path.insert(0, '../../scanning/portscanner') import portScanner
 #import portScanner
 #import testing.py
-import testing
+#import testing
+from importlib import import_module
+import frontEnd.testing
+#import ...scanning.portScanner
+#from frontEnd.portScanner import portScanner
+from frontEnd.network import myNetwork
+import frontEnd.portScanner
 
 def index(request):
     return HttpResponse("Hello, world. Your at the front end")
@@ -38,11 +46,17 @@ def temp(request):
         print(forms)
         if 'buttonOne' in request.POST:
             print('button One pressed')
+            myNetwork.callPrint("Smith")
             context['buttonPressed'] = 'button One'
             context['ipNumber'] = forms['ipInput']
+            myNumberIp = forms['ipInput']
+            myNetwork.callPrint(myNumberIp)
+            host = myNumberIp
+            portScanner.scan_ports(host, 2)
         elif 'buttonTwo' in request.POST:
             print('button Two pressed')
             context['buttonPressed'] = 'button Two'
+            myNetwork.outDirCall()
         elif 'buttonThree' in request.POST:
             print('button Three pressed')
             context['buttonPressed'] = 'button Three'
