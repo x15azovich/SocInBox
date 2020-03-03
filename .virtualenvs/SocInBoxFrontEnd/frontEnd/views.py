@@ -21,9 +21,13 @@ import frontEnd.testing
 #import ...scanning.portScanner
 #from frontEnd.portScanner import portScanner
 from frontEnd.network import myNetwork
-import frontEnd.portScanner
+#import frontEnd.portScanner
+#import scan_ports from portScanner
+#import frontEnd.portScannerTwo
+from frontEnd.portScanner import portScanner
 
 def index(request):
+    print('info')
     return HttpResponse("Hello, world. Your at the front end")
 
 
@@ -52,7 +56,8 @@ def temp(request):
             myNumberIp = forms['ipInput']
             myNetwork.callPrint(myNumberIp)
             host = myNumberIp
-            portScanner.scan_ports(host, 2)
+            myPortScanner = portScanner('8.8.8.8')
+            myPortScanner.scan_ports()
         elif 'buttonTwo' in request.POST:
             print('button Two pressed')
             context['buttonPressed'] = 'button Two'
