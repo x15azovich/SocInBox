@@ -13,23 +13,23 @@ def check_admin():
 def add_rule(rule_name, ip_address):
 	""" Add rule to Windows Firewall """
 	subprocess.call(
-		f"netsh advfirewall firewall add rule name="rule_name" dir=in interface=any action=block remoteip=ip_address", 
+		f"netsh advfirewall firewall add rule name=rule dir=in interface=any action=block remoteip=59.6.63.4", 
 		shell=True, 
  		stdout=DEVNULL, 
 		stderr=DEVNULL
 	)
 	print(f"Rule {rule_name} for {file_path} added")
 
-def modify_rule(rule_name, state):
-    """ Enable/Disable specific rule, 0 = Disable / 1 = Enable """
-	state, message = ("yes", "Enabled") if state else ("no", "Disabled")
-	subprocess.call(
-		f"netsh advfirewall firewall set rule name={rule_name} new enable={state}", 
-		shell=True, 
-		stdout=DEVNULL, 
-		stderr=DEVNULL
-	)
-	print(f"Rule {rule_name} {message}")
+#def modify_rule(rule_name, state):
+#    """ Enable/Disable specific rule, 0 = Disable / 1 = Enable """
+#	state, message = ("yes", "Enabled") if state else ("no", "Disabled")
+#	subprocess.call(
+#		f"netsh advfirewall firewall set rule name={rule_name} new enable={state}", 
+#		shell=True, 
+#		stdout=DEVNULL, 
+#		stderr=DEVNULL
+#	)
+#	print(f"Rule {rule_name} {message}")
 
 if __name__ == '__main__':
 	check_admin()
