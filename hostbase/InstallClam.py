@@ -1,8 +1,8 @@
 #!/usr/bin/python
 import os
 
-def operatingSystem(operatingSystem, path):
-	if operatingSystem=="Windows 7":
+def operatingSystem(OS, path):
+	if OS=="Windows":
 		path = "~/SocInBox/hostbase/windows7"
 		execute(path)
 		
@@ -16,6 +16,6 @@ def main():
 	operating=input("Enter your operating system : ")
 	print ("main ran" + operating)
 	path= "~/SocInBox/hostbase/Linux"
-	operaingSystem(operating, path)
+	operatingSystem(operating, path)
 if __name__ == "__main__":
 	main()
