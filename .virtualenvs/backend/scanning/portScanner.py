@@ -2,6 +2,7 @@ import socket, threading
 socket.setdefaulttimeout(2)
 f = open("portscandata.txt", "w")
 host = input("ip:")
+#host = ''
 
 def TCP_connect(ip, port_number, delay, output):
 	TCPsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
