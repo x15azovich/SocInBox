@@ -3,16 +3,16 @@ import re, os
 #myDirectory = os.path.expanduser("~/SocInBox/.virtualenvs/backend/scanning/portscandata.txt")
 #f = open(myDirectory, "r")
 f = open("portscandata.txt", "r")
-w = open("CVEurls.txt", "w")
+w = open("CVEnumbers.txt", "w")
 x = []
 while True:
     line = f.readline()
     if not line: break
+    x += re.findall(r'\s(CVE-\d{0,4}-\d{0,})', line) 
     
-    x += re.findall(r'https:\/\/(.*)', line)
-      
 for i in x:
-    w.write(i + '\n')
+    result = re.sub("[(),']", '', str(i))
+    w.write(result + '\n')
 
 f.close()
 w.close()
