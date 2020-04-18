@@ -2,14 +2,19 @@
 
 import vulners
 
-#scandatafile = open("../CVEdetails.txt","r+")
+scandatafile = open("CVEnumbers.txt","r+")
+f = open("CVEdescriptions.txt", "w+")
 
-#for x in scandatafile:
-#cve=scandatafile.readline()
 vulners_api = vulners.Vulners(api_key="LKTS0IPVW1HU9XA3EENOEDDJEKOS6VACTQ6YLSPR9L3L2TI065XWRUBP5DQLYJHO")
-CVE_DATA = vulners_api.documentList(["CVE-2017-14174"])
 
-print(CVE_DATA.get("CVE-2017-14174").get("description"))
+for x in scandatafile:
+	cve=scandatafile.readline().strip('\n\r')
+	CVE_DATA = vulners_api.documentList([cve])
+	f.write("CVE Number: "+ cve + "\n")
+	f.write("CVE Description: " + CVE_DATA.get(cve).get("description")+"\n")
+	f.write("CVE Solutions: " + CVE_DATA.get(cve).get("href")+"\n\r")
+ 
+f.close()
 
     
 
