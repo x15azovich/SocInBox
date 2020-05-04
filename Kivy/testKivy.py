@@ -11,6 +11,8 @@ def callback(instance):
 	print(password)
 
 class GaddysClass(GridLayout):
+	def printpassword(self, instance):
+		print(self.password.text)
 	def __init__(self, **kwargs):
 		super(GaddysClass, self).__init__(**kwargs)
 		self.cols = 2
@@ -21,7 +23,7 @@ class GaddysClass(GridLayout):
 		self.password = TextInput(password=True, multiline=False)
 		self.add_widget(self.password)
 		MyButton = Button(text='HEllow')
-		MyButton.bind(on_press=callback(self.password))
+		MyButton.bind(on_press=self.printpassword)
 		self.add_widget(MyButton)
 
 class FirstKivy(App):
