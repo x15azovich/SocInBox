@@ -1,6 +1,6 @@
 WindowManager:
-    MainWindow:
-    PatchingWindow:
+	MainWindow:
+	PatchingWindow:
     NetworkWindow:
     ScanningWindow:
     HostbaseWindow:
@@ -11,23 +11,29 @@ WindowManager:
     GridLayout:
         cols:1
         GridLayout:
-            cols:4
-            Button:
-                text: "Patching"
-                on_release:
-                    app.root.current = "patching"
-            Button:
-                text: "Network"
-                on_release:
-                    app.root.current = "network"
-            Button:
-                text: "Scanning"
-                on_release:
-                    app.root.current = "scanning"
-            Button:
-                text: "Hostbase"
-                on_release:
-                    app.root.current = "hostbase"
+            size_hint:1,.2
+			cols:5
+			Button:
+				text: "Home"
+				on_release:
+            		app.root.current = "main"
+
+        	Button:
+				text: "Patching"
+            	on_release:
+            		app.root.current = "patching"
+        	Button:
+            	text: "Network"
+            	on_release:
+                	app.root.current = "network"
+			Button:
+            	text: "Scanning"
+            	on_release:
+					app.root.current = "scanning"
+        	Button:
+            	text: "Hostbase"
+            	on_release:
+                	app.root.current = "hostbase"
 
         GridLayout:
             cols: 2
@@ -52,7 +58,11 @@ WindowManager:
     GridLayout:
         cols:1
         GridLayout:
-            cols:4
+            cols:5
+            Button:
+                text: "Home"
+                on_release:
+                    app.root.current = "main"
             Button:
                 text: "Patching"
                 on_release:
@@ -75,7 +85,11 @@ WindowManager:
     GridLayout:
         cols:1
         GridLayout:
-            cols:4
+            cols:5
+            Button:
+                text: "Home"
+                on_release:
+                    app.root.current = "main"
             Button:
                 text: "Patching"
                 on_release:
@@ -98,7 +112,11 @@ WindowManager:
     GridLayout:
         cols:1
         GridLayout:
-            cols:4
+            cols:5
+            Button:
+                text: "Home"
+                on_release:
+                    app.root.current = "main"
             Button:
                 text: "Patching"
                 on_release:
@@ -121,7 +139,11 @@ WindowManager:
     GridLayout:
         cols:1
         GridLayout:
-            cols:4
+            cols:5
+            Button:
+                text: "Home"
+                on_release:
+                    app.root.current = "main"
             Button:
                 text: "Patching"
                 on_release:
