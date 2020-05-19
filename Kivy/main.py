@@ -4,8 +4,6 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.graphics import Color, Line, Ellipse
 from kivy.uix.floatlayout import FloatLayout
 
-class MainWindow(Screen):
-	pass
 
 class HomeWindow(Screen):
 	pass

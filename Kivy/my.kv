@@ -1,12 +1,12 @@
 WindowManager:
-	MainWindow:
+	HomeWindow:
 	PatchingWindow:
     NetworkWindow:
     ScanningWindow:
     HostbaseWindow:
 
-<MainWindow>:
-    name: "main"
+<HomeWindow>:
+    name: "home"
 
     GridLayout:
         cols:1
@@ -16,7 +16,7 @@ WindowManager:
 			Button:
 				text: "Home"
 				on_release:
-            		app.root.current = "main"
+            		app.root.current = "home"
 
         	Button:
 				text: "Patching"
@@ -54,7 +54,7 @@ WindowManager:
         Button:
             text: "Submit"
             on_release:
-                app.root.current = "second" if passw.text == "tim" else "main"
+                app.root.current = "second" if passw.text == "tim" else "home"
                 root.manager.transition.direction = "left"
 
 
@@ -68,7 +68,7 @@ WindowManager:
             Button:
                 text: "Home"
                 on_release:
-                    app.root.current = "main"
+                    app.root.current = "home"
             Button:
                 text: "Patching"
                 on_release:
@@ -95,7 +95,7 @@ WindowManager:
             Button:
                 text: "Home"
                 on_release:
-                    app.root.current = "main"
+                    app.root.current = "home"
             Button:
                 text: "Patching"
                 on_release:
@@ -122,7 +122,7 @@ WindowManager:
             Button:
                 text: "Home"
                 on_release:
-                    app.root.current = "main"
+                    app.root.current = "home"
             Button:
                 text: "Patching"
                 on_release:
@@ -149,7 +149,7 @@ WindowManager:
             Button:
                 text: "Home"
                 on_release:
-                    app.root.current = "main"
+                    app.root.current = "home"
             Button:
                 text: "Patching"
                 on_release:
