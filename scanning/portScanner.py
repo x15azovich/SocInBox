@@ -1,4 +1,4 @@
-import socket, threading
+`import socket, threading
 socket.setdefaulttimeout(2)
 f = open("portscandata.txt", "w")
 host = input("ip:")
