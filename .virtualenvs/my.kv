@@ -1,0 +1,168 @@
+WindowManager:
+	MainWindow:
+	PatchingWindow:
+    NetworkWindow:
+    ScanningWindow:
+    HostbaseWindow:
+
+<MainWindow>:
+    name: "main"
+
+    GridLayout:
+        cols:1
+        GridLayout:
+            size_hint:1,.2
+			cols:5
+			Button:
+				text: "Home"
+				on_release:
+            		app.root.current = "main"
+
+        	Button:
+				text: "Patching"
+            	on_release:
+            		app.root.current = "patching"
+        	Button:
+            	text: "Network"
+            	on_release:
+                	app.root.current = "network"
+			Button:
+            	text: "Scanning"
+            	on_release:
+					app.root.current = "scanning"
+        	Button:
+            	text: "Hostbase"
+            	on_release:
+                	app.root.current = "hostbase"
+
+        GridLayout:
+            cols: 2
+            size_hint:1,.5
+
+
+            Label:
+                text: "Stats: "
+
+            Label:
+                text: "Cat ipsol dolor amet, make meme, make cute cat face yet then cats take over the world"
+                
+			Label:
+                text: "Stats Title: "
+
+            Label:
+                text: "More Cat ipsol dolor amet, make meme, make cute cat face yet then cats take over the world"
+        Button:
+            text: "Submit"
+            on_release:
+                app.root.current = "second" if passw.text == "tim" else "main"
+                root.manager.transition.direction = "left"
+
+
+<PatchingWindow>:
+    name: "patching"
+
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:5
+            Button:
+                text: "Home"
+                on_release:
+                    app.root.current = "main"
+            Button:
+                text: "Patching"
+                on_release:
+                    app.root.current = "patching"
+            Button:
+                text: "Network"
+                on_release:
+                    app.root.current = "network"
+            Button:
+                text: "Scanning"
+                on_release:
+                    app.root.current = "scanning"
+            Button:
+                text: "Hostbase"
+                on_release:
+                    app.root.current = "hostbase"
+<NetworkWindow>:
+    name: "network"
+
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:5
+            Button:
+                text: "Home"
+                on_release:
+                    app.root.current = "main"
+            Button:
+                text: "Patching"
+                on_release:
+                    app.root.current = "patching"
+            Button:
+                text: "Network"
+                on_release:
+                    app.root.current = "network"
+            Button:
+                text: "Scanning"
+                on_release:
+                    app.root.current = "scanning"
+            Button:
+                text: "Hostbase"
+                on_release:
+                    app.root.current = "hostbase"
+<ScanningWindow>:
+    name: "scanning"
+
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:5
+            Button:
+                text: "Home"
+                on_release:
+                    app.root.current = "main"
+            Button:
+                text: "Patching"
+                on_release:
+                    app.root.current = "patching"
+            Button:
+                text: "Network"
+                on_release:
+                    app.root.current = "network"
+            Button:
+                text: "Scanning"
+                on_release:
+                    app.root.current = "scanning"
+            Button:
+                text: "Hostbase"
+                on_release:
+                    app.root.current = "hostbase"
+<HostbaseWindow>:
+    name: "hostbase"
+
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:5
+            Button:
+                text: "Home"
+                on_release:
+                    app.root.current = "main"
+            Button:
+                text: "Patching"
+                on_release:
+                    app.root.current = "patching"
+            Button:
+                text: "Network"
+                on_release:
+                    app.root.current = "network"
+            Button:
+                text: "Scanning"
+                on_release:
+                    app.root.current = "scanning"
+            Button:
+                text: "Hostbase"
+                on_release:
+                    app.root.current = "hostbase"
