@@ -3,6 +3,9 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.graphics import Color, Line, Ellipse
 from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+
 
 class MainWindow(Screen):
 	pass
@@ -17,8 +20,17 @@ class NetworkWindow(Screen):
 	pass
 
 class ScanningWindow(Screen):
-	pass
+	## Look up floatlayout to replace gridlayout, more freedom and less box'ey 
+	def press_scan(self,ip_address):
+		try:
+			self.display.text = ip_address
+			print("1")
+		except:
+			self.display.text = "error"
+			print("2")
 
+	def display_result(self):
+		pass
 class HostbaseWindow(Screen):
 	pass
 
