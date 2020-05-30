@@ -5,7 +5,10 @@ from kivy.graphics import Color, Line, Ellipse
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
-
+import os, re
+import sys
+#sys.path.insert(1, '.virtualenvs/backend/scanning/nampVulScanner.py')
+import nmapVulScannerCopy
 
 class MainWindow(Screen):
 	pass
@@ -24,7 +27,7 @@ class ScanningWindow(Screen):
 	def press_scan(self,ip_address):
 		try:
 			self.display.text = ip_address
-			print("1")
+			nmapVulScannerCopy.scan(ip_address)
 		except:
 			self.display.text = "error"
 			print("2")
