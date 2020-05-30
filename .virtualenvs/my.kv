@@ -64,105 +64,212 @@ WindowManager:
     GridLayout:
         cols:1
         GridLayout:
-            cols:5
-            Button:
-                text: "Home"
-                on_release:
-                    app.root.current = "main"
-            Button:
-                text: "Patching"
-                on_release:
-                    app.root.current = "patching"
-            Button:
-                text: "Network"
-                on_release:
-                    app.root.current = "network"
-            Button:
-                text: "Scanning"
-                on_release:
-                    app.root.current = "scanning"
-            Button:
-                text: "Hostbase"
-                on_release:
-                    app.root.current = "hostbase"
+            size_hint:1,.2
+			cols:5
+			Button:
+				text: "Home"
+				on_release:
+            		app.root.current = "main"
+
+        	Button:
+				text: "Patching"
+            	on_release:
+            		app.root.current = "patching"
+        	Button:
+            	text: "Network"
+            	on_release:
+                	app.root.current = "network"
+			Button:
+            	text: "Scanning"
+            	on_release:
+					app.root.current = "scanning"
+        	Button:
+            	text: "Hostbase"
+            	on_release:
+                	app.root.current = "hostbase"
+
+        GridLayout:
+            cols: 2
+            size_hint:1,.5
+
+
+            Label:
+                text: "Stats: "
+
+            Label:
+                text: "Cat ipsol dolor amet, make meme, make cute cat face yet then cats take over the world"
+                
+			Label:
+                text: "Stats Title: "
+
+            Label:
+                text: "More Cat ipsol dolor amet, make meme, make cute cat face yet then cats take over the world"
+        Button:
+            text: "Submit"
+            on_release:
+                app.root.current = "second" if passw.text == "tim" else "main"
+                root.manager.transition.direction = "left"
+
+
 <NetworkWindow>:
     name: "network"
 
     GridLayout:
         cols:1
         GridLayout:
-            cols:5
-            Button:
-                text: "Home"
-                on_release:
-                    app.root.current = "main"
-            Button:
-                text: "Patching"
-                on_release:
-                    app.root.current = "patching"
-            Button:
-                text: "Network"
-                on_release:
-                    app.root.current = "network"
-            Button:
-                text: "Scanning"
-                on_release:
-                    app.root.current = "scanning"
-            Button:
-                text: "Hostbase"
-                on_release:
-                    app.root.current = "hostbase"
+            size_hint:1,.2
+			cols:5
+			Button:
+				text: "Home"
+				on_release:
+            		app.root.current = "main"
+
+        	Button:
+				text: "Patching"
+            	on_release:
+            		app.root.current = "patching"
+        	Button:
+            	text: "Network"
+            	on_release:
+                	app.root.current = "network"
+			Button:
+            	text: "Scanning"
+            	on_release:
+					app.root.current = "scanning"
+        	Button:
+            	text: "Hostbase"
+            	on_release:
+                	app.root.current = "hostbase"
+
+        GridLayout:
+            cols: 2
+            size_hint:1,.5
+
+
+            Label:
+                text: "Stats: "
+
+            Label:
+                text: "Cat ipsol dolor amet, make meme, make cute cat face yet then cats take over the world"
+                
+			Label:
+                text: "Stats Title: "
+
+            Label:
+                text: "More Cat ipsol dolor amet, make meme, make cute cat face yet then cats take over the world"
+        Button:
+            text: "Submit"
+            on_release:
+                app.root.current = "second" if passw.text == "tim" else "main"
+                root.manager.transition.direction = "left"
+
 <ScanningWindow>:
     name: "scanning"
+    display: entry 
+    rows:10
+    padding:10
+    spacing:10
 
     GridLayout:
         cols:1
+        
         GridLayout:
-            cols:5
+			cols:5
+			Button:
+                pos_hint: {'center_x' : 0.5, 'top':1}
+				text: "Home"
+				on_release:
+            		app.root.current = "main"
+
+        	Button:
+                pos_hint: {'center_x' : 0.5, 'top':1}
+
+				text: "Patching"
+            	on_release:
+            		app.root.current = "patching"
+        	Button:
+            	text: "Network"
+            	on_release:
+                	app.root.current = "network"
+			Button:
+            	text: "Scanning"
+            	on_release:
+					app.root.current = "scanning"
+        	Button:
+            	text: "Hostbase"
+            	on_release:
+                	app.root.current = "hostbase"
+
+        GridLayout:
+            cols:3
+            Label:
+                text: "Enter IP address here: " 
+            TextInput:
+                id: entry
+                font_size: 32
+                multiline: False
             Button:
-                text: "Home"
-                on_release:
-                    app.root.current = "main"
-            Button:
-                text: "Patching"
-                on_release:
-                    app.root.current = "patching"
-            Button:
-                text: "Network"
-                on_release:
-                    app.root.current = "network"
-            Button:
-                text: "Scanning"
-                on_release:
-                    app.root.current = "scanning"
-            Button:
-                text: "Hostbase"
-                on_release:
-                    app.root.current = "hostbase"
+                text: "Scan"
+                on_press: root.press_scan(entry.text)
+
+        GridLayout:
+            cols: 1 
+            Label:
+                text: "Vulnerabilities:"
+            
+
+            
+
+                
+                
+
 <HostbaseWindow>:
     name: "hostbase"
 
     GridLayout:
-        cols:1
         GridLayout:
-            cols:5
-            Button:
-                text: "Home"
-                on_release:
-                    app.root.current = "main"
-            Button:
-                text: "Patching"
-                on_release:
-                    app.root.current = "patching"
-            Button:
-                text: "Network"
-                on_release:
-                    app.root.current = "network"
-            Button:
-                text: "Scanning"
-                on_release:
-                    app.root.current = "scanning"
-            Button:
-                text: "Hostbase"
-                on_release:
-                    app.root.current = "hostbase"
+			Button:
+                size_hint: 0.3, 0.3
+				text: "Home"
+				on_release:
+            		app.root.current = "main"
+
+        	Button:
+				text: "Patching"
+            	on_release:
+            		app.root.current = "patching"
+        	Button:
+            	text: "Network"
+            	on_release:
+                	app.root.current = "network"
+			Button:
+            	text: "Scanning"
+            	on_release:
+					app.root.current = "scanning"
+        	Button:
+            	text: "Hostbase"
+            	on_release:
+                	app.root.current = "hostbase"
+
+        GridLayout:
+            cols: 2
+            size_hint:1,.5
+
+
+            Label:
+                text: "Stats: "
+
+            Label:
+                text: "Cat ipsol dolor amet, make meme, make cute cat face yet then cats take over the world"
+                
+			Label:
+                text: "Stats Title: "
+
+            Label:
+                text: "More Cat ipsol dolor amet, make meme, make cute cat face yet then cats take over the world"
+        Button:
+            text: "Submit"
+            on_release:
+                app.root.current = "second" if passw.text == "tim" else "main"
+                root.manager.transition.direction = "left"
+
