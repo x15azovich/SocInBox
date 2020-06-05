@@ -145,7 +145,6 @@ WindowManager:
             cols: 2
             size_hint:1,.5
 
-
             Label:
                 text: "Stats: "
 
@@ -165,63 +164,58 @@ WindowManager:
 
 <ScanningWindow>:
     name: "scanning"
-    display: entry 
-    rows:10
-    padding:10
-    spacing:10
+    FloatLayout:
+		Button:
+            size_hint: 0.2,0.10
+            pos_hint : {'center_x' : 0.10, 'top': 1}
+			text: "Home"
+			on_release:
+            	app.root.current = "main"
+		Button:
+            size_hint: 0.2,0.10
+            pos_hint : {'center_x' : 0.30, 'top': 1}
+			text: "Patching"
+			on_release:
+            	app.root.current = "patching"
+		Button:
+            size_hint: 0.2,0.10
+            pos_hint : {'center_x' : 0.50, 'top': 1}
+			text: "Network"
+			on_release:
+            	app.root.current = "network"
+		Button:
+            size_hint: 0.2,0.10
+            pos_hint : {'center_x' : 0.70, 'top': 1}
+			text: "Scanning"
+			on_release:
+            	app.root.current = "scanning"
+		Button:
+            size_hint: 0.2,0.10
+            pos_hint : {'center_x' : 0.90, 'top': 1}
+			text: "Hostbase"
+			on_release:
+            	app.root.current = "hostbase"
 
-    GridLayout:
-        cols:1
-        
-        GridLayout:
-			cols:5
-			Button:
-                pos_hint: {'center_x' : 0.5, 'top':1}
-				text: "Home"
-				on_release:
-            		app.root.current = "main"
+        Label:
+            size_hint: 0.2,0.10
+            pos_hint : {'center_x' : 0.3, 'center_y': 0.3}
+            text: "Enter IP address here: " 
+        TextInput:
+            size_hint: 0.2,0.10
+            pos_hint : {'center_x' : 0.3, 'center_y': 0.3}
+            id: entry
+            font_size: 32
+            multiline: False
+        Button:
+            size_hint: 0.2,0.10
+            pos_hint : {'center_x' : 0.3, 'center_y': 0.3}
+            text: "Scan"
+            on_press: root.press_scan(entry.text)
 
-        	Button:
-                pos_hint: {'center_x' : 0.5, 'top':1}
-
-				text: "Patching"
-            	on_release:
-            		app.root.current = "patching"
-        	Button:
-            	text: "Network"
-            	on_release:
-                	app.root.current = "network"
-			Button:
-            	text: "Scanning"
-            	on_release:
-					app.root.current = "scanning"
-        	Button:
-            	text: "Hostbase"
-            	on_release:
-                	app.root.current = "hostbase"
-
-        GridLayout:
-            cols:3
-            Label:
-                text: "Enter IP address here: " 
-            TextInput:
-                id: entry
-                font_size: 32
-                multiline: False
-            Button:
-                text: "Scan"
-                on_press: root.press_scan(entry.text)
-
-        GridLayout:
-            cols: 1 
-            Label:
-                text: "Vulnerabilities:"
+        #Label:
+        #    text: "Vulnerabilities:"
             
 
-            
-
-                
-                
 
 <HostbaseWindow>:
     name: "hostbase"
