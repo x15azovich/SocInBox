@@ -1,7 +1,7 @@
 import os, re
 
 def scan(ip):
-    command = "nmap --script nmap-vulners -sV "+str(ip)+" > portscandata.txt"
+    command = "nmap -sV --script=vulscan/vulscan.nse "+str(ip)+" > portscandata.txt"
     os.system(command)
 
     pattern = "https://(.*?)\|"
