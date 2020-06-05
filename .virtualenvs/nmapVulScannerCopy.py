@@ -5,9 +5,9 @@ def scan(ip):
     os.system(command)
 
     pattern = "https://(.*?)\|"
-
     with open("portscandata.txt", "r") as file:
         for line in file:
+            print(line)
             substring = re.search(pattern, line)[0]
             print(substring)
         
