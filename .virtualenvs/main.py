@@ -41,7 +41,7 @@ class ScanningWindow(Screen):
 			self.display.text = ip_address
 
 			# https://github.com/scipag/vulscan
-			nmapVulScannerCopy.scan(ip_address)
+			Vulscan.py.scan(ip_address)
 			print("1")
 		except:
 			self.display.text = "error"
