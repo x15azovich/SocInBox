@@ -10,7 +10,9 @@ from kivy.core.window import Window
 import os, re
 import sys
 #sys.path.insert(1, '.virtualenvs/backend/scanning/nampVulScanner.py')
-import nmapVulScannerCopy
+import Vulscan
+import CVEnumbersExtractor
+import CVEdescriptionAndSolutionsGetter
 '''
 RGBA = Red, Green, Blue, Opacity
 https://www.rapidtables.com/web/color/RGB_Color.html => Use this wheel to help pick colors 
@@ -41,11 +43,25 @@ class ScanningWindow(Screen):
 			self.display.text = ip_address
 
 			# https://github.com/scipag/vulscan
-			Vulscan.py.scan(ip_address)
+			Vulscan.scan(ip_address)
 			print("1")
+
 		except:
 			self.display.text = "error"
 			print("2")
+
+		try: 
+			CVEnumbersExtractor.vulnScanExtract()
+			print ("Anthony > Jessi")
+		except:
+			print("Anthony Can't Code")
+
+		try: 
+			CVEdescriptionAndSolutionsGetter.getCveDescription()
+			print ("Anthony2 > Jessi")
+		except:
+			print("Anthony Can't Code2")
+
 
 	def display_result(self):
 		pass

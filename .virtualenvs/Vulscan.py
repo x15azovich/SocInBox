@@ -1,6 +1,5 @@
 import os, re
 
-ip="192.168.1.153"
 def scan(ip):
     print("running scan")
     #this command works for jeff's machine, which is Windows. Need to test if it works for other windows machine too
