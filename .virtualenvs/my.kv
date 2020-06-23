@@ -1,3 +1,6 @@
+#:import utils kivy.utils
+ 
+
 WindowManager:
 	MainWindow:
 	PatchingWindow:
@@ -5,44 +8,47 @@ WindowManager:
     ScanningWindow:
     HostbaseWindow:
 
+
 <MainWindow>:
     name: "main"
     FloatLayout:
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.10, 'top': 1}
-            background_color: (0, 8/255.0, 42.5/255.0, .550 )
+            background_color: utils.get_color_from_hex('#001a33')
 			text: "Home"
 			on_release:
             	app.root.current = "main"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.30, 'top': 1}
-            background_color: (0/255.0, 200/255.0, 255/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#4da6ff')
 			text: "Patching"
 			on_release:
             	app.root.current = "patching"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.50, 'top': 1}
-            background_color: (0, 90/255.0, 151/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#0080ff')
 			text: "Network"
 			on_release:
             	app.root.current = "network"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.70, 'top': 1}
-            background_color: (0, 60/255.0, 110.5/255.0, .550 )
+            background_color: utils.get_color_from_hex('#0059b3')
 			text: "Scanning"
 			on_release:
             	app.root.current = "scanning"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.90, 'top': 1}
-            background_color: (0, 30/255.0, 75/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#004080')
 			text: "Hostbase"
 			on_release:
             	app.root.current = "hostbase"
+ 
+
 
 
 <PatchingWindow>:
@@ -52,35 +58,35 @@ WindowManager:
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.10, 'top': 1}
-            background_color: (0, 204/255.0, 255/255.0 ,1.0)
+            background_color: utils.get_color_from_hex('#99ccff')
 			text: "Home"
 			on_release:
             	app.root.current = "main"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.30, 'top': 1}
-            background_color: (0, 8/255.0, 42.5/255.0, .550 )
+            background_color: utils.get_color_from_hex('#001a33')
 			text: "Patching"
 			on_release:
             	app.root.current = "patching"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.50, 'top': 1}
-            background_color: (0, 120/255.0, 151/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#0080ff')
 			text: "Network"
 			on_release:
             	app.root.current = "network"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.70, 'top': 1}
-            background_color: (0, 8/255.0, 42.5/255.0, .550 )
+            background_color: utils.get_color_from_hex('#0059b3')
 			text: "Scanning"
 			on_release:
             	app.root.current = "scanning"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.90, 'top': 1}
-            background_color: (0, 80/255.0, 110/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#004080')
 			text: "Hostbase"
 			on_release:
             	app.root.current = "hostbase"
@@ -93,39 +99,38 @@ WindowManager:
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.10, 'top': 1}
-            background_color: (0, 204/255.0, 255/255.0 ,1.0)
+            background_color: utils.get_color_from_hex('#99ccff')
 			text: "Home"
 			on_release:
             	app.root.current = "main"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.30, 'top': 1}
-            background_color: (0, 165/255.0, 207/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#4da6ff')
 			text: "Patching"
 			on_release:
             	app.root.current = "patching"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.50, 'top': 1}
-            background_color: (0, 8/255.0, 42.5/255.0, .550 )
+            background_color: utils.get_color_from_hex('#001a33')
 			text: "Network"
 			on_release:
             	app.root.current = "network"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.70, 'top': 1}
-            background_color: (0, 8/255.0, 42.5/255.0, .550 )
+            background_color: utils.get_color_from_hex('#0059b3')
 			text: "Scanning"
 			on_release:
             	app.root.current = "scanning"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.90, 'top': 1}
-            background_color: (0, 80/255.0, 110/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#004080')
 			text: "Hostbase"
 			on_release:
             	app.root.current = "hostbase"
-
 
 <ScanningWindow>:
     name: "scanning"
@@ -134,35 +139,35 @@ WindowManager:
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.10, 'top': 1}
-            background_color: (0, 204/255.0, 255/255.0 ,1.0)
+            background_color: utils.get_color_from_hex('#99ccff')
 			text: "Home"
 			on_release:
             	app.root.current = "main"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.30, 'top': 1}
-            background_color: (0, 165/255.0, 207/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#4da6ff')
 			text: "Patching"
 			on_release:
             	app.root.current = "patching"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.50, 'top': 1}
-            background_color: (0, 120/255.0, 151/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#0080ff')
 			text: "Network"
 			on_release:
             	app.root.current = "network"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.70, 'top': 1}
-            background_color: (0, 8/255.0, 42.5/255.0, .550 )
+            background_color: utils.get_color_from_hex('#001a33')
 			text: "Scanning"
 			on_release:
             	app.root.current = "scanning"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.90, 'top': 1}
-            background_color: (0, 80/255.0, 110/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#004080')
 			text: "Hostbase"
 			on_release:
             	app.root.current = "hostbase"
@@ -177,51 +182,48 @@ WindowManager:
         Button:
             size_hint: 0.1, 0.075
             pos_hint : {'center_x' : 0.85, 'top': .80}
-            background_color: (0, 204/255.0, 255/255.0 ,1.0)
+            background_color: utils.get_color_from_hex('#0080ff')
             text: "Scan"
             on_press: root.press_scan(entry.text)
 
-        #Label:
-        #    text: "Vulnerabilities:"
             
 
 
 <HostbaseWindow>:
     name: "hostbase"
-
     FloatLayout:
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.10, 'top': 1}
-            background_color: (0, 204/255.0, 255/255.0 ,1.0)
+            background_color: utils.get_color_from_hex('#99ccff')
 			text: "Home"
 			on_release:
             	app.root.current = "main"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.30, 'top': 1}
-            background_color: (0, 165/255.0, 207/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#4da6ff')
 			text: "Patching"
 			on_release:
             	app.root.current = "patching"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.50, 'top': 1}
-            background_color: (0, 120/255.0, 151/255.0, 1.0)
+            background_color: utils.get_color_from_hex('#0080ff')
 			text: "Network"
 			on_release:
             	app.root.current = "network"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.70, 'top': 1}
-            background_color: (0, 8/255.0, 42.5/255.0, .550 )
+            background_color: utils.get_color_from_hex('#0059b3')
 			text: "Scanning"
 			on_release:
             	app.root.current = "scanning"
 		Button:
             size_hint: 0.2,0.10
             pos_hint : {'center_x' : 0.90, 'top': 1}
-            background_color: (0, 8/255.0, 42.5/255.0, .550 )
+            background_color: utils.get_color_from_hex('#001a33')
 			text: "Hostbase"
 			on_release:
             	app.root.current = "hostbase"
