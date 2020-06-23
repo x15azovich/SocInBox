@@ -7,6 +7,10 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.core.window import Window 
 
+from kivy.uix.scrollview import ScrollView
+from kivy.uix.recycleview import RecycleView
+
+
 import os, re
 import sys
 #sys.path.insert(1, '.virtualenvs/backend/scanning/nampVulScanner.py')
@@ -20,6 +24,16 @@ Lets say you want a navy blue color which is (0,51,102) in RBG format
 Must convert into Kivy syntax. Take each number and divide by 255.0
 (0,8,18) => (0/255.0, 8/255.0, 18/255.0, 1). Can actually divide it => (0, 0.03, 0.07, 1 ) 
 Don't forget the trailing 1 at the end for opacity 
+'''
+
+'''
+TO DO:
+1. See how to put a white canvas/label/rectangle box to hold the data table
+2. Research how to put a data table: recycleview example
+3. make sure data table can be scrollable
+4. make rows based on number of CVES 
+5. use sample CVE list and description to plug into empty boxes 
+6. adjust colors and size of table accordingly 
 '''
 Window.clearcolor= (0, 8/255.0, 18/255.0, 1 )
 
