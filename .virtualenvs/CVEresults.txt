@@ -1,41 +1,19 @@
-CVE Number: CVE-2010-2632
+CVE Number: CVE-2010-4755
+CVE Description: The (1) remote_glob function in sftp-glob.c and the (2) process_put function in sftp.c in OpenSSH 5.8 and earlier, as used in FreeBSD 7.3 and 8.1, NetBSD 5.0.2, OpenBSD 4.7, and other products, allow remote authenticated users to cause a denial of service (CPU and memory consumption) via crafted glob expressions that do not match any pathnames, as demonstrated by glob expressions in SSH_FXP_STAT requests to an sftp daemon, a different vulnerability than CVE-2010-2632.
+CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4755
+CVE Number: CVE-2010-2632
 CVE Description: Unspecified vulnerability in the FTP Server in Oracle Solaris 8, 9, 10, and 11 Express allows remote attackers to affect availability. NOTE: the previous information was obtained from the January 2011 CPU. Oracle has not commented on claims from a reliable researcher that this is an issue in the glob implementation in libc that allows remote authenticated users to cause a denial of service (CPU and memory consumption) via crafted glob expressions that do not match any pathnames.
 CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2632
+CVE Number: CVE-1999-0661
+CVE Description: A system is running a version of software that was replaced with a Trojan Horse at one of its distribution points, such as (1) TCP Wrappers 7.6, (2) util-linux 2.9g, (3) wuarchive ftpd (wuftpd) 2.2 and 2.1f, (4) IRC client (ircII) ircII 2.2.9, (5) OpenSSH 3.4p1, or (6) Sendmail 8.12.6.
+CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0661
 CVE Number: CVE-2016-10708
 CVE Description: sshd in OpenSSH before 7.4 allows remote attackers to cause a denial of service (NULL pointer dereference and daemon crash) via an out-of-sequence NEWKEYS message, as demonstrated by Honggfuzz, related to kex.c and packet.c.
 CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10708
+CVE Number: CVE-2016-10011
+CVE Description: authfile.c in sshd in OpenSSH before 7.4 does not properly consider the effects of realloc on buffer contents, which might allow local users to obtain sensitive private-key information by leveraging access to a privilege-separated child process.
+CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10011
 CVE Number: CVE-2016-10012
 CVE Description: The shared memory manager (associated with pre-authentication compression) in sshd in OpenSSH before 7.4 does not ensure that a bounds check is enforced by all compilers, which might allows local users to gain privileges by leveraging access to a sandboxed privilege-separation process, related to the m_zback and m_zlib data structures.
 CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10012
-CVE Number: CVE-2016-10009
-CVE Description: Untrusted search path vulnerability in ssh-agent.c in ssh-agent in OpenSSH before 7.4 allows remote attackers to execute arbitrary local PKCS#11 modules by leveraging control over a forwarded agent-socket.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10009
-CVE Number: CVE-2016-6210
-CVE Description: sshd in OpenSSH before 7.3, when SHA256 or SHA512 are used for user password hashing, uses BLOWFISH hashing on a static password when the username does not exist, which allows remote attackers to enumerate users by leveraging the timing difference between responses when a large password is provided.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-6210
-CVE Number: CVE-2004-2760
-CVE Description: sshd in OpenSSH 3.5p1, when PermitRootLogin is disabled, immediately closes the TCP connection after a root login attempt with the correct password, but leaves the connection open after an attempt with an incorrect password, which makes it easier for remote attackers to guess the password by observing the connection state, a different vulnerability than CVE-2003-0190.  NOTE: it could be argued that in most environments, this does not cross privilege boundaries without requiring leverage of a separate vulnerability.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2004-2760
-CVE Number: CVE-2001-1382
-CVE Description: The "echo simulation" traffic analysis countermeasure in OpenSSH before 2.9.9p2 sends an additional echo packet after the password and carriage return is entered, which could allow remote attackers to determine that the countermeasure is being used.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2001-1382
-CVE Number: CVE-1999-1010
-CVE Description: An SSH 1.2.27 server allows a client to use the "none" cipher, even if it is not allowed by the server policy.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-1010
-CVE Number: CVE-2007-2768
-CVE Description: OpenSSH, when using OPIE (One-Time Passwords in Everything) for PAM, allows remote attackers to determine the existence of certain user accounts, which displays a different response if the user account exists and is configured to use one-time passwords (OTP), a similar issue to CVE-2007-2243.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-2768
-CVE Number: CVE-2016-3115
-CVE Description: Multiple CRLF injection vulnerabilities in session.c in sshd in OpenSSH before 7.2p2 allow remote authenticated users to bypass intended shell-command restrictions via crafted X11 forwarding data, related to the (1) do_authenticated1 and (2) session_x11_req functions.
-<a href="https://cwe.mitre.org/data/definitions/93.html">CWE-93: Improper Neutralization of CRLF Sequences ('CRLF Injection')</a>
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3115
-CVE Number: CVE-2016-1907
-CVE Description: The ssh_packet_read_poll2 function in packet.c in OpenSSH before 7.1p2 allows remote attackers to cause a denial of service (out-of-bounds read and application crash) via crafted network traffic.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1907
-CVE Number: CVE-2016-0777
-CVE Description: The resend_bytes function in roaming_common.c in the client in OpenSSH 5.x, 6.x, and 7.x before 7.1p2 allows remote servers to obtain sensitive information from process memory by requesting transmission of an entire buffer, as demonstrated by reading a private key.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0777
-CVE Number: CVE-2010-5107
-CVE Description: The default configuration of OpenSSH through 6.1 enforces a fixed time limit between establishing a TCP connection and completing a login, which makes it easier for remote attackers to cause a denial of service (connection-slot exhaustion) by periodically making many new TCP connections.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-5107
 
