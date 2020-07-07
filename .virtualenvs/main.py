@@ -53,10 +53,31 @@ class NetworkWindow(Screen):
 			print(ip_address)
 			self.display.text = ip_address
 			# https://github.com/scipag/vulscan
-			windows_7.add_rule("Blocked IP From Console", ip_address)
+			#windows_7.add_rule("Blocked IP From Console", ip_address)
 			print(ip_address)
 		except:
 			print("YOu FAIL")
+
+	def press_remove(self,ip_address):
+		try:
+			print(ip_address)
+			self.display.text = ip_address
+			# https://github.com/scipag/vulscan
+			#windows_7.delete_rule("Remove Blocked IP From Console", ip_address)
+			print(ip_address)
+		except:
+			print("YOu FAIL")
+
+	def press_modify(self,ip_address):
+		try:
+			print(ip_address)
+			self.display.text = ip_address
+			# https://github.com/scipag/vulscan
+			#windows_7.modify_rule("Blocked IP From Console", ip_address)
+			print(ip_address)
+		except:
+			print("YOu FAIL")
+
 	def display_result(self):
 		pass
 

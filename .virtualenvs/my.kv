@@ -135,7 +135,7 @@ WindowManager:
         TextInput:
             size_hint: 0.70,0.075
             pos_hint : {'center_x' : 0.40, 'top': .80}
-            hint_text : "Enter IP to Block here:"
+            hint_text : "Enter IP or Hostname to Block:"
             id: entry
             font_size: 32
             multiline: False
@@ -145,6 +145,20 @@ WindowManager:
             background_color: utils.get_color_from_hex('#0080ff')
             text: "Block IP"
             on_press: root.press_block(entry.text)
+
+        TextInput:
+            size_hint: 0.70,0.075
+            pos_hint : {'center_x' : 0.40, 'top': .60}
+            hint_text : "Enter IP or Hostname to UnBlock:"
+            id: entry
+            font_size: 32
+            multiline: False
+        Button:
+            size_hint: 0.1, 0.075
+            pos_hint : {'center_x' : 0.85, 'top': .60}
+            background_color: utils.get_color_from_hex('#0080ff')
+            text: "UnBlock IP"
+            on_press: root.press_remove(entry.text)
 
 <ScanningWindow>:
     name: "scanning"
@@ -193,6 +207,7 @@ WindowManager:
             id: entry
             font_size: 32
             multiline: False
+
         Button:
             size_hint: 0.1, 0.075
             pos_hint : {'center_x' : 0.85, 'top': .80}
