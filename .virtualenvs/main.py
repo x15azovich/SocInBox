@@ -17,6 +17,7 @@ import sys
 import Vulscan
 import CVEnumbersExtractor
 import CVEdescriptionAndSolutionsGetter
+import windows_7
 '''
 RGBA = Red, Green, Blue, Opacity
 https://www.rapidtables.com/web/color/RGB_Color.html => Use this wheel to help pick colors 
@@ -47,7 +48,38 @@ class PatchingWindow(Screen):
 	pass
 
 class NetworkWindow(Screen):
-	pass
+	def press_block(self,ip_address):
+		try:
+			print(ip_address)
+			self.display.text = ip_address
+			# https://github.com/scipag/vulscan
+			#windows_7.add_rule("Blocked IP From Console", ip_address)
+			print(ip_address)
+		except:
+			print("YOu FAIL")
+
+	def press_remove(self,ip_address):
+		try:
+			print(ip_address)
+			self.display.text = ip_address
+			# https://github.com/scipag/vulscan
+			#windows_7.delete_rule("Remove Blocked IP From Console", ip_address)
+			print(ip_address)
+		except:
+			print("YOu FAIL")
+
+	def press_modify(self,ip_address):
+		try:
+			print(ip_address)
+			self.display.text = ip_address
+			# https://github.com/scipag/vulscan
+			#windows_7.modify_rule("Blocked IP From Console", ip_address)
+			print(ip_address)
+		except:
+			print("YOu FAIL")
+
+	def display_result(self):
+		pass
 
 class ScanningWindow(Screen):
 	## Look up floatlayout to replace gridlayout, more freedom and less box'ey 
@@ -66,13 +98,13 @@ class ScanningWindow(Screen):
 
 		try: 
 			CVEnumbersExtractor.vulnScanExtract()
-			print ("Anthony > Jessi")
+			print ("VulnScanner running")
 		except:
 			print("Anthony Can't Code")
 
 		try: 
 			CVEdescriptionAndSolutionsGetter.getCveDescription()
-			print ("Anthony2 > Jessi")
+			print ("CVE Descirption Works")
 		except:
 			print("Anthony Can't Code2")
 

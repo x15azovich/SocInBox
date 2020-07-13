@@ -1,19 +1,0 @@
-CVE Number: CVE-2010-4755
-CVE Description: The (1) remote_glob function in sftp-glob.c and the (2) process_put function in sftp.c in OpenSSH 5.8 and earlier, as used in FreeBSD 7.3 and 8.1, NetBSD 5.0.2, OpenBSD 4.7, and other products, allow remote authenticated users to cause a denial of service (CPU and memory consumption) via crafted glob expressions that do not match any pathnames, as demonstrated by glob expressions in SSH_FXP_STAT requests to an sftp daemon, a different vulnerability than CVE-2010-2632.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4755
-CVE Number: CVE-2010-2632
-CVE Description: Unspecified vulnerability in the FTP Server in Oracle Solaris 8, 9, 10, and 11 Express allows remote attackers to affect availability. NOTE: the previous information was obtained from the January 2011 CPU. Oracle has not commented on claims from a reliable researcher that this is an issue in the glob implementation in libc that allows remote authenticated users to cause a denial of service (CPU and memory consumption) via crafted glob expressions that do not match any pathnames.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-2632
-CVE Number: CVE-1999-0661
-CVE Description: A system is running a version of software that was replaced with a Trojan Horse at one of its distribution points, such as (1) TCP Wrappers 7.6, (2) util-linux 2.9g, (3) wuarchive ftpd (wuftpd) 2.2 and 2.1f, (4) IRC client (ircII) ircII 2.2.9, (5) OpenSSH 3.4p1, or (6) Sendmail 8.12.6.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0661
-CVE Number: CVE-2016-10708
-CVE Description: sshd in OpenSSH before 7.4 allows remote attackers to cause a denial of service (NULL pointer dereference and daemon crash) via an out-of-sequence NEWKEYS message, as demonstrated by Honggfuzz, related to kex.c and packet.c.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10708
-CVE Number: CVE-2016-10011
-CVE Description: authfile.c in sshd in OpenSSH before 7.4 does not properly consider the effects of realloc on buffer contents, which might allow local users to obtain sensitive private-key information by leveraging access to a privilege-separated child process.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10011
-CVE Number: CVE-2016-10012
-CVE Description: The shared memory manager (associated with pre-authentication compression) in sshd in OpenSSH before 7.4 does not ensure that a bounds check is enforced by all compilers, which might allows local users to gain privileges by leveraging access to a sandboxed privilege-separation process, related to the m_zback and m_zlib data structures.
-CVE Solutions: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10012
-
