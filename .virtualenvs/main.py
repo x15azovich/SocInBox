@@ -11,7 +11,6 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.recycleview import RecycleView
 
  
-
 import os, re
 import sys
 #sys.path.insert(1, '.virtualenvs/backend/scanning/nampVulScanner.py')
@@ -46,9 +45,7 @@ class HomeWindow(Screen):
 	pass
 
 class PatchingWindow(Screen):
-	def __init__(self, **kwargs):
-		super(PatchingWindow, self).__init__(**kwargs)
-		self.data = [{'text': str(x)} for x in range(100)]
+	pass
 
 class NetworkWindow(Screen):
 	def press_block(self,ip_address):
@@ -87,17 +84,17 @@ class NetworkWindow(Screen):
 class ScanningWindow(Screen):
 	## Look up floatlayout to replace gridlayout, more freedom and less box'ey 
 	def press_scan(self,ip_address):
-		# try:
-		# 	print(ip_address)
-		# 	self.display.text = ip_address
+		try:
+			print(ip_address)
+			self.display.text = ip_address
 
-		# 	# https://github.com/scipag/vulscan
-		# 	Vulscan.scan(ip_address)
-		# 	print("1")
+			# https://github.com/scipag/vulscan
+			Vulscan.scan(ip_address)
+			print("1")
 
-		# except:
-		# 	self.display.text = "error"
-		# 	print("2")
+		except:
+			self.display.text = "error"
+			print("2")
 
 		try: 
 			CVEnumbersExtractor.vulnScanExtract()
@@ -114,6 +111,7 @@ class ScanningWindow(Screen):
 
 	def display_result(self):
 		pass
+  
 class HostbaseWindow(Screen):
 	pass
 
