@@ -10,11 +10,15 @@ from kivy.core.window import Window
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.recycleview import RecycleView
 
+ 
 
 import os, re
 import sys
 #sys.path.insert(1, '.virtualenvs/backend/scanning/nampVulScanner.py')
-import nmapVulScannerCopy
+import Vulscan
+import CVEnumbersExtractor
+import CVEdescriptionAndSolutionsGetter
+import windows_7
 '''
 RGBA = Red, Green, Blue, Opacity
 https://www.rapidtables.com/web/color/RGB_Color.html => Use this wheel to help pick colors 
@@ -42,24 +46,71 @@ class HomeWindow(Screen):
 	pass
 
 class PatchingWindow(Screen):
-	pass
+	def __init__(self, **kwargs):
+		super(PatchingWindow, self).__init__(**kwargs)
+		self.data = [{'text': str(x)} for x in range(100)]
 
 class NetworkWindow(Screen):
-	pass
+	def press_block(self,ip_address):
+		try:
+			print(ip_address)
+			self.display.text = ip_address
+			# https://github.com/scipag/vulscan
+			#windows_7.add_rule("Blocked IP From Console", ip_address)
+			print(ip_address)
+		except:
+			print("YOu FAIL")
+
+	def press_remove(self,ip_address):
+		try:
+			print(ip_address)
+			self.display.text = ip_address
+			# https://github.com/scipag/vulscan
+			#windows_7.delete_rule("Remove Blocked IP From Console", ip_address)
+			print(ip_address)
+		except:
+			print("YOu FAIL")
+
+	def press_modify(self,ip_address):
+		try:
+			print(ip_address)
+			self.display.text = ip_address
+			# https://github.com/scipag/vulscan
+			#windows_7.modify_rule("Blocked IP From Console", ip_address)
+			print(ip_address)
+		except:
+			print("YOu FAIL")
+
+	def display_result(self):
+		pass
 
 class ScanningWindow(Screen):
 	## Look up floatlayout to replace gridlayout, more freedom and less box'ey 
 	def press_scan(self,ip_address):
-		try:
-			print(ip_address)
-			self.display.text = ip_address
+		# try:
+		# 	print(ip_address)
+		# 	self.display.text = ip_address
 
-			# https://github.com/scipag/vulscan
-			nmapVulScannerCopy.scan(ip_address)
-			print("1")
+		# 	# https://github.com/scipag/vulscan
+		# 	Vulscan.scan(ip_address)
+		# 	print("1")
+
+		# except:
+		# 	self.display.text = "error"
+		# 	print("2")
+
+		try: 
+			CVEnumbersExtractor.vulnScanExtract()
+			print ("VulnScanner running")
 		except:
-			self.display.text = "error"
-			print("2")
+			print("Anthony Can't Code")
+
+		try: 
+			CVEdescriptionAndSolutionsGetter.getCveDescription()
+			print ("CVE Descirption Works")
+		except:
+			print("Anthony Can't Code2")
+
 
 	def display_result(self):
 		pass
