@@ -48,12 +48,14 @@ class PatchingWindow(Screen):
 	pass
 
 class NetworkWindow(Screen):
+	# 162.159.36.2
 	def press_block(self,ip_address):
 		try:
 			print(ip_address)
-			self.display.text = ip_address
+			self.display1.text = ip_address
 			# https://github.com/scipag/vulscan
-			#windows_7.add_rule("Blocked IP From Console", ip_address)
+			windows_7.check_admin()
+			windows_7.add_rule("RULE_NAME", str(ip_address))
 			print(ip_address)
 		except:
 			print("YOu FAIL")
@@ -61,9 +63,10 @@ class NetworkWindow(Screen):
 	def press_remove(self,ip_address):
 		try:
 			print(ip_address)
-			self.display.text = ip_address
+			self.display2.text = ip_address
 			# https://github.com/scipag/vulscan
-			#windows_7.delete_rule("Remove Blocked IP From Console", ip_address)
+			windows_7.check_admin()
+			windows_7.delete_rule("Remove Blocked IP From Console", ip_address)
 			print(ip_address)
 		except:
 			print("YOu FAIL")
