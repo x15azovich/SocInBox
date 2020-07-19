@@ -52,12 +52,24 @@ class PatchingWindow(Screen):
 			print("I made it here")
 		except:
 			print("No Print")
-		data = {
-			'1':{0:'TESTa',1:'Sample1a',2:'Sample2a',3:'Sample3a'},
-			'2':{0:'TESTb',1:'Sample1b',2:'Sample2b',3:'Sample3b'},
-			'3':{0:'TESTc',1:'Sample1c',2:'Sample2c',3:'Sample3c'},
-		} #data store
 
+		data = {}
+		f = open("CVEresults.txt", "r")
+		data2=(f.readlines())
+		#CVE_Number_Array=data2.splitlines("CVE Number:")
+		data3=(data2[0::4])
+		for x in data3:
+			data4=x.strip('CVE Number:')
+			data4=x.strip('\n')
+		print(data4)
+		#for x in data2:
+		x = "test"
+		data = {
+				'CVE Number':{0:f"{x}",1:'Sample1a',2:'Sample2a',3:'Sample3a'},
+				'CVE Description':{0:'CVE-2010-4755',1:'Sample1b',2:'Sample2b',3:'Sample3b'},
+				'CVE Solution':{0:'https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4755',1:'Sample1c',2:'Sample2c',3:'Sample3c'},
+			} #data store
+		
 		column_titles = [x for x in data.keys()]
 		rows_length = len(data[column_titles[0]])
 		self.columns = len(column_titles)
@@ -68,13 +80,13 @@ class PatchingWindow(Screen):
 
 		for z in range(rows_length):
 			for y in column_titles:
-				table_data.append({'text':str(data[y][z]),'size_hint_y':None,'height':20,'bcolor':(.06,.25,.50,1)}) #append the data
+				table_data.append({'text':str(data[y][z]),'size_hint_y':None,'height':60,'bcolor':(.06,.25,.50,1)}) #append the data
 
 		self.ids.table_floor_layout.cols = self.columns #define value of cols to the value of self.columns
 		self.ids.table_floor.data = table_data #add table_data to data value
-		
-		def display_result(self):
-			pass
+	
+	def display_result(self):
+		pass
 
 
 class NetworkWindow(Screen):
