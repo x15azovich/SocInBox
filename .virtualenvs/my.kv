@@ -94,6 +94,8 @@ WindowManager:
 
 <NetworkWindow>:
     name: "network"
+    display1: entry1
+    display2: entry2
 
     FloatLayout:
 		Button:
@@ -136,7 +138,7 @@ WindowManager:
             size_hint: 0.70,0.075
             pos_hint : {'center_x' : 0.40, 'top': .80}
             hint_text : "Enter IP or Hostname to Block:"
-            id: entry
+            id: entry1
             font_size: 32
             multiline: False
         Button:
@@ -144,13 +146,13 @@ WindowManager:
             pos_hint : {'center_x' : 0.85, 'top': .80}
             background_color: utils.get_color_from_hex('#0080ff')
             text: "Block IP"
-            on_press: root.press_block(entry.text)
+            on_press: root.press_block(entry1.text)
 
         TextInput:
             size_hint: 0.70,0.075
             pos_hint : {'center_x' : 0.40, 'top': .60}
             hint_text : "Enter IP or Hostname to UnBlock:"
-            id: entry
+            id: entry2
             font_size: 32
             multiline: False
         Button:
@@ -158,7 +160,7 @@ WindowManager:
             pos_hint : {'center_x' : 0.85, 'top': .60}
             background_color: utils.get_color_from_hex('#0080ff')
             text: "UnBlock IP"
-            on_press: root.press_remove(entry.text)
+            on_press: root.press_remove(entry2.text)
 
 <ScanningWindow>:
     name: "scanning"
