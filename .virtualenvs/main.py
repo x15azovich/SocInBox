@@ -64,12 +64,34 @@ class PatchingWindow(Screen):
 		print(data4)
 		#for x in data2:
 		x = "test"
-		data = {
-				'CVE Number':{0:f"{x}",1:'Sample1a',2:'Sample2a',3:'Sample3a'},
-				'CVE Description':{0:'CVE-2010-4755',1:'Sample1b',2:'Sample2b',3:'Sample3b'},
-				'CVE Solution':{0:'https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-4755',1:'Sample1c',2:'Sample2c',3:'Sample3c'},
-			} #data store
-		
+
+
+#THE REAL SOLUTION
+
+		results = CVEdescriptionAndSolutionsGetter.getCveDescription()
+		data = {}
+
+		CVEs = []
+		CVE_Number = {}
+		CVE_Description = {}
+		CVE_Solution = {}
+
+
+		with open('testCVEnums.txt') as my_file:
+			CVEs = my_file.readlines()
+			CVEs = [x.strip() for x in CVEs] 
+	
+
+		for index, x in enumerate(CVEs):
+			CVE_Number[index] = x
+			CVE_Description[index] = results.get(x).get("description")
+			CVE_Solution[index] = results.get(x).get("href")
+
+		data["CVE Number"] = CVE_Number
+		data["Description"] = CVE_Description
+		data["Solution"] = CVE_Solution
+
+			
 		column_titles = [x for x in data.keys()]
 		rows_length = len(data[column_titles[0]])
 		self.columns = len(column_titles)
