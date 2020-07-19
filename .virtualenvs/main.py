@@ -48,23 +48,6 @@ class HomeWindow(Screen):
 
 class PatchingWindow(Screen):
 	def load_patches(self):
-		try:
-			print("I made it here")
-		except:
-			print("No Print")
-
-		data = {}
-		f = open("CVEresults.txt", "r")
-		data2=(f.readlines())
-		#CVE_Number_Array=data2.splitlines("CVE Number:")
-		data3=(data2[0::4])
-		for x in data3:
-			data4=x.strip('CVE Number:')
-			data4=x.strip('\n')
-		print(data4)
-		#for x in data2:
-		x = "test"
-
 
 #THE REAL SOLUTION
 
@@ -77,7 +60,7 @@ class PatchingWindow(Screen):
 		CVE_Solution = {}
 
 
-		with open('testCVEnums.txt') as my_file:
+		with open('CVEnumbers.txt') as my_file:
 			CVEs = my_file.readlines()
 			CVEs = [x.strip() for x in CVEs] 
 	
