@@ -34,7 +34,7 @@ def modify_rule(rule_name, state):
 def delete_rule(rule_name, ip_address):
 	""" Enable/Disable specific rule, 0 = Disable / 1 = Enable """
 	subprocess.call(
-		f"netsh advfirewall firewall add rule name={rule_name} dir=in interface=any action=allow remoteip={ip_address}", 
+		f"netsh advfirewall firewall delete rule name={rule_name} dir=in interface=any action=allow remoteip={ip_address}", 
 		shell=True, 
  		stdout=DEVNULL, 
 		stderr=DEVNULL

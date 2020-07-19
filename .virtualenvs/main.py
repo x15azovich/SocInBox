@@ -6,7 +6,9 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.core.window import Window 
-
+from kivy.graphics import Color, Rectangle
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.recycleview import RecycleView
 
@@ -45,7 +47,35 @@ class HomeWindow(Screen):
 	pass
 
 class PatchingWindow(Screen):
-	pass
+	def load_patches(self):
+		try:
+			print("I made it here")
+		except:
+			print("No Print")
+		data = {
+			'1':{0:'TESTa',1:'Sample1a',2:'Sample2a',3:'Sample3a'},
+			'2':{0:'TESTb',1:'Sample1b',2:'Sample2b',3:'Sample3b'},
+			'3':{0:'TESTc',1:'Sample1c',2:'Sample2c',3:'Sample3c'},
+		} #data store
+
+		column_titles = [x for x in data.keys()]
+		rows_length = len(data[column_titles[0]])
+		self.columns = len(column_titles)
+
+		table_data = []
+		for y in column_titles:
+			table_data.append({'text':str(y),'size_hint_y':None,'height':30,'bcolor':(.05,.30,.80,1)}) #append the data
+
+		for z in range(rows_length):
+			for y in column_titles:
+				table_data.append({'text':str(data[y][z]),'size_hint_y':None,'height':20,'bcolor':(.06,.25,.50,1)}) #append the data
+
+		self.ids.table_floor_layout.cols = self.columns #define value of cols to the value of self.columns
+		self.ids.table_floor.data = table_data #add table_data to data value
+		
+		def display_result(self):
+			pass
+
 
 class NetworkWindow(Screen):
 	def press_block(self,ip_address):
@@ -53,7 +83,7 @@ class NetworkWindow(Screen):
 			print(ip_address)
 			self.display.text = ip_address
 			# https://github.com/scipag/vulscan
-			#windows_7.add_rule("Blocked IP From Console", ip_address)
+			windows_7.add_rule("Blocked IP From Console", ip_address)
 			print(ip_address)
 		except:
 			print("YOu FAIL")
@@ -63,7 +93,7 @@ class NetworkWindow(Screen):
 			print(ip_address)
 			self.display.text = ip_address
 			# https://github.com/scipag/vulscan
-			#windows_7.delete_rule("Remove Blocked IP From Console", ip_address)
+			windows_7.delete_rule("Remove Blocked IP From Console", ip_address)
 			print(ip_address)
 		except:
 			print("YOu FAIL")
@@ -73,7 +103,7 @@ class NetworkWindow(Screen):
 			print(ip_address)
 			self.display.text = ip_address
 			# https://github.com/scipag/vulscan
-			#windows_7.modify_rule("Blocked IP From Console", ip_address)
+			windows_7.modify_rule("Blocked IP From Console", ip_address)
 			print(ip_address)
 		except:
 			print("YOu FAIL")
