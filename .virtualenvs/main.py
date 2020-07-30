@@ -20,6 +20,7 @@ import Vulscan
 import CVEnumbersExtractor
 import CVEdescriptionAndSolutionsGetter
 import windows_7
+
 '''
 RGBA = Red, Green, Blue, Opacity
 https://www.rapidtables.com/web/color/RGB_Color.html => Use this wheel to help pick colors 
