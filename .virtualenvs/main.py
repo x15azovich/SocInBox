@@ -81,7 +81,7 @@ class PatchingWindow(Screen):
 
 		table_data = []
 		for y in column_titles:
-			table_data.append({'text':str(y),'size_hint_y':None,'height':30,'bcolor':(.05,.30,.80,1)}) #append the data
+			table_data.append({'text':str(y),'size_hint_y':None,'pos_hint':{'top': 0.1},'height':30,'bcolor':(.05,.30,.80,1)}) #append the data
 
 		for z in range(rows_length):
 			for y in column_titles:
