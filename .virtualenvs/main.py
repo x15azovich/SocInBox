@@ -6,11 +6,13 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.core.window import Window 
-
+from kivy.graphics import Color, Rectangle
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.recycleview import RecycleView
 
- 
+
 import os, re
 import sys
 #sys.path.insert(1, '.virtualenvs/backend/scanning/nampVulScanner.py')
@@ -18,6 +20,7 @@ import Vulscan
 import CVEnumbersExtractor
 import CVEdescriptionAndSolutionsGetter
 import windows_7
+
 '''
 RGBA = Red, Green, Blue, Opacity
 https://www.rapidtables.com/web/color/RGB_Color.html => Use this wheel to help pick colors 
@@ -45,17 +48,60 @@ class HomeWindow(Screen):
 	pass
 
 class PatchingWindow(Screen):
-	pass
+	def load_patches(self):
+
+#THE REAL SOLUTION
+
+		results = CVEdescriptionAndSolutionsGetter.getCveDescription()
+		data = {}
+
+		CVEs = []
+		CVE_Number = {}
+		CVE_Description = {}
+		CVE_Solution = {}
+
+
+		with open('CVEnumbers.txt') as my_file:
+			CVEs = my_file.readlines()
+			CVEs = [x.strip() for x in CVEs] 
+	
+
+		for index, x in enumerate(CVEs):
+			CVE_Number[index] = x
+			CVE_Description[index] = results.get(x).get("description")
+			CVE_Solution[index] = results.get(x).get("href")
+
+		data["CVE Number"] = CVE_Number
+		data["Description"] = CVE_Description
+		data["Solution"] = CVE_Solution
+
+			
+		column_titles = [x for x in data.keys()]
+		rows_length = len(data[column_titles[0]])
+		self.columns = len(column_titles)
+
+		table_data = []
+		for y in column_titles:
+			table_data.append({'text':str(y),'size_hint_y':None,'height':30,'bcolor':(.05,.30,.80,1)}) #append the data
+
+		for z in range(rows_length):
+			for y in column_titles:
+				table_data.append({'text':str(data[y][z]),'size_hint_y':None,'height':60,'bcolor':(.06,.25,.50,1)}) #append the data
+
+		self.ids.table_floor_layout.cols = self.columns #define value of cols to the value of self.columns
+		self.ids.table_floor.data = table_data #add table_data to data value
+	
+	def display_result(self):
+		pass
+
 
 class NetworkWindow(Screen):
-	# 162.159.36.2
 	def press_block(self,ip_address):
 		try:
 			print(ip_address)
-			self.display1.text = ip_address
+			self.display.text = ip_address
 			# https://github.com/scipag/vulscan
-			windows_7.check_admin()
-			windows_7.add_rule("RULE_NAME", str(ip_address))
+			windows_7.add_rule("Blocked IP From Console", ip_address)
 			print(ip_address)
 		except:
 			print("YOu FAIL")
@@ -63,9 +109,8 @@ class NetworkWindow(Screen):
 	def press_remove(self,ip_address):
 		try:
 			print(ip_address)
-			self.display2.text = ip_address
+			self.display.text = ip_address
 			# https://github.com/scipag/vulscan
-			windows_7.check_admin()
 			windows_7.delete_rule("Remove Blocked IP From Console", ip_address)
 			print(ip_address)
 		except:
@@ -76,7 +121,7 @@ class NetworkWindow(Screen):
 			print(ip_address)
 			self.display.text = ip_address
 			# https://github.com/scipag/vulscan
-			#windows_7.modify_rule("Blocked IP From Console", ip_address)
+			windows_7.modify_rule("Blocked IP From Console", ip_address)
 			print(ip_address)
 		except:
 			print("YOu FAIL")
@@ -114,7 +159,6 @@ class ScanningWindow(Screen):
 
 	def display_result(self):
 		pass
-  
 class HostbaseWindow(Screen):
 	pass
 
