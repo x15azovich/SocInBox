@@ -5,20 +5,23 @@ def check_admin():
 	""" Force to start application with admin rights """
 	try:
 		isAdmin = ctypes.windll.shell32.IsUserAnAdmin()
+		print("is admin")
 	except AttributeError:
 		isAdmin = False
+		print("is not admin")
 	if not isAdmin:
 		ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
+		print("not admin")
 
 def add_rule(rule_name, ip_address):
 	""" Add rule to Windows Firewall """
 	print(rule_name)
 	print(ip_address)
 	subprocess.call(
-		f"netsh advfirewall firewall add rule name={rule_name} dir=in interface=any action=block remoteip={ip_address}", 
-		shell=True 
- 		# stdout=DEVNULL, 
-		# stderr=DEVNULL
+		f'netsh advfirewall firewall add rule name="{rule_name}" dir=in interface=any action=block remoteip={ip_address}', 
+		shell=True, 
+ 		stdout=DEVNULL, 
+		stderr=DEVNULL
 	)
 	print(f"Rule {rule_name} for {ip_address} added")
 
@@ -42,6 +45,7 @@ def delete_rule(rule_name, ip_address):
 		# stderr=DEVNULL
 	)
 	print(f"Rule {rule_name} for {ip_address} added")
+
 
 
 # if __name__ == '__main__':

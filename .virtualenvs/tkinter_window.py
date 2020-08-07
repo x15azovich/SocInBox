@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import *
+from tkintertable import TableCanvas, TableModel #pip install tkintertable
 
 from tkinter import ttk
 from tkinter import font as tkFont
@@ -56,27 +57,48 @@ def switch_tab(tab_name):
 
     if tab_name =="scanning":
 
-        content = tk.StringVar()
-        entry_ip = tk.Entry(frame, textvariable=content)
-        entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.08, anchor='n')
+        ip_content = tk.StringVar()
+        entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=ip_content)
+        entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
         
         scan_button = tk.Button(frame, text="Scan", bg="#1e92eb", fg='white', command= lambda:press_scan())
-        scan_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.07, anchor='n')
+        scan_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
 
         def press_scan():
-            ip_address = content.get()
-            try:
-                print(ip_address)
+            # https://github.com/dmnfarrell/tkintertable/wiki/Usage installation and readme guide for the table 
+            ip_address = ip_content.get()
+            table_frame = Frame(root)
 
+
+            table_frame.place(relx =0.50, rely=0.20, relwidth= 0.85, relheight=0.75, anchor='n')
+
+            results = CVEdescriptionAndSolutionsGetter.getCveDescription()
+
+            for i in results:
+                print(f"cve number is {i}, descripiton is {results.get(i).get('description')}, solution is {results.get(i).get('href')} \n")
+
+                data = {'rec1': {'col1': i, 'col2': results.get(i).get('description'), 'col3': results.get(i).get('href')},
+                    'rec2': {'col1': 99.88, 'col2': 108.79, 'label': 'rec2'}
+                    } 
+
+            table = TableCanvas(table_frame, data =data,
+                        cellwidth=180, cellbackgr='white',
+                        thefont=('Arial',12),rowheight=68, rowheaderwidth=0,
+                        rowselectedcolor='white', editable=False)
+            
+            table.show()
+            print(ip_address)
+            try:
+                print("running scan")
                 # https://github.com/scipag/vulscan
-                Vulscan.scan(ip_address)
+                Vulscan.scan(ip_address) # dumps results into 'portscandata.txt'
                 print("work")
 
             except:
                 print("error")
 
             try: 
-                CVEnumbersExtractor.vulnScanExtract()
+                CVEnumbersExtractor.vulnScanExtract() #opens portscandata.txt and writes into cvenumbers.txt
                 print ("VulnScanner running")
             except:
                 print("Anthony Can't Code")
@@ -139,26 +161,28 @@ def switch_tab(tab_name):
 
 
         block_ip_content = tk.StringVar()
-        block_ip = tk.Entry(frame, textvariable=block_ip_content)
-        block_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.08, anchor='n')
+        block_ip = tk.Entry(frame, font = "Calibri 15", textvariable=block_ip_content)
+        block_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
   
 
         block_button = tk.Button(frame, text="Block IP", bg="#1e92eb", fg='white', command= lambda:press_block())
-        block_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.07, anchor='n')
+        block_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
 
         unblock_ip_content = tk.StringVar()
         unblock_ip = tk.Entry(frame, textvariable=unblock_ip_content)
-        unblock_ip.place(relx=0.50, rely=0.50, relwidth=0.40, relheight=0.08, anchor='n')
+        unblock_ip.place(relx=0.50, rely=0.20, relwidth=0.40, relheight=0.065, anchor='n')
         
-        unblock_button = tk.Button(frame, text="UnBlock IP", bg="#1e92eb", fg='white', command= lambda:press_remove())
-        unblock_button.place(relx =0.85, rely=0.50, relwidth=0.10, relheight=0.07, anchor='n')
+        unblock_button = tk.Button(frame, text="Unblock IP", bg="#1e92eb", fg='white', command= lambda:press_remove())
+        unblock_button.place(relx =0.85, rely=0.2, relwidth=0.10, relheight=0.065, anchor='n')
 
         def press_block():
             ip_address = block_ip_content.get()
 
             try:
-                print(ip_address)
+                #print(ip_address)
                 # https://github.com/scipag/vulscan
+                #windows_7.check_admin("Blocked IP From Console", ip_address)
+                windows_7.check_admin()
                 windows_7.add_rule("Blocked IP From Console", ip_address)
                 print("success")
             except:
@@ -170,6 +194,7 @@ def switch_tab(tab_name):
             try:
                 print(ip_address)
                 # https://github.com/scipag/vulscan
+                windows_7.check_admin()
                 windows_7.delete_rule("Remove Blocked IP From Console", ip_address)
                 print("success")
             except:
