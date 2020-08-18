@@ -15,6 +15,7 @@ import windows_7
 
 root = tk.Tk() #creates the actual window
 
+
 frame = Frame(root, background ="#03021a") #creates frame and makes it dark blue 
 frame.pack(fill='both', expand=True)
 frame.pack()
@@ -23,16 +24,11 @@ root.title("TKINTER > KIVY")
 
 root.geometry("1200x800") #sets the size of the GUI box 
 #root.state("zoomed") #makes window full screen
-
-
-
- 
 def switch_tab(tab_name):
-
 
     for widget in frame.winfo_children(): #deletes any objects in the frame. if you were in "scanning" tab, this function will delete any objects from previous tabs
         widget.destroy()
-    
+     
 
     if tab_name =="home":
         # show home button_tab
@@ -67,7 +63,7 @@ def switch_tab(tab_name):
         def press_scan():
             # https://github.com/dmnfarrell/tkintertable/wiki/Usage installation and readme guide for the table 
             ip_address = ip_content.get()
-            table_frame = Frame(root)
+            table_frame = Frame(frame)
 
 
             table_frame.place(relx =0.50, rely=0.20, relwidth= 0.85, relheight=0.75, anchor='n')
@@ -75,39 +71,39 @@ def switch_tab(tab_name):
             results = CVEdescriptionAndSolutionsGetter.getCveDescription()
 
             for i in results:
-                print(f"cve number is {i}, descripiton is {results.get(i).get('description')}, solution is {results.get(i).get('href')} \n")
+                #print(f"cve number is {i}, descripiton is {results.get(i).get('description')}, solution is {results.get(i).get('href')} \n")
 
                 data = {'rec1': {'col1': i, 'col2': results.get(i).get('description'), 'col3': results.get(i).get('href')},
-                    'rec2': {'col1': 99.88, 'col2': 108.79, 'label': 'rec2'}
+                    'rec2': {'col1': 99.88, 'col2': 108.79}
                     } 
-
             table = TableCanvas(table_frame, data =data,
-                        cellwidth=180, cellbackgr='white',
+                        cellwidth=600, cellbackgr='white',
                         thefont=('Arial',12),rowheight=68, rowheaderwidth=0,
                         rowselectedcolor='white', editable=False)
             
             table.show()
-            print(ip_address)
-            try:
-                print("running scan")
-                # https://github.com/scipag/vulscan
-                Vulscan.scan(ip_address) # dumps results into 'portscandata.txt'
-                print("work")
 
-            except:
-                print("error")
+            # print(ip_address)
+            # try:
+            #     print("running scan")
+            #     # https://github.com/scipag/vulscan
+            #     Vulscan.scan(ip_address) # dumps results into 'portscandata.txt'
+            #     print("work")
 
-            try: 
-                CVEnumbersExtractor.vulnScanExtract() #opens portscandata.txt and writes into cvenumbers.txt
-                print ("VulnScanner running")
-            except:
-                print("Anthony Can't Code")
+            # except:
+            #     print("error")
 
-            try: 
-                CVEdescriptionAndSolutionsGetter.getCveDescription()
-                print ("CVE Descirption Works")
-            except:
-                print("Anthony Can't Code2")
+            # try: 
+            #     CVEnumbersExtractor.vulnScanExtract() #opens portscandata.txt and writes into cvenumbers.txt
+            #     print ("VulnScanner running")
+            # except:
+            #     print("Anthony Can't Code")
+
+            # try: 
+            #     CVEdescriptionAndSolutionsGetter.getCveDescription()
+            #     print ("CVE Descirption Works")
+            # except:
+            #     print("Anthony Can't Code2")
 
 
 
