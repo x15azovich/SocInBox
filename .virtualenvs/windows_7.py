@@ -25,29 +25,25 @@ def add_rule(rule_name, ip_address):
 	)
 	print(f"Rule {rule_name} for {ip_address} added")
 
-def modify_rule(rule_name, state):
+def modify_rule(rule_name, ip_address):
     #""" Enable/Disable specific rule, 0 = Disable / 1 = Enable """
 	state, message = ("yes", "Enabled") if state else ("no", "Disabled")
 	subprocess.call(
-		f"netsh advfirewall firewall set rule name={rule_name} new enable={state}", 
+		f'netsh advfirewall firewall set rule name={rule_name} new remoteip={ip_address}', 
 		shell=True, 
 		stdout=DEVNULL, 
 		stderr=DEVNULL
 	)
 	print(f"Rule {rule_name} {message}")
 
-def delete_rule(rule_name, ip_address):
+def delete_rule(rule_name:
 	""" Enable/Disable specific rule, 0 = Disable / 1 = Enable """
 	subprocess.call(
-		f"netsh advfirewall firewall add rule name={rule_name} dir=in interface=any action=allow remoteip={ip_address}", 
+		f'netsh advfirewall firewall delete rule name={rule_name}', 
 		shell=True 
  		# stdout=DEVNULL, 
 		# stderr=DEVNULL
 	)
-	print(f"Rule {rule_name} for {ip_address} added")
-
-
-
 # if __name__ == '__main__':
 # 	check_admin()
 # 	add_rule("RULE_NAME", "162.59.2.36")
