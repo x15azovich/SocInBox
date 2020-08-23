@@ -53,6 +53,8 @@ def switch_tab(tab_name):
 
     if tab_name =="scanning":
 
+        # need to create a database of all scans to pass into patching using either CSV.
+
         ip_content = tk.StringVar()
         entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=ip_content)
         entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
@@ -159,9 +161,7 @@ def switch_tab(tab_name):
 
     if tab_name =="patching":
 
-
-
-
+        # take in CSV database and post results in table format. once "patched" ip/host then remove from CSV database.
 
         # show home button_tab
         home_button_tab = tk.Button(root, text="Home", bg="#6db8f2", fg='white', command= lambda:switch_tab("home")) #when pressed (lambda), executes command. without "lambda" the command will run on launch of code regardless if it was pressed or not  
