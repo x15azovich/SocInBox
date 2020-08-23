@@ -62,6 +62,29 @@ def switch_tab(tab_name):
 
         def press_scan():
             ip_address = ip_content.get()
+            #54.209.137.253
+            
+            print(ip_address)
+            try:
+                print("running scan")
+                # https://github.com/scipag/vulscan
+                Vulscan.scan(ip_address) # dumps results into 'portscandata.txt'
+                print("work")
+
+            except:
+                print("error")
+
+            try: 
+                CVEnumbersExtractor.vulnScanExtract() #opens portscandata.txt and writes into cvenumbers.txt
+                print ("VulnScanner running")
+            except:
+                print("Anthony Can't Code")
+
+            try: 
+                CVEdescriptionAndSolutionsGetter.getCveDescription()
+                print ("CVE Descirption Works")
+            except:
+                print("Anthony Can't Code2")
 
             #creates frame 
             table_frame = Frame(frame)
@@ -95,8 +118,9 @@ def switch_tab(tab_name):
             tree.column("Description", minwidth=0, width=1000,stretch=NO)
 
             results = CVEdescriptionAndSolutionsGetter.getCveDescription()
-            print(results)
-
+            if len(results) == 0:
+                entry_ip.delete(0, tk.END)
+                entry_ip.insert(0, 'Error: No data dound for ' + ip_address + "!" )
             count = 0 
             for i in results:
                 count +=1 
@@ -107,30 +131,9 @@ def switch_tab(tab_name):
                 if len(description) >= 175:
                     description = textwrap.fill(description, 175)
 
-                tree.insert("", 'end', text ="", values =(count, i , description)) 
+                tree.insert("", 'end', text ="", values =(ip_address, i , description)) 
 
             
-            # print(ip_address)
-            # try:
-            #     print("running scan")
-            #     # https://github.com/scipag/vulscan
-            #     Vulscan.scan(ip_address) # dumps results into 'portscandata.txt'
-            #     print("work")
-
-            # except:
-            #     print("error")
-
-            # try: 
-            #     CVEnumbersExtractor.vulnScanExtract() #opens portscandata.txt and writes into cvenumbers.txt
-            #     print ("VulnScanner running")
-            # except:
-            #     print("Anthony Can't Code")
-
-            # try: 
-            #     CVEdescriptionAndSolutionsGetter.getCveDescription()
-            #     print ("CVE Descirption Works")
-            # except:
-            #     print("Anthony Can't Code2")
 
 
 
