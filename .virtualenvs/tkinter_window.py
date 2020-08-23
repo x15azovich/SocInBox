@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import *
-from tkintertable import TableCanvas, TableModel #pip install tkintertable
 
 from tkinter import ttk
 from tkinter import font as tkFont
@@ -12,6 +11,7 @@ import Vulscan
 import CVEnumbersExtractor
 import CVEdescriptionAndSolutionsGetter
 import windows_7
+import textwrap
 
 root = tk.Tk() #creates the actual window
 
@@ -22,7 +22,7 @@ frame.pack()
 
 root.title("TKINTER > KIVY")
 
-root.geometry("1200x800") #sets the size of the GUI box 
+root.geometry("1920x1080") #sets the size of the GUI box 
 #root.state("zoomed") #makes window full screen
 def switch_tab(tab_name):
 
@@ -61,49 +61,79 @@ def switch_tab(tab_name):
         scan_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
 
         def press_scan():
-            # https://github.com/dmnfarrell/tkintertable/wiki/Usage installation and readme guide for the table 
             ip_address = ip_content.get()
+            #54.209.137.253
+            
+            print(ip_address)
+            try:
+                print("running scan")
+                # https://github.com/scipag/vulscan
+                Vulscan.scan(ip_address) # dumps results into 'portscandata.txt'
+                print("work")
+
+            except:
+                print("error")
+
+            try: 
+                CVEnumbersExtractor.vulnScanExtract() #opens portscandata.txt and writes into cvenumbers.txt
+                print ("VulnScanner running")
+            except:
+                print("Anthony Can't Code")
+
+            try: 
+                CVEdescriptionAndSolutionsGetter.getCveDescription()
+                print ("CVE Descirption Works")
+            except:
+                print("Anthony Can't Code2")
+
+            #creates frame 
             table_frame = Frame(frame)
-
-
             table_frame.place(relx =0.50, rely=0.20, relwidth= 0.85, relheight=0.75, anchor='n')
 
+            #creates treeview table within the "table_frame"
+            tree = ttk.Treeview(table_frame, selectmode="extended", columns=("IP Address", "Vulnerability" ,"Description")) 
+
+            #treeview config
+            style = ttk.Style(root)
+            style.configure("Treeview", rowheight=80)
+            tree.configure(style="Treeview")
+
+            #Anchors the text to be aligned in the center 
+            tree.column("IP Address",  anchor ='c')
+            tree.column("Vulnerability",  anchor ='c') 
+            #tree.column("Description",  anchor ='c') 
+
+
+            # Defining header column
+            tree['show'] = 'headings'
+            tree.pack(expand=YES, fill=BOTH)
+
+            tree.heading("IP Address", text="IP Address")
+            tree.column("IP Address", minwidth=0, width=200,stretch=NO)
+
+            tree.heading("Vulnerability", text="Vulnerability")
+            tree.column("Vulnerability", minwidth=0, width=200,stretch=NO) 
+
+            tree.heading("Description", text="Description")
+            tree.column("Description", minwidth=0, width=1000,stretch=NO)
+
             results = CVEdescriptionAndSolutionsGetter.getCveDescription()
-
+            if len(results) == 0:
+                entry_ip.delete(0, tk.END)
+                entry_ip.insert(0, 'Error: No data dound for ' + ip_address + "!" )
+            count = 0 
             for i in results:
-                #print(f"cve number is {i}, descripiton is {results.get(i).get('description')}, solution is {results.get(i).get('href')} \n")
+                count +=1 
 
-                data = {'rec1': {'col1': i, 'col2': results.get(i).get('description'), 'col3': results.get(i).get('href')},
-                    'rec2': {'col1': 99.88, 'col2': 108.79}
-                    } 
-            table = TableCanvas(table_frame, data =data,
-                        cellwidth=600, cellbackgr='white',
-                        thefont=('Arial',12),rowheight=68, rowheaderwidth=0,
-                        rowselectedcolor='white', editable=False)
+                description = results.get(i).get('description')
+                
+                #import textwarp for support 
+                if len(description) >= 175:
+                    description = textwrap.fill(description, 175)
+
+                tree.insert("", 'end', text ="", values =(ip_address, i , description)) 
+
             
-            table.show()
-
-            # print(ip_address)
-            # try:
-            #     print("running scan")
-            #     # https://github.com/scipag/vulscan
-            #     Vulscan.scan(ip_address) # dumps results into 'portscandata.txt'
-            #     print("work")
-
-            # except:
-            #     print("error")
-
-            # try: 
-            #     CVEnumbersExtractor.vulnScanExtract() #opens portscandata.txt and writes into cvenumbers.txt
-            #     print ("VulnScanner running")
-            # except:
-            #     print("Anthony Can't Code")
-
-            # try: 
-            #     CVEdescriptionAndSolutionsGetter.getCveDescription()
-            #     print ("CVE Descirption Works")
-            # except:
-            #     print("Anthony Can't Code2")
 
 
 
