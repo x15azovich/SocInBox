@@ -53,7 +53,8 @@ def switch_tab(tab_name):
 
     if tab_name =="scanning":
 
-        # need to create a database of all scans to pass into patching using either CSV.
+        # need to create and sort database of all scans to pass into patching using either CSV.
+        # sort data by newest csv
 
         ip_content = tk.StringVar()
         entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=ip_content)
