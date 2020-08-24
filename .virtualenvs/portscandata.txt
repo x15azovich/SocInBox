@@ -1,3 +1,671 @@
-Starting Nmap 7.80 ( https://nmap.org ) at 2020-08-22 20:45 Eastern Daylight Time
-Note: Host seems down. If it is really up, but blocking our ping probes, try -Pn
-Nmap done: 1 IP address (0 hosts up) scanned in 4.86 seconds
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-08-24 00:17 Eastern Daylight Time
+Nmap scan report for hackthissite.org (137.74.187.102)
+Host is up (0.099s latency).
+Other addresses for hackthissite.org (not scanned): 137.74.187.101 137.74.187.103 137.74.187.104 137.74.187.100
+Not shown: 997 filtered ports
+PORT    STATE  SERVICE        VERSION
+22/tcp  closed ssh
+80/tcp  open   http-proxy     HAProxy http proxy 1.3.1 or later
+|_https-redirect: ERROR: Script execution failed (use -d to debug)
+| vulscan: VulDB - https://vuldb.com:
+| [149237] Waitress up to 1.3.1 HTTP Header Request HTTP Smuggling privilege escalation
+| [147577] Waitress up to 1.3.1 HTTP Header privilege escalation
+| [147576] Waitress up to 1.3.1 HTTP Message Split privilege escalation
+| [112920] Saifor CVMS HUB 1.3.1 HTTP Parameter secciones.xhtml sql injection
+| [65806] IBM Sterling Connect Enterprise Http Option up to 1.3.1 cross site scripting
+| [149471] Sylius up to 1.3.12/1.4.5/1.5.0/1.6.2 ResourceBundle HTTP Header privilege escalation
+| [124580] Telegram Desktop 1.3.16 Alpha Proxy Cleartext weak encryption
+| [82327] Cisco Unified Computing System up to 1.3(1b) HTTP Request Command privilege escalation
+| [6748] Oracle Central Designer 1.3/1.4/1.4.2 HTTP unknown vulnerability
+| [51717] Apache HTTP Server up to 1.3.3 mod_proxy ap_proxy_send_fb memory corruption
+| 
+| MITRE CVE - https://cve.mitre.org:
+| [CVE-2011-4451] ** DISPUTED ** libs/Wakka.class.php in WikkaWiki 1.3.1 and 1.3.2, when the spam_logging option is enabled, allows remote attackers to write arbitrary PHP code to the spamlog_path file via the User-Agent HTTP header in an addcomment request.  NOTE: the vendor disputes this issue because the rendering of the spamlog_path file never uses the PHP interpreter.
+| [CVE-2011-4449] actions/files/files.php in WikkaWiki 1.3.1 and 1.3.2, when INTRANET_MODE is enabled, supports file uploads for file extensions that are typically absent from an Apache HTTP Server TypesConfig file, which makes it easier for remote attackers to execute arbitrary PHP code by placing this code in a file whose name has multiple extensions, as demonstrated by a (1) .mm or (2) .vpp file.
+| [CVE-2011-4140] The CSRF protection mechanism in Django through 1.2.7 and 1.3.x through 1.3.1 does not properly handle web-server configurations supporting arbitrary HTTP Host headers, which allows remote attackers to trigger unauthenticated forged requests via vectors involving a DNS CNAME record and a web page containing JavaScript code.
+| [CVE-2011-4139] Django before 1.2.7 and 1.3.x before 1.3.1 uses a request's HTTP Host header to construct a full URL in certain circumstances, which allows remote attackers to conduct cache poisoning attacks via a crafted request.
+| [CVE-2009-4492] WEBrick 1.3.1 in Ruby 1.8.6 through patchlevel 383, 1.8.7 through patchlevel 248, 1.8.8dev, 1.9.1 through patchlevel 376, and 1.9.2dev writes data to a log file without sanitizing non-printable characters, which might allow remote attackers to modify a window's title, or possibly execute arbitrary commands or overwrite files, via an HTTP request containing an escape sequence for a terminal emulator.
+| [CVE-2008-1385] Cross-site scripting (XSS) vulnerability in the Top Referrers (aka referrer) plugin in Serendipity (S9Y) before 1.3.1 allows remote attackers to inject arbitrary web script or HTML via the Referer HTTP header.
+| [CVE-2007-5273] Sun Java Runtime Environment (JRE) in JDK and JRE 6 Update 2 and earlier, JDK and JRE 5.0 Update 12 and earlier, SDK and JRE 1.4.2_15 and earlier, and SDK and JRE 1.3.1_20 and earlier, when an HTTP proxy server is used, allows remote attackers to violate the security model for an applet's outbound connections via a multi-pin DNS rebinding attack in which the applet download relies on DNS resolution on the proxy server, but the applet's socket operations rely on DNS resolution on the local machine, a different issue than CVE-2007-5274. NOTE: this is similar to CVE-2007-5232.
+| [CVE-2007-0760] EQdkp 1.3.1 and earlier authenticates administrative requests by verifying that the HTTP Referer header specifies an admin/ URL, which allows remote attackers to read or modify account names and passwords via a spoofed Referer.
+| [CVE-2004-2124] The register_globals simulation capability in Gallery 1.3.1 through 1.4.1 allows remote attackers to modify the HTTP_POST_VARS variable and conduct a PHP remote file inclusion attack via the GALLERY_BASEDIR parameter, a different vulnerability than CVE-2002-1412.
+| [CVE-2001-0399] Caucho Resin 1.3b1 and earlier allows remote attackers to read source code for Javabean files by inserting a .jsp before the WEB-INF specifier in an HTTP request.
+| [CVE-2013-2070] http/modules/ngx_http_proxy_module.c in nginx 1.1.4 through 1.2.8 and 1.3.0 through 1.4.0, when proxy_pass is used with untrusted HTTP servers, allows remote attackers to cause a denial of service (crash) and obtain sensitive information from worker process memory via a crafted proxy response, a similar vulnerability to CVE-2013-2028.
+| [CVE-2011-4317] The mod_proxy module in the Apache HTTP Server 1.3.x through 1.3.42, 2.0.x through 2.0.64, and 2.2.x through 2.2.21, when the Revision 1179239 patch is in place, does not properly interact with use of (1) RewriteRule and (2) ProxyPassMatch pattern matches for configuration of a reverse proxy, which allows remote attackers to send requests to intranet servers via a malformed URI containing an @ (at sign) character and a : (colon) character in invalid positions.  NOTE: this vulnerability exists because of an incomplete fix for CVE-2011-3368.
+| [CVE-2011-3368] The mod_proxy module in the Apache HTTP Server 1.3.x through 1.3.42, 2.0.x through 2.0.64, and 2.2.x through 2.2.21 does not properly interact with use of (1) RewriteRule and (2) ProxyPassMatch pattern matches for configuration of a reverse proxy, which allows remote attackers to send requests to intranet servers via a malformed URI containing an initial @ (at sign) character.
+| [CVE-2010-3574] Unspecified vulnerability in the Networking component in Oracle Java SE and Java for Business 6 Update 21, 5.0 Update 25, 1.4.2_27, and 1.3.1_28 allows remote attackers to affect confidentiality, integrity, and availability via unknown vectors.  NOTE: the previous information was obtained from the October 2010 CPU.  Oracle has not commented on claims from a reliable downstream vendor that HttpURLConnection does not properly check for the allowHttpTrace permission, which allows untrusted code to perform HTTP TRACE requests.
+| [CVE-2010-3553] Unspecified vulnerability in the Swing component in Oracle Java SE and Java for Business 6 Update 21, 5.0 Update 25, 1.4.2_27, and 1.3.1_28 allows remote attackers to affect confidentiality, integrity, and availability via unknown vectors.  NOTE: the previous information was obtained from the October 2010 CPU.  Oracle has not commented on claims from a reliable downstream vendor that this is related to unsafe reflection involving the UIDefault.ProxyLazyValue class.
+| [CVE-2010-3549] Unspecified vulnerability in the Networking component in Oracle Java SE and Java for Business 6 Update 21, 5.0 Update 25, 1.4.2_27, and 1.3.1_28 allows remote attackers to affect confidentiality, integrity, and availability via unknown vectors.  NOTE: the previous information was obtained from the October 2010 CPU.  Oracle has not commented on claims from a reliable downstream vendor that this is an HTTP request splitting vulnerability involving the handling of the chunked transfer encoding method by the HttpURLConnection class.
+| [CVE-2010-3541] Unspecified vulnerability in the Networking component in Oracle Java SE and Java for Business 6 Update 21, 5.0 Update 25, 1.4.2_27, and 1.3.1_28 allows remote attackers to affect confidentiality, integrity, and availability via unknown vectors.  NOTE: the previous information was obtained from the October 2010 CPU.  Oracle has not commented on claims from a reliable downstream vendor that this is related to missing validation of request headers in the HttpURLConnection class when they are set by applets, which allows remote attackers to bypass the intended security policy.
+| [CVE-2010-1623] Memory leak in the apr_brigade_split_line function in buckets/apr_brigade.c in the Apache Portable Runtime Utility library (aka APR-util) before 1.3.10, as used in the mod_reqtimeout module in the Apache HTTP Server and other software, allows remote attackers to cause a denial of service (memory consumption) via unspecified vectors related to the destruction of an APR bucket.
+| [CVE-2010-0010] Integer overflow in the ap_proxy_send_fb function in proxy/proxy_util.c in mod_proxy in the Apache HTTP Server before 1.3.42 on 64-bit platforms allows remote origin servers to cause a denial of service (daemon crash) or possibly execute arbitrary code via a large chunk size that triggers a heap-based buffer overflow.
+| [CVE-2009-3877] Unspecified vulnerability in Sun Java SE in JDK and JRE 5.0 before Update 22, JDK and JRE 6 before Update 17, SDK and JRE 1.3.x before 1.3.1_27, and SDK and JRE 1.4.x before 1.4.2_24 allows remote attackers to cause a denial of service (memory consumption) via crafted HTTP headers, which are not properly parsed by the ASN.1 DER input stream parser, aka Bug Id 6864911.
+| [CVE-2009-0164] The web interface for CUPS before 1.3.10 does not validate the HTTP Host header in a client request, which makes it easier for remote attackers to conduct DNS rebinding attacks.
+| [CVE-2005-2088] The Apache HTTP server before 1.3.34, and 2.0.x before 2.0.55, when acting as an HTTP proxy, allows remote attackers to poison the web cache, bypass web application firewall protection, and conduct XSS attacks via an HTTP request with both a "Transfer-Encoding: chunked" header and a Content-Length header, which causes Apache to incorrectly handle and forward the body of the request in a way that causes the receiving server to process it as a separate HTTP request, aka "HTTP Request Smuggling."
+| [CVE-2005-1760] sysreport 1.3.15 and earlier includes contents of the up2date file in a report, which leaks the password for a proxy server in plaintext and allows local users to gain privileges.
+| [CVE-2004-2762] The server in IBM Tivoli Storage Manager (TSM) 4.2.x on MVS, 5.1.9.x before 5.1.9.1, 5.1.x before 5.1.10, 5.2.2.x before 5.2.2.3, 5.2.x before 5.2.3, 5.3.x before 5.3.0, and 6.x before 6.1, when the HTTP communication method is enabled, allows remote attackers to cause a denial of service (daemon crash or hang) via unspecified HTTP traffic, as demonstrated by the IBM port scanner 1.3.1.
+| [CVE-2004-0700] Format string vulnerability in the mod_proxy hook functions function in ssl_engine_log.c in mod_ssl before 2.8.19 for Apache before 1.3.31 may allow remote attackers to execute arbitrary messages via format string specifiers in certain log messages for HTTPS that are handled by the ssl_log function.
+| [CVE-2004-0492] Heap-based buffer overflow in proxy_util.c for mod_proxy in Apache 1.3.25 to 1.3.31 allows remote attackers to cause a denial of service (process crash) and possibly execute arbitrary code via a negative Content-Length HTTP header field, which causes a large amount of data to be copied.
+| [CVE-2003-1580] The Apache HTTP Server 2.0.44, when DNS resolution is enabled for client IP addresses, uses a logging format that does not identify whether a dotted quad represents an unresolved IP address, which allows remote attackers to spoof IP addresses via crafted DNS responses containing numerical top-level domains, as demonstrated by a forged 123.123.123.123 domain name, related to an "Inverse Lookup Log Corruption (ILLC)" issue.
+| [CVE-2002-2012] Unknown vulnerability in Apache 1.3.19 running on HP Secure OS for Linux 1.0 allows remote attackers to cause "unexpected results" via an HTTP request.
+| [CVE-2002-0177] Buffer overflows in icecast 1.3.11 and earlier allows remote attackers to execute arbitrary code via a long HTTP GET request from an MP3 client.
+| [CVE-2001-1083] Icecast 1.3.7, and other versions before 1.3.11 with HTTP server file streaming support enabled allows remote attackers to cause a denial of service (crash) via a URL that ends in . (dot), / (forward slash), or \ (backward slash).
+| [CVE-2001-0925] The default installation of Apache before 1.3.19 allows remote attackers to list directories instead of the multiview index.html file via an HTTP request for a path that contains many / (slash) characters, which causes the path to be mishandled by (1) mod_negotiation, (2) mod_dir, or (3) mod_autoindex.
+| [CVE-2001-0129] Buffer overflow in Tinyproxy HTTP proxy 1.3.3 and earlier allows remote attackers to cause a denial of service and possibly execute arbitrary commands via a long connect request.
+| [CVE-2000-1206] Vulnerability in Apache httpd before 1.3.11, when configured for mass virtual hosting using mod_rewrite, or mod_vhost_alias in Apache 1.3.9, allows remote attackers to retrieve arbitrary files.
+| [CVE-2000-0869] The default configuration of Apache 1.3.12 in SuSE Linux 6.4 enables WebDAV, which allows remote attackers to list arbitrary diretories via the PROPFIND HTTP request method.
+| 
+| SecurityFocus - https://www.securityfocus.com/bid/:
+| [37966] Apache 1.3 mod_proxy HTTP Chunked Encoding Integer Overflow Vulnerability
+| [27237] Apache HTTP Server 2.2.6, 2.0.61 and 1.3.39 'mod_status' Cross-Site Scripting Vulnerability
+| 
+| IBM X-Force - https://exchange.xforce.ibmcloud.com:
+| [28893] Microsoft Internet Explorer HTTP 1.1 compression long URL buffer overflow variant
+| [28522] Microsoft Internet Explorer HTTP 1.1 compression long URL buffer overflow
+| [10107] Trend Micro InterScan VirusWall HTTP 1.0 gzip content encoding protection bypass
+| [10106] Trend Micro InterScan VirusWall HTTP 1.1 chunked transfer encoding protection bypass
+| [85605] Stage File Proxy module for Drupal repeated HTTP request denial of service
+| [85020] HAProxy denial of service
+| [83211] HAProxy tcp-request content denial of service
+| [77913] Apache HTTP Server mod_proxy_ajp information disclosure
+| [76095] SEIL routers HTTP-Proxy/Gateway security bypass
+| [75777] HAProxy trash buffer overflow
+| [71617] Apache HTTP Server mod_proxy module information disclosure
+| [71445] Apache HTTP Server mod_proxy security bypass
+| [70336] Apache HTTP Server mod_proxy information disclosure
+| [69804] Apache HTTP Server mod_proxy_ajp denial of service
+| [66665] HAProxy manage_server_side_cookies() denial of service
+| [66640] Apache HttpComponents HttpClient Proxy-Authorization information disclosure
+| [63651] Google Chrome HTTP proxy authentication denial of service
+| [60883] Apache mod_proxy_http information disclosure
+| [59413] Apache mod_proxy_http timeout information disclosure
+| [56623] Apache HTTP Server mod_proxy_ajp denial of service
+| [53453] Cisco IOS Authentication Proxy for HTTP security bypass
+| [53124] mod_proxy_ftp module for Apache HTTP header security bypass
+| [52604] HTTP request forwarding (Web Proxy) detected
+| [51532] mod_proxy module for the Apache HTTP Server stream_reqbody_cl denial of service
+| [47305] Live Chat component for Joomla! xmlhttp.php open proxy
+| [44467] HTTP Anti Virus Proxy (HAVP) sockethandler.cpp denial of service
+| [44223] Apache HTTP Server mod_proxy_ftp cross-site scripting
+| [42987] Apache HTTP Server mod_proxy module denial of service
+| [40694] BEA WebLogic Server and WebLogic Express HttpClusterServlet and HttpProxyServlet privilege escalation
+| [39615] Apache HTTP Server mod_proxy_ftp.c UTF-7 cross-site scripting
+| [39612] Apache HTTP Server mod_proxy_balancer buffer overflow
+| [39474] Apache HTTP Server mod_proxy_balancer cross-site scripting
+| [37405] DeleGate HTTP cache proxy denial of service
+| [36354] Apache HTTP Server mod_proxy module denial of service
+| [36352] Apache HTTP Server ap_proxy_date_canon() denial of service
+| [34884] Astaro Secure Gateway HTTP proxy denial of service
+| [34282] BEA WebLogic Server and WebLogic Express HttpProxyServlet and HttpClusterServlet unauthorized access
+| [26970] WinGate HTTP proxy buffer overflow
+| [26370] Symantec Enterprise Firewall HTTP proxy internal IP disclosure
+| [23997] Blue Coat WinProxy SecureSuite HTTP request denial of service
+| [23451] Microsoft Internet Explorer HTTPS proxy authentication information disclosure
+| [22016] Simpleproxy HTTP Proxy reply format string
+| [20391] Apple Mac OS X HTTP proxy service security bypass
+| [20339] Squid Web Proxy Cache HTTP header cache poisoning
+| [20334] Squid Web Proxy Cache httpProcessReplyHeader security bypass
+| [19868] HTTP Anti Virus Proxy cab and zip files bypass filtering
+| [19060] Squid Web Proxy Cache HTTP header cache poisoning
+| [18308] Jana Server http-server and pna-proxy denial of service
+| [16751] AnomicHTTPProxy &quot
+| [16750] AnomicHTTPProxy allows elevated privileges
+| [16749] AnomicHTTPProxy administration interface denial of service
+| [16387] Apache HTTP Server mod_proxy Content-Length buffer overflow
+| [15952] proxy server using the HTTP CONNECT directive has been detected
+| [15277] Proxy-Pro GateKeeper Pro long HTTP GET buffer overflow
+| [15275] PSOProxy long HTTP GET request buffer overflow
+| [14955] ProxyNow! HTTP GET stack based buffer overflow or heap-based buffer overflow
+| [14947] Gaim HTTP proxy buffer overflow
+| [12681] Apache HTTP Server mod_proxy could allow mail relaying
+| [12552] Apache HTTP Server FTP proxy server denial of service
+| [11143] Astaro Security Linux HTTP Proxy can be used to make unauthorized TCP connections
+| [10139] Check Point FireWall-1 HTTP proxy could allow HTTPS and FTP traffic to bypass the firewall
+| [9914] Jigsaw HTTP Proxy server cross-site scripting
+| [9834] CERN HTTPD proxy server cross-site scripting
+| [9683] Jana Server HTTP GET proxy buffer overflow
+| [9579] Symantec Norton Personal Firewall and Norton Internet Security HTTP proxy buffer overflow
+| [9455] AnalogX Proxy malformed HTTP request buffer overflow
+| [8425] Trend Micro InterScan VirusWall could allow virus infected Web pages to bypass the HTTP proxy filtering
+| [7964] BlackJumboDog HTTP proxy buffer overflow
+| [7916] Avirt SOHO, Gateway, and Gateway Suite HTTP proxy buffer overflow
+| [4460] CProxy proxy server HTTP port denial of service
+| [153] HTTP proxy penetrated
+| [60] HTTP proxy detected
+| 
+| Exploit-DB - https://www.exploit-db.com:
+| [21978] Linksys WAP11 1.3/1.4,D-Link DI-804 4.68/Dl-704 2.56 b5 Embedded HTTP Server DoS Vulnerability
+| [20595] NCSA 1.3/1.4.x/1.5,Apache httpd 0.8.11/0.8.14 ScriptAlias Source Retrieval Vulnerability
+| [5215] Ruby 1.8.6 (Webrick Httpd 1.3.1) Directory Traversal Vulnerability
+| [30229] SHTTPD 1.38 Filename Parse Error Information Disclosure Vulnerability
+| [26156] CPaint 1.3 xmlhttp Request Input Validation Vulnerability
+| [25775] Nginx HTTP Server 1.3.9-1.4.0 Chuncked Encoding Stack Buffer Overflow
+| [24402] Axis Network Camera 2.x And Video Server 1-3 HTTP Authentication Bypass
+| [23676] MaxWebPortal 1.3x down.asp HTTP_REFERER XSS
+| [21955] AN HTTPD 1.38/1.39/1.40/1.41 Malformed SOCKS4 Request Buffer Overflow Vulnerability
+| [21145] IBM HTTP Server 1.3.x Source Code Disclosure Vulnerability
+| [20559] tinyproxy tinyproxy 1.3.2/1.3.3 Heap Overflow Vulnerability
+| [20531] IBM HTTP Server 1.3 AfpaCache/WebSphereNet.Data DoS Vulnerability
+| [16759] SHTTPD <= 1.34 URI-Encoded POST Request Overflow (win32)
+| [16199] Icy Phoenix 1.3.0.53a HTTP Referer stored XSS
+| [4700] simple httpd <= 1.38 Multiple Vulnerabilities
+| [2482] SHTTPD 1.34 (POST) Remote Buffer Overflow Exploit
+| [1174] ZipTorrent <= 1.3.7.3 - Local Proxy Password Disclosure Exploit
+| 
+| OpenVAS (Nessus) - http://www.openvas.org:
+| [66806] Debian Security Advisory DSA 1987-1 (lighttpd)
+| [66557] Fedora Core 12 FEDORA-2009-12606 (httpd)
+| [66498] Fedora Core 10 FEDORA-2009-12604 (httpd)
+| [64741] Fedora Core 11 FEDORA-2009-8812 (httpd)
+| [61364] Debian Security Advisory DSA 1540-3 (lighttpd)
+| [61357] Debian Security Advisory DSA 1609-1 (lighttpd)
+| [60793] Debian Security Advisory DSA 1540-2 (lighttpd)
+| [60786] Debian Security Advisory DSA 1540-1 (lighttpd)
+| [60573] Debian Security Advisory DSA 1521-1 (lighttpd)
+| [60499] Debian Security Advisory DSA 1513-1 (lighttpd)
+| [58644] Debian Security Advisory DSA 1362-2 (lighttpd)
+| [58581] Debian Security Advisory DSA 1362-1 (lighttpd)
+| [57684] Debian Security Advisory DSA 1205-2 (thttpd)
+| [53726] Debian Security Advisory DSA 145-1 (tinyproxy)
+| [11129] HTTP 1.1 header overflow
+| [11127] HTTP 1.0 header overflow
+| [902825] at32 Reverse Proxy Multiple HTTP Header Fields Denial Of Service Vulnerability
+| [900325] Qbik WinGate HTTP Proxy Server Access Controls Bypass Vulnerability
+| [900222] IBM HTTP Server mod_proxy Interim Responses DoS Vulnerability
+| [864812] Fedora Update for haproxy FEDORA-2012-16033
+| [864801] Fedora Update for haproxy FEDORA-2012-16056
+| [800827] Apache 'mod_proxy_http.c' Denial Of Service Vulnerability
+| [103293] Apache HTTP Server 'mod_proxy' Reverse Proxy Information Disclosure Vulnerability
+| [100858] Apache 'mod_proxy_http' 2.2.9 for Unix Timeout Handling Information Disclosure Vulnerability
+| [100083] HTTP Proxy Server Detection
+| [71366] FreeBSD Ports: haproxy
+| [11715] Header overflow against HTTP proxy
+| 
+| SecurityTracker - https://www.securitytracker.com:
+| [1016731] Microsoft Internet Explorer URL Buffer Overflow in Processing HTTP 1.1 Protocol with Compression Lets Remote Users Execute Arbitrary Code
+| [1015870] Cisco 11500 Content Services Switch HTTP Compression Bug Lets Remote Users Deny Service
+| [1028638] RSA Authentication Manager Writes Operating System, SNMP, and HTTP Plug-in Proxy Passwords in Clear Text to Log Files
+| [1027165] Squid XMLHttpRequest Allows Remote Users to Obtain the Target User's Proxy Username and Password
+| [1026054] Apache mod_proxy_ajp HTTP Processing Error Lets Remote Users Deny Service
+| [1024096] Apache mod_proxy_http May Return Results for a Different Request
+| [1020900] HTTP Anti Virus Proxy Bug in 'sockethandler.cpp' Lets Remote Users Deny Service
+| [1017586] Blue Coat WinProxy Heap Overflow in Processing HTTP CONNECT Requests May Let Remote Users Execute Arbitrary Code
+| [1017324] Sun Java System Web Proxy Server Lets Remote Users Conduct HTTP Request Smuggling Attacks
+| [1016239] WinGate Buffer Overflow in HTTP Proxy Lets Remote Users Execute Arbitrary Code
+| [1016058] Symantec Gateway Security HTTP Proxy May Disclose Internal NAT Addresses
+| [1016057] Symantec Enterprise Firewall HTTP Proxy May Disclose Internal NAT Addresses
+| [1014359] DeleGate Proxy Lets Remote Users Conduct HTTP Request Smuggling Attacks
+| [1014358] Sun Java System Web Proxy Server Lets Remote Users Conduct HTTP Request Smuggling Attacks
+| [1013370] HTTP Anti Virus Proxy May Not Detect Viruses in Certain Archives
+| [1012365] JanaServer 2 http-server and pna-proxy Flaws Let Remote Users Deny Service
+| [1007712] Nokia Electronic Documentation Default Configuration Permits Remote HTTP Proxy Services
+| [1007146] Apache HTTP Server FTP Proxy Bug May Cause Denial of Service Conditions
+| [1006833] EServ Can Be Used as HTTP and FTP Proxy Even When Not Configured as a Proxy
+| [1005253] Check Point FireWall-1 HTTP Proxy Default Configuration May Allow HTTPS and FTP Traffic to Pass Through the Proxy
+| [1005026] CERN HTTP Proxy Server Input Validation Hole Lets Remote Users Conduct Cross-site Scripting Attacks
+| [1004780] Norton Personal Firewall Buffer Overflow in HTTP Proxy May Allow Remote Users to Execute Arbitrary Code on the System
+| [1004779] Norton Internet Security Buffer Overflow in HTTP Proxy May Allow Remote Users to Execute Arbitrary Code on the System
+| [1003875] HP Webproxy for HP-UX VVOS Operating System May Forward Certain HTTP Requests to the Internal Network Without Fully Processing the Packet Against the Rule Set
+| [1003600] Check Point FireWall-1 HTTP Proxy Bug Lets Remote Users Bypass Some Access Controls and Connect to Arbitrary Ports on Internal/Protected Hosts
+| 
+| OSVDB - http://www.osvdb.org:
+| [91975] HAProxy HTTP Content Inspection Mechanism HTTP Request Handling Remote Overflow DoS
+| [84399] Huawei AR 18 / 29 Routers HTTP Server Pre-auth Multiple URL Handling Remote Overflow
+| [82774] HAProxy http_auth_group() Function User Parsing Weakness
+| [82768] HAProxy Secure / HttpOnly Flag Cookie Weakness
+| [79018] Links HTTP 100 Response Handling DoS
+| [74826] Pidgin libpurple MSN Protocol Plugin httpconn.c msn_httpconn_parse_data Function HTTP 100 Response Remote DoS
+| [74346] HAProxy src/proto_http.c manage_server_side_cookies() Function HTTP Set-Cookie Header Remote DoS
+| [64275] NIBE RCU 11 Heat Pump HTTP Request Arbitrary Administrative Account Creation
+| [28132] Microsoft IE HTTP 1.1 URL Parsing Overflow
+| [24433] Cisco 11500 Content Services Switch HTTP Compression DoS
+| [8854] Cisco CSS 11000 Web Interface HTTPS POST DoS
+| [94328] HAProxy Header Field Handling Remote DoS
+| [93048] IBM Sterling Secure Proxy HTTP Header Web Server Version Disclosure
+| [91613] Zend Framework Multiple Class HTTP Header Proxy Information Handling Spoofing Weakness
+| [90557] Apache HTTP Server mod_proxy_balancer balancer-manager Interface Multiple Parameter XSS
+| [90422] Mozilla Multiple Product Proxy 407 Response HTTPS Address Spoofing
+| [89275] Apache HTTP Server mod_proxy_ajp Module Expensive Request Parsing Remote DoS
+| [88581] Squid Web Proxy HTTP Accelerator Mode Proxied Port Scan Weakness
+| [88287] Squid Crafted XMLHttpRequest Remote Proxy-Authorization Cleartext Credential Disclosure
+| [88016] BlackJumboDog HTTP Proxy Multiple String Parsing Remote Overflow
+| [87958] IBM WebSphere Message Broker ProxyServlet / MQ HTTP Connection Cleartext Credential Disclosure
+| [87457] Tor Directory Connection HttpProxyAuthenticator Remote Fingerprinting Weakness
+| [85838] 602Pro LAN SUITE HTTP Proxy-Authorization Header Handling Remote Overflow DoS
+| [85090] Apache HTTP Server mod_proxy_ajp.c mod_proxy_ajp Module Proxy Functionality Cross-client Information Disclosure
+| [85089] Apache HTTP Server mod_proxy_http.c mod_proxy_http Module Cross-client Information Disclosure
+| [82773] HAProxy buffer_ignore Function Unspecified Issue
+| [82772] HAProxy Crafted Response Cookie Handling Remote DoS
+| [82771] HAProxy Invalid Response Handling Remote DoS
+| [82770] HAProxy appsession Cookie Matching Weakness
+| [82769] HAProxy Session Freeing Unspecified DoS
+| [82767] HAProxy poll/epoll Unspecified Memory Corruption DoS
+| [82766] HAProxy send_syslog() Function Overflow Local DoS
+| [82651] SEIL Routers HTTP-Proxy/Gateway HTTP Request Parsing URL Filter Bypass
+| [82092] HAProxy Boundary Error Trash Buffer Data Copying Remote Overflow
+| [81164] Squid Proxy HTTP Header Host Field Parsing URL Filter Bypass
+| [78987] CVS src/client.c proxy_connect() Function HTTP Version Response Parsing Remote Overflow
+| [78774] Mozilla Multiple Products IPv6 Proxy Generated XMLHttpRequest Object Handling Remote Information Disclosure
+| [78667] Oracle Java SE / Java for Business java:classes_net HttpsUrlConnection Authenticated Proxy Tunnel Handling Overflow
+| [77444] Apache HTTP Server mod_proxy Mdule Web Request HTTP/0.9 Protocol URL Parsing Proxy Remote Security Bypass
+| [77310] Apache HTTP Server mod_proxy Reverse Proxy Mode Security Bypass Weakness (2011-4317)
+| [76079] Apache HTTP Server mod_proxy Mdule Web Request URL Parsing Proxy Remote Security Bypass (2011-3368)
+| [75647] Apache HTTP Server mod_proxy_ajp Module mod_proxy_balancer HTTP Request Remote DoS
+| [73624] PHP Streams Component HTTP Proxy FTP Wrapper ftp:// URL DoS
+| [73354] IBM WebSphere Application Server (WAS) HTTP Transport SIP Proxy UDP Message Saturation Remote DoS
+| [71647] Apache HttpComponents HttpClient Proxy-Authorization Credentials Remote Disclosure
+| [69667] Google Chrome HTTP Proxy Authentication Required Response Handling DoS
+| [68162] OmniVista 4760 HTTP Proxy Crafted HTTP Request Remote Overflow
+| [67270] Blue Coat ProxySG HTTPS Privilege Enforcement Bypass
+| [65654] Apache HTTP Server mod_proxy_http mod_proxy_http.c Timeout Detection Weakness HTTP Request Response Disclosure
+| [62676] Apache HTTP Server mod_proxy_ajp Module Crafted Request Remote DoS
+| [62009] Apache HTTP Server src/modules/proxy/proxy_util.c mod_proxy ap_proxy_send_fb() Function Overflow
+| [60010] HP Praesidium Webproxy Crafted HTTP Request Forwarding Weakness
+| [59022] Apache Shindig ConcatProxyServlet HTTP Header Response Splitting
+| [57882] Apache HTTP Server mod_proxy_ftp Authorization HTTP Header Arbitrary FTP Command Injection
+| [57851] Apache HTTP Server mod_proxy_ftp EPSV Command NULL Dereference Remote DoS
+| [56712] Live Chat Component for Joomla! xmlhttp.php Open HTTP Proxy
+| [56489] Microsoft IE Proxy Server CONNECT Response Cached Certificate Use MiTM HTTPS Site Spoofing
+| [56488] Google Chrome Proxy Server CONNECT Response Cached Certificate Use MiTM HTTPS Site Spoofing
+| [56487] Opera Proxy Server CONNECT Response Cached Certificate Use MiTM HTTPS Site Spoofing
+| [55553] Apache HTTP Server mod_proxy Module mod_proxy_http.c stream_reqbody_cl Function CPU Consumption DoS
+| [55133] Mozilla Firefox HTTP Host Header Proxy Server CONNECT Response Document Context SSL Tampering Weakness
+| [55132] Google Chrome src/net/http/http_transaction_winhttp.cc HTTP Host Header Proxy Server CONNECT Response Document Context SSL Tampering Weakness
+| [55129] Microsoft IE HTTP Host Header Proxy Server CONNECT Response Document Context SSL Tampering Weakness
+| [53921] Apache HTTP Server mod_proxy_ajp Cross Thread/Session Information Disclosure
+| [52413] Blue Coat ProxySG Transparent Interception Mode HTTP Host Header Dependancy Media Access Control Bypass
+| [52412] Ziproxy Transparent Interception Mode HTTP Host Header Dependancy Media Access Control Bypass
+| [48528] CCProxy HTTP Proxy CONNECT Request Handling Remote Overflow
+| [47512] HTTP Anti Virus Proxy (HAVP) Infinite Loop Connection Saturation DoS
+| [47474] Apache HTTP Server mod_proxy_ftp Directory Component Wildcard Character XSS
+| [46085] Apache HTTP Server mod_proxy ap_proxy_http_process_response() Function Interim Response Forwarding Remote DoS
+| [44135] Nortel VPN Gateway Malformed HTTP Request SSL Proxy Remote DoS
+| [44132] Nortel iSD-SSL Malformed HTTP Request SSL Proxy Remote DoS
+| [43259] Apache HTTP Server on Windows mod_proxy_balancer URL Handling Remote Memory Corruption
+| [42937] Apache HTTP Server mod_proxy_balancer balancer-manager Unspecified CSRF
+| [42214] Apache HTTP Server mod_proxy_ftp UTF-7 Encoded XSS
+| [42122] Kerio WinRoute Firewall Proxy Server Unspecified HTTP Fallback
+| [41862] DeleGate HTTP Cache Proxy Unspecified DoS
+| [40264] Apache HTTP Server mod_proxy_balancer balancer_handler Function bb Variable Remote DoS
+| [40263] Apache HTTP Server mod_proxy_balancer balancer-manager Multiple Parameter XSS
+| [39291] ELinks https Proxy CONNECT Request Cleartext Information Disclosure
+| [37345] Astaro Security Gateway (ASG) HTTP Proxy Unspecified DoS
+| [37051] Apache HTTP Server mod_proxy modules/proxy/proxy_util.c Crafted Header Remote DoS
+| [36980] 3Proxy HTTP Redirection Unspecified DoS
+| [36074] BEA WebLogic HttpClusterServlet / HttpProxyServlet SecureProxy Admin Functionality Access
+| [35237] 3Proxy HTTP Proxy Crafted Transparent Request Remote Overflow
+| [33097] Blue Coat WinProxy HTTP CONNECT Request Overflow
+| [26300] Mozilla Multiple Products via Proxy Server HTTP Response Smuggling
+| [26008] PHPGallue Proxy Cache HTTP Header Information Disclosure
+| [25565] phpBB usercp_avatar.php Arbitrary HTTP Proxy
+| [22876] HTTP Anti Virus Proxy Multiple AV Scanner Failure
+| [22853] Blue Coat ProxySG SGOS HTTP Proxy Arbitrary Port Connection
+| [22237] Blue Coat WinProxy HTTP Request Overflow DoS
+| [21762] Microsoft IE HTTPS Proxy Basic Authentication URL Cleartext Transmission
+| [19008] Simpleproxy HTTP Proxy Reply Remote Format String
+| [18284] Netquery HTTP GET Request Panel Unauthorized Proxy
+| [16388] Mozilla with Proxy HTTP Header Arbitrary Cookie Disclosure
+| [16082] Apple Mac OS X Server HTTP Proxy Unrestricted Access
+| [16014] IBM Web Traffic Express Caching Proxy Server HTTP GET Request XSS
+| [14573] HTTP Anti Virus Proxy Archive Scanning Failure
+| [14270] Sun Java JRE HTTP Proxy Java Applet Session Hijack
+| [14155] BitlBee HTTP Proxy Support Unspecified Security Issue
+| [12558] Apache HTTP Server IPv6 FTP Proxy Socket Failure DoS
+| [11593] CCProxy Logging Component HTTP GET Request Remote Overflow
+| [9742] Apache HTTP Server mod_ssl char_buffer_read Function Reverse Proxy DoS
+| [9688] Apache HTTP Server mod_proxy Malformed FTP Command DoS
+| [7929] Apache HTTP Server mod_ssl ssl_engine_log.c mod_proxy Hook Function Remote Format String
+| [7714] AnomicHTTPProxy Invalid HTTP Command Proxy Localhost Block
+| [7713] AnomicHTTPProxy Administration Password Dementia
+| [7709] AnomicHTTPProxy Double Dot Arbitrary File Access
+| [6839] Apache HTTP Server mod_proxy Content-Length Overflow
+| [6804] Avirt Gateway/Gateway Suite/SOHO HTTP Proxy Overflow
+| [6187] Trend Micro InterScan VirusWall HTTP CONNECT Proxying
+| [6162] Trend Micro InterScan VirusWall HTTP Proxy Content Scanning Circumvention
+| [4433] Check Point FireWall-1 HTTP Proxy Traffic Bypass
+| [4366] Symantec Personal Firewalls HTTP Proxy Remote Overflow
+| [4028] PSOProxy Long HTTP Request Overflow
+| [4015] Jigsaw HTTP Proxy Error Page XSS
+| [3732] Gaim HTTP Proxy Connect Overflow
+| [3723] ProxyNow! HTTP Request Overflow
+| [3718] Finjan SurfinGate Proxy FHTTP Command Admin Functions Authentication Bypass
+| [2764] Plug and Play Web Server Proxy Service HTTP Request Handling DoS
+| [1789] Microsoft ISA Server Web Proxy Malformed HTTP Request Parsing Remote DoS
+| [1429] SapporoWorks WinProxy Malformed HTTP GET Request DoS
+| [1336] CProxy SP2 Long HTTP Request DoS
+| [787] Compaq Web-enabled Management Software HTTP Server Arbitrary Traffic Proxy
+|_
+443/tcp open   ssl/http-proxy HAProxy http proxy 1.3.1 or later
+|_http-server-header: HackThisSite
+| vulscan: VulDB - https://vuldb.com:
+| [149237] Waitress up to 1.3.1 HTTP Header Request HTTP Smuggling privilege escalation
+| [147577] Waitress up to 1.3.1 HTTP Header privilege escalation
+| [147576] Waitress up to 1.3.1 HTTP Message Split privilege escalation
+| [112920] Saifor CVMS HUB 1.3.1 HTTP Parameter secciones.xhtml sql injection
+| [65806] IBM Sterling Connect Enterprise Http Option up to 1.3.1 cross site scripting
+| [149471] Sylius up to 1.3.12/1.4.5/1.5.0/1.6.2 ResourceBundle HTTP Header privilege escalation
+| [124580] Telegram Desktop 1.3.16 Alpha Proxy Cleartext weak encryption
+| [82327] Cisco Unified Computing System up to 1.3(1b) HTTP Request Command privilege escalation
+| [6748] Oracle Central Designer 1.3/1.4/1.4.2 HTTP unknown vulnerability
+| [51717] Apache HTTP Server up to 1.3.3 mod_proxy ap_proxy_send_fb memory corruption
+| 
+| MITRE CVE - https://cve.mitre.org:
+| [CVE-2011-4451] ** DISPUTED ** libs/Wakka.class.php in WikkaWiki 1.3.1 and 1.3.2, when the spam_logging option is enabled, allows remote attackers to write arbitrary PHP code to the spamlog_path file via the User-Agent HTTP header in an addcomment request.  NOTE: the vendor disputes this issue because the rendering of the spamlog_path file never uses the PHP interpreter.
+| [CVE-2011-4449] actions/files/files.php in WikkaWiki 1.3.1 and 1.3.2, when INTRANET_MODE is enabled, supports file uploads for file extensions that are typically absent from an Apache HTTP Server TypesConfig file, which makes it easier for remote attackers to execute arbitrary PHP code by placing this code in a file whose name has multiple extensions, as demonstrated by a (1) .mm or (2) .vpp file.
+| [CVE-2011-4140] The CSRF protection mechanism in Django through 1.2.7 and 1.3.x through 1.3.1 does not properly handle web-server configurations supporting arbitrary HTTP Host headers, which allows remote attackers to trigger unauthenticated forged requests via vectors involving a DNS CNAME record and a web page containing JavaScript code.
+| [CVE-2011-4139] Django before 1.2.7 and 1.3.x before 1.3.1 uses a request's HTTP Host header to construct a full URL in certain circumstances, which allows remote attackers to conduct cache poisoning attacks via a crafted request.
+| [CVE-2009-4492] WEBrick 1.3.1 in Ruby 1.8.6 through patchlevel 383, 1.8.7 through patchlevel 248, 1.8.8dev, 1.9.1 through patchlevel 376, and 1.9.2dev writes data to a log file without sanitizing non-printable characters, which might allow remote attackers to modify a window's title, or possibly execute arbitrary commands or overwrite files, via an HTTP request containing an escape sequence for a terminal emulator.
+| [CVE-2008-1385] Cross-site scripting (XSS) vulnerability in the Top Referrers (aka referrer) plugin in Serendipity (S9Y) before 1.3.1 allows remote attackers to inject arbitrary web script or HTML via the Referer HTTP header.
+| [CVE-2007-5273] Sun Java Runtime Environment (JRE) in JDK and JRE 6 Update 2 and earlier, JDK and JRE 5.0 Update 12 and earlier, SDK and JRE 1.4.2_15 and earlier, and SDK and JRE 1.3.1_20 and earlier, when an HTTP proxy server is used, allows remote attackers to violate the security model for an applet's outbound connections via a multi-pin DNS rebinding attack in which the applet download relies on DNS resolution on the proxy server, but the applet's socket operations rely on DNS resolution on the local machine, a different issue than CVE-2007-5274. NOTE: this is similar to CVE-2007-5232.
+| [CVE-2007-0760] EQdkp 1.3.1 and earlier authenticates administrative requests by verifying that the HTTP Referer header specifies an admin/ URL, which allows remote attackers to read or modify account names and passwords via a spoofed Referer.
+| [CVE-2004-2124] The register_globals simulation capability in Gallery 1.3.1 through 1.4.1 allows remote attackers to modify the HTTP_POST_VARS variable and conduct a PHP remote file inclusion attack via the GALLERY_BASEDIR parameter, a different vulnerability than CVE-2002-1412.
+| [CVE-2001-0399] Caucho Resin 1.3b1 and earlier allows remote attackers to read source code for Javabean files by inserting a .jsp before the WEB-INF specifier in an HTTP request.
+| [CVE-2013-2070] http/modules/ngx_http_proxy_module.c in nginx 1.1.4 through 1.2.8 and 1.3.0 through 1.4.0, when proxy_pass is used with untrusted HTTP servers, allows remote attackers to cause a denial of service (crash) and obtain sensitive information from worker process memory via a crafted proxy response, a similar vulnerability to CVE-2013-2028.
+| [CVE-2011-4317] The mod_proxy module in the Apache HTTP Server 1.3.x through 1.3.42, 2.0.x through 2.0.64, and 2.2.x through 2.2.21, when the Revision 1179239 patch is in place, does not properly interact with use of (1) RewriteRule and (2) ProxyPassMatch pattern matches for configuration of a reverse proxy, which allows remote attackers to send requests to intranet servers via a malformed URI containing an @ (at sign) character and a : (colon) character in invalid positions.  NOTE: this vulnerability exists because of an incomplete fix for CVE-2011-3368.
+| [CVE-2011-3368] The mod_proxy module in the Apache HTTP Server 1.3.x through 1.3.42, 2.0.x through 2.0.64, and 2.2.x through 2.2.21 does not properly interact with use of (1) RewriteRule and (2) ProxyPassMatch pattern matches for configuration of a reverse proxy, which allows remote attackers to send requests to intranet servers via a malformed URI containing an initial @ (at sign) character.
+| [CVE-2010-3574] Unspecified vulnerability in the Networking component in Oracle Java SE and Java for Business 6 Update 21, 5.0 Update 25, 1.4.2_27, and 1.3.1_28 allows remote attackers to affect confidentiality, integrity, and availability via unknown vectors.  NOTE: the previous information was obtained from the October 2010 CPU.  Oracle has not commented on claims from a reliable downstream vendor that HttpURLConnection does not properly check for the allowHttpTrace permission, which allows untrusted code to perform HTTP TRACE requests.
+| [CVE-2010-3553] Unspecified vulnerability in the Swing component in Oracle Java SE and Java for Business 6 Update 21, 5.0 Update 25, 1.4.2_27, and 1.3.1_28 allows remote attackers to affect confidentiality, integrity, and availability via unknown vectors.  NOTE: the previous information was obtained from the October 2010 CPU.  Oracle has not commented on claims from a reliable downstream vendor that this is related to unsafe reflection involving the UIDefault.ProxyLazyValue class.
+| [CVE-2010-3549] Unspecified vulnerability in the Networking component in Oracle Java SE and Java for Business 6 Update 21, 5.0 Update 25, 1.4.2_27, and 1.3.1_28 allows remote attackers to affect confidentiality, integrity, and availability via unknown vectors.  NOTE: the previous information was obtained from the October 2010 CPU.  Oracle has not commented on claims from a reliable downstream vendor that this is an HTTP request splitting vulnerability involving the handling of the chunked transfer encoding method by the HttpURLConnection class.
+| [CVE-2010-3541] Unspecified vulnerability in the Networking component in Oracle Java SE and Java for Business 6 Update 21, 5.0 Update 25, 1.4.2_27, and 1.3.1_28 allows remote attackers to affect confidentiality, integrity, and availability via unknown vectors.  NOTE: the previous information was obtained from the October 2010 CPU.  Oracle has not commented on claims from a reliable downstream vendor that this is related to missing validation of request headers in the HttpURLConnection class when they are set by applets, which allows remote attackers to bypass the intended security policy.
+| [CVE-2010-1623] Memory leak in the apr_brigade_split_line function in buckets/apr_brigade.c in the Apache Portable Runtime Utility library (aka APR-util) before 1.3.10, as used in the mod_reqtimeout module in the Apache HTTP Server and other software, allows remote attackers to cause a denial of service (memory consumption) via unspecified vectors related to the destruction of an APR bucket.
+| [CVE-2010-0010] Integer overflow in the ap_proxy_send_fb function in proxy/proxy_util.c in mod_proxy in the Apache HTTP Server before 1.3.42 on 64-bit platforms allows remote origin servers to cause a denial of service (daemon crash) or possibly execute arbitrary code via a large chunk size that triggers a heap-based buffer overflow.
+| [CVE-2009-3877] Unspecified vulnerability in Sun Java SE in JDK and JRE 5.0 before Update 22, JDK and JRE 6 before Update 17, SDK and JRE 1.3.x before 1.3.1_27, and SDK and JRE 1.4.x before 1.4.2_24 allows remote attackers to cause a denial of service (memory consumption) via crafted HTTP headers, which are not properly parsed by the ASN.1 DER input stream parser, aka Bug Id 6864911.
+| [CVE-2009-0164] The web interface for CUPS before 1.3.10 does not validate the HTTP Host header in a client request, which makes it easier for remote attackers to conduct DNS rebinding attacks.
+| [CVE-2005-2088] The Apache HTTP server before 1.3.34, and 2.0.x before 2.0.55, when acting as an HTTP proxy, allows remote attackers to poison the web cache, bypass web application firewall protection, and conduct XSS attacks via an HTTP request with both a "Transfer-Encoding: chunked" header and a Content-Length header, which causes Apache to incorrectly handle and forward the body of the request in a way that causes the receiving server to process it as a separate HTTP request, aka "HTTP Request Smuggling."
+| [CVE-2005-1760] sysreport 1.3.15 and earlier includes contents of the up2date file in a report, which leaks the password for a proxy server in plaintext and allows local users to gain privileges.
+| [CVE-2004-2762] The server in IBM Tivoli Storage Manager (TSM) 4.2.x on MVS, 5.1.9.x before 5.1.9.1, 5.1.x before 5.1.10, 5.2.2.x before 5.2.2.3, 5.2.x before 5.2.3, 5.3.x before 5.3.0, and 6.x before 6.1, when the HTTP communication method is enabled, allows remote attackers to cause a denial of service (daemon crash or hang) via unspecified HTTP traffic, as demonstrated by the IBM port scanner 1.3.1.
+| [CVE-2004-0700] Format string vulnerability in the mod_proxy hook functions function in ssl_engine_log.c in mod_ssl before 2.8.19 for Apache before 1.3.31 may allow remote attackers to execute arbitrary messages via format string specifiers in certain log messages for HTTPS that are handled by the ssl_log function.
+| [CVE-2004-0492] Heap-based buffer overflow in proxy_util.c for mod_proxy in Apache 1.3.25 to 1.3.31 allows remote attackers to cause a denial of service (process crash) and possibly execute arbitrary code via a negative Content-Length HTTP header field, which causes a large amount of data to be copied.
+| [CVE-2003-1580] The Apache HTTP Server 2.0.44, when DNS resolution is enabled for client IP addresses, uses a logging format that does not identify whether a dotted quad represents an unresolved IP address, which allows remote attackers to spoof IP addresses via crafted DNS responses containing numerical top-level domains, as demonstrated by a forged 123.123.123.123 domain name, related to an "Inverse Lookup Log Corruption (ILLC)" issue.
+| [CVE-2002-2012] Unknown vulnerability in Apache 1.3.19 running on HP Secure OS for Linux 1.0 allows remote attackers to cause "unexpected results" via an HTTP request.
+| [CVE-2002-0177] Buffer overflows in icecast 1.3.11 and earlier allows remote attackers to execute arbitrary code via a long HTTP GET request from an MP3 client.
+| [CVE-2001-1083] Icecast 1.3.7, and other versions before 1.3.11 with HTTP server file streaming support enabled allows remote attackers to cause a denial of service (crash) via a URL that ends in . (dot), / (forward slash), or \ (backward slash).
+| [CVE-2001-0925] The default installation of Apache before 1.3.19 allows remote attackers to list directories instead of the multiview index.html file via an HTTP request for a path that contains many / (slash) characters, which causes the path to be mishandled by (1) mod_negotiation, (2) mod_dir, or (3) mod_autoindex.
+| [CVE-2001-0129] Buffer overflow in Tinyproxy HTTP proxy 1.3.3 and earlier allows remote attackers to cause a denial of service and possibly execute arbitrary commands via a long connect request.
+| [CVE-2000-1206] Vulnerability in Apache httpd before 1.3.11, when configured for mass virtual hosting using mod_rewrite, or mod_vhost_alias in Apache 1.3.9, allows remote attackers to retrieve arbitrary files.
+| [CVE-2000-0869] The default configuration of Apache 1.3.12 in SuSE Linux 6.4 enables WebDAV, which allows remote attackers to list arbitrary diretories via the PROPFIND HTTP request method.
+| 
+| SecurityFocus - https://www.securityfocus.com/bid/:
+| [37966] Apache 1.3 mod_proxy HTTP Chunked Encoding Integer Overflow Vulnerability
+| [27237] Apache HTTP Server 2.2.6, 2.0.61 and 1.3.39 'mod_status' Cross-Site Scripting Vulnerability
+| 
+| IBM X-Force - https://exchange.xforce.ibmcloud.com:
+| [28893] Microsoft Internet Explorer HTTP 1.1 compression long URL buffer overflow variant
+| [28522] Microsoft Internet Explorer HTTP 1.1 compression long URL buffer overflow
+| [10107] Trend Micro InterScan VirusWall HTTP 1.0 gzip content encoding protection bypass
+| [10106] Trend Micro InterScan VirusWall HTTP 1.1 chunked transfer encoding protection bypass
+| [85605] Stage File Proxy module for Drupal repeated HTTP request denial of service
+| [85020] HAProxy denial of service
+| [83211] HAProxy tcp-request content denial of service
+| [77913] Apache HTTP Server mod_proxy_ajp information disclosure
+| [76095] SEIL routers HTTP-Proxy/Gateway security bypass
+| [75777] HAProxy trash buffer overflow
+| [71617] Apache HTTP Server mod_proxy module information disclosure
+| [71445] Apache HTTP Server mod_proxy security bypass
+| [70336] Apache HTTP Server mod_proxy information disclosure
+| [69804] Apache HTTP Server mod_proxy_ajp denial of service
+| [66665] HAProxy manage_server_side_cookies() denial of service
+| [66640] Apache HttpComponents HttpClient Proxy-Authorization information disclosure
+| [63651] Google Chrome HTTP proxy authentication denial of service
+| [60883] Apache mod_proxy_http information disclosure
+| [59413] Apache mod_proxy_http timeout information disclosure
+| [56623] Apache HTTP Server mod_proxy_ajp denial of service
+| [53453] Cisco IOS Authentication Proxy for HTTP security bypass
+| [53124] mod_proxy_ftp module for Apache HTTP header security bypass
+| [52604] HTTP request forwarding (Web Proxy) detected
+| [51532] mod_proxy module for the Apache HTTP Server stream_reqbody_cl denial of service
+| [47305] Live Chat component for Joomla! xmlhttp.php open proxy
+| [44467] HTTP Anti Virus Proxy (HAVP) sockethandler.cpp denial of service
+| [44223] Apache HTTP Server mod_proxy_ftp cross-site scripting
+| [42987] Apache HTTP Server mod_proxy module denial of service
+| [40694] BEA WebLogic Server and WebLogic Express HttpClusterServlet and HttpProxyServlet privilege escalation
+| [39615] Apache HTTP Server mod_proxy_ftp.c UTF-7 cross-site scripting
+| [39612] Apache HTTP Server mod_proxy_balancer buffer overflow
+| [39474] Apache HTTP Server mod_proxy_balancer cross-site scripting
+| [37405] DeleGate HTTP cache proxy denial of service
+| [36354] Apache HTTP Server mod_proxy module denial of service
+| [36352] Apache HTTP Server ap_proxy_date_canon() denial of service
+| [34884] Astaro Secure Gateway HTTP proxy denial of service
+| [34282] BEA WebLogic Server and WebLogic Express HttpProxyServlet and HttpClusterServlet unauthorized access
+| [26970] WinGate HTTP proxy buffer overflow
+| [26370] Symantec Enterprise Firewall HTTP proxy internal IP disclosure
+| [23997] Blue Coat WinProxy SecureSuite HTTP request denial of service
+| [23451] Microsoft Internet Explorer HTTPS proxy authentication information disclosure
+| [22016] Simpleproxy HTTP Proxy reply format string
+| [20391] Apple Mac OS X HTTP proxy service security bypass
+| [20339] Squid Web Proxy Cache HTTP header cache poisoning
+| [20334] Squid Web Proxy Cache httpProcessReplyHeader security bypass
+| [19868] HTTP Anti Virus Proxy cab and zip files bypass filtering
+| [19060] Squid Web Proxy Cache HTTP header cache poisoning
+| [18308] Jana Server http-server and pna-proxy denial of service
+| [16751] AnomicHTTPProxy &quot
+| [16750] AnomicHTTPProxy allows elevated privileges
+| [16749] AnomicHTTPProxy administration interface denial of service
+| [16387] Apache HTTP Server mod_proxy Content-Length buffer overflow
+| [15952] proxy server using the HTTP CONNECT directive has been detected
+| [15277] Proxy-Pro GateKeeper Pro long HTTP GET buffer overflow
+| [15275] PSOProxy long HTTP GET request buffer overflow
+| [14955] ProxyNow! HTTP GET stack based buffer overflow or heap-based buffer overflow
+| [14947] Gaim HTTP proxy buffer overflow
+| [12681] Apache HTTP Server mod_proxy could allow mail relaying
+| [12552] Apache HTTP Server FTP proxy server denial of service
+| [11143] Astaro Security Linux HTTP Proxy can be used to make unauthorized TCP connections
+| [10139] Check Point FireWall-1 HTTP proxy could allow HTTPS and FTP traffic to bypass the firewall
+| [9914] Jigsaw HTTP Proxy server cross-site scripting
+| [9834] CERN HTTPD proxy server cross-site scripting
+| [9683] Jana Server HTTP GET proxy buffer overflow
+| [9579] Symantec Norton Personal Firewall and Norton Internet Security HTTP proxy buffer overflow
+| [9455] AnalogX Proxy malformed HTTP request buffer overflow
+| [8425] Trend Micro InterScan VirusWall could allow virus infected Web pages to bypass the HTTP proxy filtering
+| [7964] BlackJumboDog HTTP proxy buffer overflow
+| [7916] Avirt SOHO, Gateway, and Gateway Suite HTTP proxy buffer overflow
+| [4460] CProxy proxy server HTTP port denial of service
+| [153] HTTP proxy penetrated
+| [60] HTTP proxy detected
+| 
+| Exploit-DB - https://www.exploit-db.com:
+| [21978] Linksys WAP11 1.3/1.4,D-Link DI-804 4.68/Dl-704 2.56 b5 Embedded HTTP Server DoS Vulnerability
+| [20595] NCSA 1.3/1.4.x/1.5,Apache httpd 0.8.11/0.8.14 ScriptAlias Source Retrieval Vulnerability
+| [5215] Ruby 1.8.6 (Webrick Httpd 1.3.1) Directory Traversal Vulnerability
+| [30229] SHTTPD 1.38 Filename Parse Error Information Disclosure Vulnerability
+| [26156] CPaint 1.3 xmlhttp Request Input Validation Vulnerability
+| [25775] Nginx HTTP Server 1.3.9-1.4.0 Chuncked Encoding Stack Buffer Overflow
+| [24402] Axis Network Camera 2.x And Video Server 1-3 HTTP Authentication Bypass
+| [23676] MaxWebPortal 1.3x down.asp HTTP_REFERER XSS
+| [21955] AN HTTPD 1.38/1.39/1.40/1.41 Malformed SOCKS4 Request Buffer Overflow Vulnerability
+| [21145] IBM HTTP Server 1.3.x Source Code Disclosure Vulnerability
+| [20559] tinyproxy tinyproxy 1.3.2/1.3.3 Heap Overflow Vulnerability
+| [20531] IBM HTTP Server 1.3 AfpaCache/WebSphereNet.Data DoS Vulnerability
+| [16759] SHTTPD <= 1.34 URI-Encoded POST Request Overflow (win32)
+| [16199] Icy Phoenix 1.3.0.53a HTTP Referer stored XSS
+| [4700] simple httpd <= 1.38 Multiple Vulnerabilities
+| [2482] SHTTPD 1.34 (POST) Remote Buffer Overflow Exploit
+| [1174] ZipTorrent <= 1.3.7.3 - Local Proxy Password Disclosure Exploit
+| 
+| OpenVAS (Nessus) - http://www.openvas.org:
+| [66806] Debian Security Advisory DSA 1987-1 (lighttpd)
+| [66557] Fedora Core 12 FEDORA-2009-12606 (httpd)
+| [66498] Fedora Core 10 FEDORA-2009-12604 (httpd)
+| [64741] Fedora Core 11 FEDORA-2009-8812 (httpd)
+| [61364] Debian Security Advisory DSA 1540-3 (lighttpd)
+| [61357] Debian Security Advisory DSA 1609-1 (lighttpd)
+| [60793] Debian Security Advisory DSA 1540-2 (lighttpd)
+| [60786] Debian Security Advisory DSA 1540-1 (lighttpd)
+| [60573] Debian Security Advisory DSA 1521-1 (lighttpd)
+| [60499] Debian Security Advisory DSA 1513-1 (lighttpd)
+| [58644] Debian Security Advisory DSA 1362-2 (lighttpd)
+| [58581] Debian Security Advisory DSA 1362-1 (lighttpd)
+| [57684] Debian Security Advisory DSA 1205-2 (thttpd)
+| [53726] Debian Security Advisory DSA 145-1 (tinyproxy)
+| [11129] HTTP 1.1 header overflow
+| [11127] HTTP 1.0 header overflow
+| [902825] at32 Reverse Proxy Multiple HTTP Header Fields Denial Of Service Vulnerability
+| [900325] Qbik WinGate HTTP Proxy Server Access Controls Bypass Vulnerability
+| [900222] IBM HTTP Server mod_proxy Interim Responses DoS Vulnerability
+| [864812] Fedora Update for haproxy FEDORA-2012-16033
+| [864801] Fedora Update for haproxy FEDORA-2012-16056
+| [800827] Apache 'mod_proxy_http.c' Denial Of Service Vulnerability
+| [103293] Apache HTTP Server 'mod_proxy' Reverse Proxy Information Disclosure Vulnerability
+| [100858] Apache 'mod_proxy_http' 2.2.9 for Unix Timeout Handling Information Disclosure Vulnerability
+| [100083] HTTP Proxy Server Detection
+| [71366] FreeBSD Ports: haproxy
+| [11715] Header overflow against HTTP proxy
+| 
+| SecurityTracker - https://www.securitytracker.com:
+| [1016731] Microsoft Internet Explorer URL Buffer Overflow in Processing HTTP 1.1 Protocol with Compression Lets Remote Users Execute Arbitrary Code
+| [1015870] Cisco 11500 Content Services Switch HTTP Compression Bug Lets Remote Users Deny Service
+| [1028638] RSA Authentication Manager Writes Operating System, SNMP, and HTTP Plug-in Proxy Passwords in Clear Text to Log Files
+| [1027165] Squid XMLHttpRequest Allows Remote Users to Obtain the Target User's Proxy Username and Password
+| [1026054] Apache mod_proxy_ajp HTTP Processing Error Lets Remote Users Deny Service
+| [1024096] Apache mod_proxy_http May Return Results for a Different Request
+| [1020900] HTTP Anti Virus Proxy Bug in 'sockethandler.cpp' Lets Remote Users Deny Service
+| [1017586] Blue Coat WinProxy Heap Overflow in Processing HTTP CONNECT Requests May Let Remote Users Execute Arbitrary Code
+| [1017324] Sun Java System Web Proxy Server Lets Remote Users Conduct HTTP Request Smuggling Attacks
+| [1016239] WinGate Buffer Overflow in HTTP Proxy Lets Remote Users Execute Arbitrary Code
+| [1016058] Symantec Gateway Security HTTP Proxy May Disclose Internal NAT Addresses
+| [1016057] Symantec Enterprise Firewall HTTP Proxy May Disclose Internal NAT Addresses
+| [1014359] DeleGate Proxy Lets Remote Users Conduct HTTP Request Smuggling Attacks
+| [1014358] Sun Java System Web Proxy Server Lets Remote Users Conduct HTTP Request Smuggling Attacks
+| [1013370] HTTP Anti Virus Proxy May Not Detect Viruses in Certain Archives
+| [1012365] JanaServer 2 http-server and pna-proxy Flaws Let Remote Users Deny Service
+| [1007712] Nokia Electronic Documentation Default Configuration Permits Remote HTTP Proxy Services
+| [1007146] Apache HTTP Server FTP Proxy Bug May Cause Denial of Service Conditions
+| [1006833] EServ Can Be Used as HTTP and FTP Proxy Even When Not Configured as a Proxy
+| [1005253] Check Point FireWall-1 HTTP Proxy Default Configuration May Allow HTTPS and FTP Traffic to Pass Through the Proxy
+| [1005026] CERN HTTP Proxy Server Input Validation Hole Lets Remote Users Conduct Cross-site Scripting Attacks
+| [1004780] Norton Personal Firewall Buffer Overflow in HTTP Proxy May Allow Remote Users to Execute Arbitrary Code on the System
+| [1004779] Norton Internet Security Buffer Overflow in HTTP Proxy May Allow Remote Users to Execute Arbitrary Code on the System
+| [1003875] HP Webproxy for HP-UX VVOS Operating System May Forward Certain HTTP Requests to the Internal Network Without Fully Processing the Packet Against the Rule Set
+| [1003600] Check Point FireWall-1 HTTP Proxy Bug Lets Remote Users Bypass Some Access Controls and Connect to Arbitrary Ports on Internal/Protected Hosts
+| 
+| OSVDB - http://www.osvdb.org:
+| [91975] HAProxy HTTP Content Inspection Mechanism HTTP Request Handling Remote Overflow DoS
+| [84399] Huawei AR 18 / 29 Routers HTTP Server Pre-auth Multiple URL Handling Remote Overflow
+| [82774] HAProxy http_auth_group() Function User Parsing Weakness
+| [82768] HAProxy Secure / HttpOnly Flag Cookie Weakness
+| [79018] Links HTTP 100 Response Handling DoS
+| [74826] Pidgin libpurple MSN Protocol Plugin httpconn.c msn_httpconn_parse_data Function HTTP 100 Response Remote DoS
+| [74346] HAProxy src/proto_http.c manage_server_side_cookies() Function HTTP Set-Cookie Header Remote DoS
+| [64275] NIBE RCU 11 Heat Pump HTTP Request Arbitrary Administrative Account Creation
+| [28132] Microsoft IE HTTP 1.1 URL Parsing Overflow
+| [24433] Cisco 11500 Content Services Switch HTTP Compression DoS
+| [8854] Cisco CSS 11000 Web Interface HTTPS POST DoS
+| [94328] HAProxy Header Field Handling Remote DoS
+| [93048] IBM Sterling Secure Proxy HTTP Header Web Server Version Disclosure
+| [91613] Zend Framework Multiple Class HTTP Header Proxy Information Handling Spoofing Weakness
+| [90557] Apache HTTP Server mod_proxy_balancer balancer-manager Interface Multiple Parameter XSS
+| [90422] Mozilla Multiple Product Proxy 407 Response HTTPS Address Spoofing
+| [89275] Apache HTTP Server mod_proxy_ajp Module Expensive Request Parsing Remote DoS
+| [88581] Squid Web Proxy HTTP Accelerator Mode Proxied Port Scan Weakness
+| [88287] Squid Crafted XMLHttpRequest Remote Proxy-Authorization Cleartext Credential Disclosure
+| [88016] BlackJumboDog HTTP Proxy Multiple String Parsing Remote Overflow
+| [87958] IBM WebSphere Message Broker ProxyServlet / MQ HTTP Connection Cleartext Credential Disclosure
+| [87457] Tor Directory Connection HttpProxyAuthenticator Remote Fingerprinting Weakness
+| [85838] 602Pro LAN SUITE HTTP Proxy-Authorization Header Handling Remote Overflow DoS
+| [85090] Apache HTTP Server mod_proxy_ajp.c mod_proxy_ajp Module Proxy Functionality Cross-client Information Disclosure
+| [85089] Apache HTTP Server mod_proxy_http.c mod_proxy_http Module Cross-client Information Disclosure
+| [82773] HAProxy buffer_ignore Function Unspecified Issue
+| [82772] HAProxy Crafted Response Cookie Handling Remote DoS
+| [82771] HAProxy Invalid Response Handling Remote DoS
+| [82770] HAProxy appsession Cookie Matching Weakness
+| [82769] HAProxy Session Freeing Unspecified DoS
+| [82767] HAProxy poll/epoll Unspecified Memory Corruption DoS
+| [82766] HAProxy send_syslog() Function Overflow Local DoS
+| [82651] SEIL Routers HTTP-Proxy/Gateway HTTP Request Parsing URL Filter Bypass
+| [82092] HAProxy Boundary Error Trash Buffer Data Copying Remote Overflow
+| [81164] Squid Proxy HTTP Header Host Field Parsing URL Filter Bypass
+| [78987] CVS src/client.c proxy_connect() Function HTTP Version Response Parsing Remote Overflow
+| [78774] Mozilla Multiple Products IPv6 Proxy Generated XMLHttpRequest Object Handling Remote Information Disclosure
+| [78667] Oracle Java SE / Java for Business java:classes_net HttpsUrlConnection Authenticated Proxy Tunnel Handling Overflow
+| [77444] Apache HTTP Server mod_proxy Mdule Web Request HTTP/0.9 Protocol URL Parsing Proxy Remote Security Bypass
+| [77310] Apache HTTP Server mod_proxy Reverse Proxy Mode Security Bypass Weakness (2011-4317)
+| [76079] Apache HTTP Server mod_proxy Mdule Web Request URL Parsing Proxy Remote Security Bypass (2011-3368)
+| [75647] Apache HTTP Server mod_proxy_ajp Module mod_proxy_balancer HTTP Request Remote DoS
+| [73624] PHP Streams Component HTTP Proxy FTP Wrapper ftp:// URL DoS
+| [73354] IBM WebSphere Application Server (WAS) HTTP Transport SIP Proxy UDP Message Saturation Remote DoS
+| [71647] Apache HttpComponents HttpClient Proxy-Authorization Credentials Remote Disclosure
+| [69667] Google Chrome HTTP Proxy Authentication Required Response Handling DoS
+| [68162] OmniVista 4760 HTTP Proxy Crafted HTTP Request Remote Overflow
+| [67270] Blue Coat ProxySG HTTPS Privilege Enforcement Bypass
+| [65654] Apache HTTP Server mod_proxy_http mod_proxy_http.c Timeout Detection Weakness HTTP Request Response Disclosure
+| [62676] Apache HTTP Server mod_proxy_ajp Module Crafted Request Remote DoS
+| [62009] Apache HTTP Server src/modules/proxy/proxy_util.c mod_proxy ap_proxy_send_fb() Function Overflow
+| [60010] HP Praesidium Webproxy Crafted HTTP Request Forwarding Weakness
+| [59022] Apache Shindig ConcatProxyServlet HTTP Header Response Splitting
+| [57882] Apache HTTP Server mod_proxy_ftp Authorization HTTP Header Arbitrary FTP Command Injection
+| [57851] Apache HTTP Server mod_proxy_ftp EPSV Command NULL Dereference Remote DoS
+| [56712] Live Chat Component for Joomla! xmlhttp.php Open HTTP Proxy
+| [56489] Microsoft IE Proxy Server CONNECT Response Cached Certificate Use MiTM HTTPS Site Spoofing
+| [56488] Google Chrome Proxy Server CONNECT Response Cached Certificate Use MiTM HTTPS Site Spoofing
+| [56487] Opera Proxy Server CONNECT Response Cached Certificate Use MiTM HTTPS Site Spoofing
+| [55553] Apache HTTP Server mod_proxy Module mod_proxy_http.c stream_reqbody_cl Function CPU Consumption DoS
+| [55133] Mozilla Firefox HTTP Host Header Proxy Server CONNECT Response Document Context SSL Tampering Weakness
+| [55132] Google Chrome src/net/http/http_transaction_winhttp.cc HTTP Host Header Proxy Server CONNECT Response Document Context SSL Tampering Weakness
+| [55129] Microsoft IE HTTP Host Header Proxy Server CONNECT Response Document Context SSL Tampering Weakness
+| [53921] Apache HTTP Server mod_proxy_ajp Cross Thread/Session Information Disclosure
+| [52413] Blue Coat ProxySG Transparent Interception Mode HTTP Host Header Dependancy Media Access Control Bypass
+| [52412] Ziproxy Transparent Interception Mode HTTP Host Header Dependancy Media Access Control Bypass
+| [48528] CCProxy HTTP Proxy CONNECT Request Handling Remote Overflow
+| [47512] HTTP Anti Virus Proxy (HAVP) Infinite Loop Connection Saturation DoS
+| [47474] Apache HTTP Server mod_proxy_ftp Directory Component Wildcard Character XSS
+| [46085] Apache HTTP Server mod_proxy ap_proxy_http_process_response() Function Interim Response Forwarding Remote DoS
+| [44135] Nortel VPN Gateway Malformed HTTP Request SSL Proxy Remote DoS
+| [44132] Nortel iSD-SSL Malformed HTTP Request SSL Proxy Remote DoS
+| [43259] Apache HTTP Server on Windows mod_proxy_balancer URL Handling Remote Memory Corruption
+| [42937] Apache HTTP Server mod_proxy_balancer balancer-manager Unspecified CSRF
+| [42214] Apache HTTP Server mod_proxy_ftp UTF-7 Encoded XSS
+| [42122] Kerio WinRoute Firewall Proxy Server Unspecified HTTP Fallback
+| [41862] DeleGate HTTP Cache Proxy Unspecified DoS
+| [40264] Apache HTTP Server mod_proxy_balancer balancer_handler Function bb Variable Remote DoS
+| [40263] Apache HTTP Server mod_proxy_balancer balancer-manager Multiple Parameter XSS
+| [39291] ELinks https Proxy CONNECT Request Cleartext Information Disclosure
+| [37345] Astaro Security Gateway (ASG) HTTP Proxy Unspecified DoS
+| [37051] Apache HTTP Server mod_proxy modules/proxy/proxy_util.c Crafted Header Remote DoS
+| [36980] 3Proxy HTTP Redirection Unspecified DoS
+| [36074] BEA WebLogic HttpClusterServlet / HttpProxyServlet SecureProxy Admin Functionality Access
+| [35237] 3Proxy HTTP Proxy Crafted Transparent Request Remote Overflow
+| [33097] Blue Coat WinProxy HTTP CONNECT Request Overflow
+| [26300] Mozilla Multiple Products via Proxy Server HTTP Response Smuggling
+| [26008] PHPGallue Proxy Cache HTTP Header Information Disclosure
+| [25565] phpBB usercp_avatar.php Arbitrary HTTP Proxy
+| [22876] HTTP Anti Virus Proxy Multiple AV Scanner Failure
+| [22853] Blue Coat ProxySG SGOS HTTP Proxy Arbitrary Port Connection
+| [22237] Blue Coat WinProxy HTTP Request Overflow DoS
+| [21762] Microsoft IE HTTPS Proxy Basic Authentication URL Cleartext Transmission
+| [19008] Simpleproxy HTTP Proxy Reply Remote Format String
+| [18284] Netquery HTTP GET Request Panel Unauthorized Proxy
+| [16388] Mozilla with Proxy HTTP Header Arbitrary Cookie Disclosure
+| [16082] Apple Mac OS X Server HTTP Proxy Unrestricted Access
+| [16014] IBM Web Traffic Express Caching Proxy Server HTTP GET Request XSS
+| [14573] HTTP Anti Virus Proxy Archive Scanning Failure
+| [14270] Sun Java JRE HTTP Proxy Java Applet Session Hijack
+| [14155] BitlBee HTTP Proxy Support Unspecified Security Issue
+| [12558] Apache HTTP Server IPv6 FTP Proxy Socket Failure DoS
+| [11593] CCProxy Logging Component HTTP GET Request Remote Overflow
+| [9742] Apache HTTP Server mod_ssl char_buffer_read Function Reverse Proxy DoS
+| [9688] Apache HTTP Server mod_proxy Malformed FTP Command DoS
+| [7929] Apache HTTP Server mod_ssl ssl_engine_log.c mod_proxy Hook Function Remote Format String
+| [7714] AnomicHTTPProxy Invalid HTTP Command Proxy Localhost Block
+| [7713] AnomicHTTPProxy Administration Password Dementia
+| [7709] AnomicHTTPProxy Double Dot Arbitrary File Access
+| [6839] Apache HTTP Server mod_proxy Content-Length Overflow
+| [6804] Avirt Gateway/Gateway Suite/SOHO HTTP Proxy Overflow
+| [6187] Trend Micro InterScan VirusWall HTTP CONNECT Proxying
+| [6162] Trend Micro InterScan VirusWall HTTP Proxy Content Scanning Circumvention
+| [4433] Check Point FireWall-1 HTTP Proxy Traffic Bypass
+| [4366] Symantec Personal Firewalls HTTP Proxy Remote Overflow
+| [4028] PSOProxy Long HTTP Request Overflow
+| [4015] Jigsaw HTTP Proxy Error Page XSS
+| [3732] Gaim HTTP Proxy Connect Overflow
+| [3723] ProxyNow! HTTP Request Overflow
+| [3718] Finjan SurfinGate Proxy FHTTP Command Admin Functions Authentication Bypass
+| [2764] Plug and Play Web Server Proxy Service HTTP Request Handling DoS
+| [1789] Microsoft ISA Server Web Proxy Malformed HTTP Request Parsing Remote DoS
+| [1429] SapporoWorks WinProxy Malformed HTTP GET Request DoS
+| [1336] CProxy SP2 Long HTTP Request DoS
+| [787] Compaq Web-enabled Management Software HTTP Server Arbitrary Traffic Proxy
+|_
+Service Info: Device: load balancer
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 60.97 seconds

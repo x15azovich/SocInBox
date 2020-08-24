@@ -12,6 +12,7 @@ import CVEnumbersExtractor
 import CVEdescriptionAndSolutionsGetter
 import windows_7
 import textwrap
+import csv 
 
 root = tk.Tk() #creates the actual window
 
@@ -64,8 +65,13 @@ def switch_tab(tab_name):
         scan_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
 
         def press_scan():
+            '''
+            This function is executed when user pressed "scan", then takes in the ip address from user input and is scanned upon for vulnerabilities. 
+            If there are vulnerabilities, then said vulnerabilities will be displayed on a table in tkinter 
+            and appended to a CSV database as long as the data isn't already within the CSV file. 
+            '''
             ip_address = ip_content.get()
-            #54.209.137.253
+            #hackthissite.org
             
             print(ip_address)
             try:
@@ -120,22 +126,45 @@ def switch_tab(tab_name):
             tree.heading("Description", text="Description")
             tree.column("Description", minwidth=0, width=1000,stretch=NO)
 
-            results = CVEdescriptionAndSolutionsGetter.getCveDescription()
-            if len(results) == 0:
+            results = CVEdescriptionAndSolutionsGetter.getCveDescription() #calls API and gets CVE Description  
+
+            if len(results) == 0: #If there's no CVE's then display an Error message 
                 entry_ip.delete(0, tk.END)
                 entry_ip.insert(0, 'Error: No data dound for ' + ip_address + "!" )
-            count = 0 
-            for i in results:
-                count +=1 
 
-                description = results.get(i).get('description')
-                
-                #import textwarp for support 
-                if len(description) >= 175:
-                    description = textwrap.fill(description, 175)
+            else: 
 
-                tree.insert("", 'end', text ="", values =(ip_address, i , description)) 
+                if os.path.exists("csv_database.csv"): # file already exists 
+                    print("File Exists - Appending Data")   
+                    with open('csv_database.csv', mode='a', newline="") as csv_file:
+                        fieldnames = ['IP Address', 'Vulnerability', 'Description']
+                        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
+                else: # file needs to be created and write a header
+                    print("Creating New CSV file")
+                    with open('csv_database.csv', mode='w', newline="") as csv_file:
+                        fieldnames = ['IP Address', 'Vulnerability', 'Description']
+                        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+                        writer.writeheader()
+
+
+                    for i in results:
+
+                        description = results.get(i).get('description')
+                        
+                        #import textwarp for support 
+                        if len(description) >= 175: 
+                            description = textwrap.fill(description, 175) #creates newline at the end of a word of index 175
+
+                        tree.insert("", 'end', text ="", values =(ip_address, i , description)) #writes to table to display in tkinter
+                        writer.writerow({'IP Address': ip_address, 'Vulnerability': i, 'Description': description}) #writes to csv file
+ 
+                csv_file.close()
+            
+
+
+            # open up csv and delete any duplicates
+            # once deleted, sort the data from newest CVE's to oldest 
             
 
 
