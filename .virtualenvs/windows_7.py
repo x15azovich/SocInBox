@@ -23,12 +23,13 @@ def add_rule(rule_name, ip_address):
 	print(rule_name)
 	print(ip_address)
 	for x in content_list:
-		subprocess.call(
-			f'netsh advfirewall firewall add rule name="{rule_name}" dir=in interface=any action=block remoteip={x}', 
-			shell=True, 
-			stdout=DEVNULL,
-			stderr=DEVNULL
-		)
+		jeff+=x+','
+	subprocess.call(
+		f'netsh advfirewall firewall add rule name="{rule_name}" dir=in interface=any action=block remoteip={jeff}', 
+		shell=True, 
+		stdout=DEVNULL,
+		stderr=DEVNULL
+	)
 	print(f"Rule {rule_name} for {ip_address} added")
 
 '''

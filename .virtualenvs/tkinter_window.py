@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import font as tkFont
 
+
 import os, re
 import sys
 #sys.path.insert(1, '.virtualenvs/backend/scanning/nampVulScanner.py')
@@ -28,7 +29,6 @@ def switch_tab(tab_name):
 
     for widget in frame.winfo_children(): #deletes any objects in the frame. if you were in "scanning" tab, this function will delete any objects from previous tabs
         widget.destroy()
-     
 
     if tab_name =="home":
         # show home button_tab
@@ -50,6 +50,38 @@ def switch_tab(tab_name):
         # show hostbase button_tab
         hostbase_button_tab = tk.Button(text="Hostbase", bg="#054a80", fg='white', command= lambda:switch_tab("hostbase"))
         hostbase_button_tab.place(relx=0.90, rely=0.00, relwidth=0.20, relheight=0.07, anchor='n')
+        #Function for BarGraphs
+        def prop(n):
+            return 360.0 * n / 1000
+
+
+        c = tk.Canvas(frame, width=154, height=154,  bg="#03021a")
+        c.place(relx=0.50, rely=0.10, relwidth=0.2, relheight=0.2, anchor='n')
+        c.create_arc((2,2,152,152), fill="#FAF402", outline="#FAF402", start=prop(0), extent = prop(200))
+        c.create_arc((2,2,152,152), fill="#2BFFF4", outline="#2BFFF4", start=prop(200), extent = prop(400))
+        c.create_arc((2,2,152,152), fill="#E00022", outline="#E00022", start=prop(600), extent = prop(50))
+        c.create_arc((2,2,152,152), fill="#7A0871", outline="#7A0871", start=prop(650), extent = prop(200))
+        c.create_arc((2,2,152,152), fill="#294994", outline="#294994", start=prop(850), extent = prop(150))
+        root.mainloop()
+
+        c = tk.Canvas(frame, width=154, height=154,  bg="#03021a")
+        data = [21, 20, 19, 16, 14, 13, 11, 9, 4, 3]
+        y_stretch = 15
+        y_gap = 20
+        x_stretch = 10
+        x_width = 20
+        x_gap = 20
+        c_width = 400
+        c_height = 350
+        for x, y in enumerate(data):
+            x0 = x * x_stretch + x * x_width + x_gap
+            y0 = c_height - (y * y_stretch + y_gap)
+            x1 = x * x_stretch + x * x_width + x_width + x_gap
+            y1 = c_height - y_gap
+            c.create_rectangle(x0, y0, x1, y1, fill="red")
+            c.create_text(x0+2, y0, anchor=tk.SW, text=str(y))
+        root.mainloop()
+
 
     if tab_name =="scanning":
 
