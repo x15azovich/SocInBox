@@ -1,7 +1,7 @@
-Starting Nmap 7.80 ( https://nmap.org ) at 2020-08-24 00:17 Eastern Daylight Time
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-08-25 00:46 Eastern Daylight Time
 Nmap scan report for hackthissite.org (137.74.187.102)
-Host is up (0.099s latency).
-Other addresses for hackthissite.org (not scanned): 137.74.187.101 137.74.187.103 137.74.187.104 137.74.187.100
+Host is up (0.094s latency).
+Other addresses for hackthissite.org (not scanned): 137.74.187.101 137.74.187.104 137.74.187.100 137.74.187.103
 Not shown: 997 filtered ports
 PORT    STATE  SERVICE        VERSION
 22/tcp  closed ssh
@@ -336,7 +336,6 @@ PORT    STATE  SERVICE        VERSION
 | [787] Compaq Web-enabled Management Software HTTP Server Arbitrary Traffic Proxy
 |_
 443/tcp open   ssl/http-proxy HAProxy http proxy 1.3.1 or later
-|_http-server-header: HackThisSite
 | vulscan: VulDB - https://vuldb.com:
 | [149237] Waitress up to 1.3.1 HTTP Header Request HTTP Smuggling privilege escalation
 | [147577] Waitress up to 1.3.1 HTTP Header privilege escalation
@@ -668,4 +667,4 @@ PORT    STATE  SERVICE        VERSION
 Service Info: Device: load balancer
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 60.97 seconds
+Nmap done: 1 IP address (1 host up) scanned in 69.46 seconds
