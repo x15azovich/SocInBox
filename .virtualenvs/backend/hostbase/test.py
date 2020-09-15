@@ -2,6 +2,10 @@ import re
 pattern = re.compile("Scanned files: (\d{1,})")
 
 
+for i, line in enumerate(open('clamAVresults.txt')):
+    for match in re.finditer(pattern, line):
+        print ('Found on line %s: %s' % (i+1, match.group()))
+
 '''
 with open ('clamAVresults.txt', 'r') as f:
     while True:
@@ -19,7 +23,7 @@ for i, line in enumerate(open('clamAVresults.txt')):
         scannedDir = match.group()
         print(scannedDir)
 
-        '''
+     
 
 file1 = open('clamAVresults.txt', 'r') 
 Lines = file1.readlines() 
@@ -30,4 +34,4 @@ for line in Lines:
    # line = line.rstrip()
     print("".join(line.split()))
 
-file1.close()
+file1.close()   '''
