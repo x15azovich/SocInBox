@@ -7,10 +7,7 @@ while True:
     line = f.readline()
     #print(line)
     if not line: break
-    line = "".join(line.split())
-    print(line)
-    x += re.findall(r' S c a n n e d   f i l e s :   (.*)', line) 
-    
+    x += re.findall(r'S.*c.*a.*n.*.*n.*e.*d.*f.*i.*l.*e.*s.*:(.*)', line)
 for i in x:
     print(i + '\n')
 
