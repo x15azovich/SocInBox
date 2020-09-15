@@ -156,15 +156,17 @@ def switch_tab(tab_name):
                         
                         tree.insert("", 'end', text ="", values =(ip_address, i , description)) #writes to table to display in tkinter
                         line = [ip_address, i, description]
+
+                        print(line)
                         if line not in data:
-                            print("write to csv")
+                            print("write to csv\n")
                             writer.writerow({'IP Address': ip_address, 'Vulnerability': i, 'Description': description}) #writes to csv file
-                    print(data)
-                    print(line)
+                        else:
+                            print("throw away\n")
              
 
 
-            # OPtain results
+            # Obtain results
             # throw into csv
             # sort csv by CVE
             # open file and display table with results from CSV 
