@@ -1,22 +1,33 @@
-# -*- coding: iso-8859-1 -*-
-import subprocess, sys
+import re
+pattern = re.compile("Scanned files: (\d{1,})")
 
-p = subprocess.Popen(["powershell.exe", 
-               "cd C:/Users/Jessi/Downloads/clamav-0.102.1-win-x64-portable;.\clamscan"], 
-              stdout=sys.stdout)
-p.communicate()
 
 '''
-import os, re
+with open ('clamAVresults.txt', 'r') as f:
+    while True:
+        line = f.readline()
+        if not line: break
+        linelol = "".join(line.split()).replace(" ", "")
+        print(linelol)
+        print(re.findall(r'Scanned\sfiles:\s(\d{1,})', linelol)) 
 
-print("running hostbase scan")
-#this command works for jeff's machine, which is Windows. Need to test if it works for other windows machine too
-WinCommand = "cd C:\Users\Jessi\Downloads\clamav-0.102.1-win-x64-portable"
-WinCommand2 = ".\clamscan > portscandata.txt"
 
-#change which command variable to run depending on which OS you are using
-os.system(WinCommand)
-os.system(WinCommand2)
 
-print("finished scan")
-'''
+for i, line in enumerate(open('clamAVresults.txt')):
+    print(line)
+    for match in re.finditer(pattern, line):
+        scannedDir = match.group()
+        print(scannedDir)
+
+        '''
+
+file1 = open('clamAVresults.txt', 'r') 
+Lines = file1.readlines() 
+#print(Lines[1]) 
+count = 0
+# Strips the newline character 
+for line in Lines:
+   # line = line.rstrip()
+    print("".join(line.split()))
+
+file1.close()
