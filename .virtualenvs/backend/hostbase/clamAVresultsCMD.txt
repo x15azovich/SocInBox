@@ -1,0 +1,84 @@
+C:\ClamAVSupport\api-ms-win-core-console-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-datetime-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-debug-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-errorhandling-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-file-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-file-l1-2-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-file-l2-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-handle-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-heap-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-interlocked-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-libraryloader-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-localization-l1-2-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-memory-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-namedpipe-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-processenvironment-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-processthreads-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-processthreads-l1-1-1.dll: OK
+C:\ClamAVSupport\api-ms-win-core-profile-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-rtlsupport-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-string-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-synch-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-synch-l1-2-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-sysinfo-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-timezone-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-core-util-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-conio-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-convert-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-environment-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-filesystem-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-heap-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-locale-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-math-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-multibyte-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-private-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-process-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-runtime-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-stdio-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-string-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-time-l1-1-0.dll: OK
+C:\ClamAVSupport\api-ms-win-crt-utility-l1-1-0.dll: OK
+C:\ClamAVSupport\clambc.exe: OK
+C:\ClamAVSupport\clamconf.exe: OK
+C:\ClamAVSupport\clamd.conf: OK
+C:\ClamAVSupport\clamd.exe: OK
+C:\ClamAVSupport\clamdscan.exe: OK
+C:\ClamAVSupport\clamscan.exe: OK
+C:\ClamAVSupport\clamsubmit.exe: OK
+C:\ClamAVSupport\concrt140.dll: OK
+C:\ClamAVSupport\freshclam.conf: OK
+C:\ClamAVSupport\freshclam.exe: OK
+C:\ClamAVSupport\json-c.dll: OK
+C:\ClamAVSupport\libbz2.dll: OK
+C:\ClamAVSupport\libclamav.dll: OK
+C:\ClamAVSupport\libclamunrar.dll: OK
+C:\ClamAVSupport\libclamunrar_iface.dll: OK
+C:\ClamAVSupport\libcrypto-1_1-x64.dll: OK
+C:\ClamAVSupport\libcurl.dll: OK
+C:\ClamAVSupport\libfreshclam.dll: OK
+C:\ClamAVSupport\libssh2.dll: OK
+C:\ClamAVSupport\libssl-1_1-x64.dll: OK
+C:\ClamAVSupport\libxml2.dll: OK
+C:\ClamAVSupport\mspack.dll: OK
+C:\ClamAVSupport\msvcp140.dll: OK
+C:\ClamAVSupport\NEWS.md: OK
+C:\ClamAVSupport\nghttp2.dll: OK
+C:\ClamAVSupport\pcre2-8.dll: OK
+C:\ClamAVSupport\pdcurses.dll: OK
+C:\ClamAVSupport\pthreadVC2.dll: OK
+C:\ClamAVSupport\README.md: OK
+C:\ClamAVSupport\sigtool.exe: OK
+C:\ClamAVSupport\ucrtbase.dll: OK
+C:\ClamAVSupport\UserManual.html: OK
+C:\ClamAVSupport\vccorlib140.dll: OK
+C:\ClamAVSupport\vcruntime140.dll: OK
+
+----------- SCAN SUMMARY -----------
+Known viruses: 8905845
+Engine version: 0.102.1
+Scanned directories: 1
+Scanned files: 74
+Infected files: 0
+Data scanned: 15.39 MB
+Data read: 17.73 MB (ratio 0.87:1)
+Time: 19.543 sec (0 m 19 s)
