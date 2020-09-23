@@ -139,30 +139,32 @@ def switch_tab(tab_name):
                 with open('csv_database.csv', mode='a+', newline="") as csv_file:
                     csv_file.seek(0)
                     reader = csv.reader(csv_file)
-                    data = list(reader)    
+                    data = list(reader) 
+                    print(data)    
 
-                    fieldnames = ['IP Address', 'Vulnerability', 'Description']
-                    writer = csv.DictWriter(csv_file, fieldnames=fieldnames) 
+                    # fieldnames = ['IP Address', 'Vulnerability', 'Description']
+                    # writer = csv.DictWriter(csv_file, fieldnames=fieldnames) 
 
-                    if fieldnames not in data: #writes header if not in the file, usually runs once if the CSV file doesnt exist 
-                        writer.writeheader()
+                    # if fieldnames not in data: #writes header if not in the file, usually runs once if the CSV file doesnt exist 
+                    #     writer.writeheader()
 
-                    for i in results:
-                        description = results.get(i).get('description')        
+                    # for i in results:
+                    #     description = results.get(i).get('description')        
+                    #     og_description = description
+                    #     #import textwarp for support 
+                    #     if len(description) >= 210: 
 
-                        #import textwarp for support 
-                        if len(description) >= 210: 
-                            description = textwrap.fill(description, 210) #creates newline at the end of a word of index 175
+                    #         description = textwrap.fill(description, 210) #creates newline at the end of a word of index 175
                         
-                        tree.insert("", 'end', text ="", values =(ip_address, i , description)) #writes to table to display in tkinter
-                        line = [ip_address, i, description]
+                    #     tree.insert("", 'end', text ="", values =(ip_address, i , description)) #writes to table to display in tkinter
+                    #     line = [ip_address, i, og_description]
 
-                        print(line)
-                        if line not in data:
-                            print("write to csv\n")
-                            writer.writerow({'IP Address': ip_address, 'Vulnerability': i, 'Description': description}) #writes to csv file
-                        else:
-                            print("throw away\n")
+                    #     print(line)
+                    #     if line not in data:
+                    #         print("write to csv\n")
+                    #         writer.writerow({'IP Address': ip_address, 'Vulnerability': i, 'Description': description}) #writes to csv file
+                    #     else:
+                    #         print("throw away\n")
              
 
 
