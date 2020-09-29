@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import *
-from tkintertable import TableCanvas, TableModel #pip install tkintertable
 
 from tkinter import ttk
 from tkinter import font as tkFont
@@ -12,6 +11,7 @@ import Vulscan
 import CVEnumbersExtractor
 import CVEdescriptionAndSolutionsGetter
 import windows_7
+import textwrap
 
 root = tk.Tk() #creates the actual window
 
@@ -22,7 +22,7 @@ frame.pack()
 
 root.title("TKINTER > KIVY")
 
-root.geometry("1200x800") #sets the size of the GUI box 
+root.geometry("1920x1080") #sets the size of the GUI box 
 #root.state("zoomed") #makes window full screen
 def switch_tab(tab_name):
 
@@ -61,49 +61,79 @@ def switch_tab(tab_name):
         scan_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
 
         def press_scan():
-            # https://github.com/dmnfarrell/tkintertable/wiki/Usage installation and readme guide for the table 
             ip_address = ip_content.get()
+            #54.209.137.253
+            
+            print(ip_address)
+            try:
+                print("running scan")
+                # https://github.com/scipag/vulscan
+                Vulscan.scan(ip_address) # dumps results into 'portscandata.txt'
+                print("work")
+
+            except:
+                print("error")
+
+            try: 
+                CVEnumbersExtractor.vulnScanExtract() #opens portscandata.txt and writes into cvenumbers.txt
+                print ("VulnScanner running")
+            except:
+                print("Anthony Can't Code")
+
+            try: 
+                CVEdescriptionAndSolutionsGetter.getCveDescription()
+                print ("CVE Descirption Works")
+            except:
+                print("Anthony Can't Code2")
+
+            #creates frame 
             table_frame = Frame(frame)
-
-
             table_frame.place(relx =0.50, rely=0.20, relwidth= 0.85, relheight=0.75, anchor='n')
 
+            #creates treeview table within the "table_frame"
+            tree = ttk.Treeview(table_frame, selectmode="extended", columns=("IP Address", "Vulnerability" ,"Description")) 
+
+            #treeview config
+            style = ttk.Style(root)
+            style.configure("Treeview", rowheight=80)
+            tree.configure(style="Treeview")
+
+            #Anchors the text to be aligned in the center 
+            tree.column("IP Address",  anchor ='c')
+            tree.column("Vulnerability",  anchor ='c') 
+            #tree.column("Description",  anchor ='c') 
+
+
+            # Defining header column
+            tree['show'] = 'headings'
+            tree.pack(expand=YES, fill=BOTH)
+
+            tree.heading("IP Address", text="IP Address")
+            tree.column("IP Address", minwidth=0, width=200,stretch=NO)
+
+            tree.heading("Vulnerability", text="Vulnerability")
+            tree.column("Vulnerability", minwidth=0, width=200,stretch=NO) 
+
+            tree.heading("Description", text="Description")
+            tree.column("Description", minwidth=0, width=1000,stretch=NO)
+
             results = CVEdescriptionAndSolutionsGetter.getCveDescription()
-
+            if len(results) == 0:
+                entry_ip.delete(0, tk.END)
+                entry_ip.insert(0, 'Error: No data dound for ' + ip_address + "!" )
+            count = 0 
             for i in results:
-                #print(f"cve number is {i}, descripiton is {results.get(i).get('description')}, solution is {results.get(i).get('href')} \n")
+                count +=1 
 
-                data = {'rec1': {'col1': i, 'col2': results.get(i).get('description'), 'col3': results.get(i).get('href')},
-                    'rec2': {'col1': 99.88, 'col2': 108.79}
-                    } 
-            table = TableCanvas(table_frame, data =data,
-                        cellwidth=600, cellbackgr='white',
-                        thefont=('Arial',12),rowheight=68, rowheaderwidth=0,
-                        rowselectedcolor='white', editable=False)
+                description = results.get(i).get('description')
+                
+                #import textwarp for support 
+                if len(description) >= 175:
+                    description = textwrap.fill(description, 175)
+
+                tree.insert("", 'end', text ="", values =(ip_address, i , description)) 
+
             
-            table.show()
-
-            # print(ip_address)
-            # try:
-            #     print("running scan")
-            #     # https://github.com/scipag/vulscan
-            #     Vulscan.scan(ip_address) # dumps results into 'portscandata.txt'
-            #     print("work")
-
-            # except:
-            #     print("error")
-
-            # try: 
-            #     CVEnumbersExtractor.vulnScanExtract() #opens portscandata.txt and writes into cvenumbers.txt
-            #     print ("VulnScanner running")
-            # except:
-            #     print("Anthony Can't Code")
-
-            # try: 
-            #     CVEdescriptionAndSolutionsGetter.getCveDescription()
-            #     print ("CVE Descirption Works")
-            # except:
-            #     print("Anthony Can't Code2")
 
 
 
@@ -217,12 +247,86 @@ def switch_tab(tab_name):
         hostbase_button_tab.place(relx=0.90, rely=0.00, relwidth=0.20, relheight=0.07, anchor='n')
 
     if tab_name =="hostbase":
+        directory_path = tk.StringVar()
+        directory_field= tk.Entry(frame, font = "Calibri 15", textvariable=directory_path)
+        directory_field.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
+  
+
+        scan_file_button = tk.Button(frame, text="Scan Directory", bg="#1e92eb", fg='white', command= lambda:press_block())
+        scan_file_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
+
+        quarantine_file_button = tk.Button(frame, text="Show Quarantined Files", bg="#1e92eb", fg='white', command= lambda:press_block())
+        quarantine_file_button.place(relx =0.85, rely=0.2, relwidth=0.10, relheight=0.065, anchor='n')
+
+        release_button = tk.Button(frame, text="Show Released Files", bg="#1e92eb", fg='white', command= lambda:press_remove())
+        release_button.place(relx =.85, rely=0.3, relwidth=0.10, relheight=0.065, anchor='n')
 
 
 
+        '''
+        Jeffs Please Helps Good Sirire
+
+        def result_box_display(text, num = 0):
+        '''
+        #This function will display success/failure/update messages in the bottom corner for users 
+        '''
+        resultbox.delete(0, tk.END)
+        resultbox.insert(tk.END, text)
+        if num == 1:
+            resultbox.insert(tk.END, "Please add new rule in the Confluence documents!")
+
+        def clear_placeholder(event):
+        '''
+        #If a user clicks on the comment entry box, then this function will delete the placeholder within the comment box
+        '''
+        entry.delete(0, tk.END)
+
+        def add_placeholder(self):
+        '''
+        #If the user clicks out of the comment box and inputs no text, then this function will add in the placeholder text again
+        '''
+        if not entry.get():
+            entry.insert(0, 'Please enter comment here:')
+
+        def resize_image(event):
+        '''
+        #This function will resize the background image to match/expand to the window size
+        '''
+        new_width = event.width
+        new_height = event.height
+        image = copy_of_image.resize((new_width, new_height))
+        photo = ImageTk.PhotoImage(image)
+        label.config(image = photo)
+        label.image = photo #avoid garbage collection
+
+        #Image and properties to resize image to window size
+        image = Image.open("C:\\elastalert\\scripts\\landscape.png")
+        copy_of_image = image.copy()
+        photo = ImageTk.PhotoImage(image)
+        label = ttk.Label(root, image = photo)
+        label.bind('<Configure>', resize_image)
+        label.pack(fill='both', expand = 'yes')
 
 
 
+        tk.Label(root, text='Field',font='Helvetica 12 bold').place(relx =0.150, rely=0.025, relwidth=0.095, relheight=0.025, anchor='n')
+        tk.Label(root, text='Value',font='Helvetica 12 bold').place(relx =0.30, rely=0.025, relwidth=0.095, relheight=0.025, anchor='n')
+        tk.Label(root, text='Select Annotation Stage',font='Helvetica 12 bold').place(relx =0.26, rely=0.885, relwidth=0.16, relheight=0.025, anchor='n')
+
+        # Comment Entry
+        content = tk.StringVar()
+        entry= tk.Entry(root, textvariable=content)
+        entry.insert(0, 'Please enter comment here:')
+        entry.place(relx=0.10, rely=0.95, relwidth=0.50, relheight=0.025)
+
+        entry.bind("<FocusIn>", clear_placeholder)
+        #entry.bind("<FocusOut>", add_placeholder) 
+
+
+        '''
+
+
+        
 
 
         # show home button_tab
