@@ -12,6 +12,7 @@ import CVEnumbersExtractor
 import CVEdescriptionAndSolutionsGetter
 import windows_7
 import textwrap
+from tkinter import filedialog 
 
 root = tk.Tk() #creates the actual window
 
@@ -247,12 +248,20 @@ def switch_tab(tab_name):
         hostbase_button_tab.place(relx=0.90, rely=0.00, relwidth=0.20, relheight=0.07, anchor='n')
 
     if tab_name =="hostbase":
-        directory_path = tk.StringVar()
-        directory_field= tk.Entry(frame, font = "Calibri 15", textvariable=directory_path)
-        directory_field.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
-  
+        ip_content = tk.StringVar()
+        entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=ip_content)
+        entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
 
-        scan_file_button = tk.Button(frame, text="Scan Directory", bg="#1e92eb", fg='white', command= lambda:press_block())
+        def scanFiles(): 
+            filename = filedialog.askdirectory(initialdir = "/", 
+                                            title = "Select a Directory")
+            filename = "Scanning: " + filename
+            entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=filename)
+            entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
+            entry_ip.insert(tk.END,filename)
+    
+
+        scan_file_button = tk.Button(frame, text="Scan Directory", bg="#1e92eb", fg='white', command= scanFiles)
         scan_file_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
 
         quarantine_file_button = tk.Button(frame, text="Show Quarantined Files", bg="#1e92eb", fg='white', command= lambda:press_block())
@@ -260,6 +269,24 @@ def switch_tab(tab_name):
 
         release_button = tk.Button(frame, text="Show Released Files", bg="#1e92eb", fg='white', command= lambda:press_remove())
         release_button.place(relx =.85, rely=0.3, relwidth=0.10, relheight=0.065, anchor='n')
+
+       
+    
+       
+    # Change label contents 
+
+       
+
+        # Create a File Explorer label 
+        
+        # Grid method is chosen for placing 
+        # the widgets at respective positions  
+        # in a table like structure by 
+        # specifying rows and columns 
+        
+        #button_file_button_tab.grid(column = 1, row = 2) 
+
+        #button_exit.grid(column = 1,row = 3) 
 
 
 
