@@ -4,7 +4,7 @@ def scanResultGetter():
     scannedfiles = []
     scannedDir = []
     infected = []
-    with open ("clamAVresultsCMD.txt", "r") as r:
+    with open ("clamAVresults.txt", "r") as r:
         while True:
             line = r.readline()
             if not line: break
