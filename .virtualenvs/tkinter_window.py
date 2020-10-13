@@ -12,8 +12,7 @@ import CVEnumbersExtractor
 import CVEdescriptionAndSolutionsGetter
 import windows_7
 import textwrap
-from tkinter import filedialog 
-
+from tkinter import filedialog
 root = tk.Tk() #creates the actual window
 
 

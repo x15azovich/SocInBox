@@ -15,38 +15,58 @@ def check_admin():
 
 def add_rule(rule_name, ip_address):
 	""" Add rule to Windows Firewall """
+	my_file = open("list_of_bad_ips.txt", "r")
+	content_list = my_file.readlines()
+	print(content_list)
+	content_list.add(ip_address)
+	print(content_list)
 	print(rule_name)
 	print(ip_address)
-	subprocess.call(
-		f'netsh advfirewall firewall add rule name="{rule_name}" dir=in interface=any action=block remoteip={ip_address}', 
-		shell=True, 
- 		stdout=DEVNULL, 
-		stderr=DEVNULL
-	)
+	for x in content_list:
+		subprocess.call(
+			f'netsh advfirewall firewall add rule name="{rule_name}" dir=in interface=any action=block remoteip={x}', 
+			shell=True, 
+			stdout=DEVNULL,
+			stderr=DEVNULL
+		)
 	print(f"Rule {rule_name} for {ip_address} added")
 
-def modify_rule(rule_name, state):
+'''
+def modify_rule(rule_name, ip_address):
     #""" Enable/Disable specific rule, 0 = Disable / 1 = Enable """
 	state, message = ("yes", "Enabled") if state else ("no", "Disabled")
 	subprocess.call(
-		f"netsh advfirewall firewall set rule name={rule_name} new enable={state}", 
+		f'netsh advfirewall firewall set rule name={rule_name} new remoteip={ip_address}', 
 		shell=True, 
 		stdout=DEVNULL, 
 		stderr=DEVNULL
 	)
 	print(f"Rule {rule_name} {message}")
+'''
 
-def delete_rule(rule_name, ip_address):
+def delete_rule(rule_name):
 	""" Enable/Disable specific rule, 0 = Disable / 1 = Enable """
 	subprocess.call(
-		f"netsh advfirewall firewall add rule name={rule_name} dir=in interface=any action=allow remoteip={ip_address}", 
+		f'netsh advfirewall firewall delete rule name={rule_name}', 
 		shell=True 
  		# stdout=DEVNULL, 
 		# stderr=DEVNULL
 	)
-	print(f"Rule {rule_name} for {ip_address} added")
 
-
+def delete_ip(rule_name, ip_address):
+	my_file = open("list_of_bad_ips.txt", "r")
+	content_list = my_file.readlines()
+	print(content_list)
+	content_list.remove(ip_address)
+	print(content_list)
+	""" Enable/Disable specific rule, 0 = Disable / 1 = Enable """
+	for x in content_list:
+		subprocess.call(
+			f'netsh advfirewall firewall add rule name={rule_name} dir=in interface=any action=block remoteip={x}', 
+			shell=True 
+			# stdout=DEVNULL, 
+			# stderr=DEVNULL
+		)
 
 # if __name__ == '__main__':
 # 	check_admin()
