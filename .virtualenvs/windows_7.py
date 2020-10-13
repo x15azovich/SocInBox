@@ -18,7 +18,7 @@ def add_rule(rule_name, ip_address):
 	my_file = open("list_of_bad_ips.txt", "r")
 	content_list = my_file.readlines()
 	print(content_list)
-	content_list.add(ip_address)
+	content_list.append(ip_address)
 	print(content_list)
 	print(rule_name)
 	print(ip_address)
@@ -68,11 +68,11 @@ def delete_ip(rule_name, ip_address):
 			# stderr=DEVNULL
 		)
 
-# if __name__ == '__main__':
-# 	check_admin()
-# 	add_rule("RULE_NAME", "162.59.2.36")
+#if __name__ == '__main__':
+	#check_admin()
+	#add_rule("RULE_NAME", "162.59.2.36")
 	#modify_rule("RULE_NAME", 1)
-	#delete_rule("RULE_NAME" "IP_ADDRESS")
+	#delete_rule("RULE_NAME")
 
 
 
