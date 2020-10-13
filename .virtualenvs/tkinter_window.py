@@ -12,9 +12,10 @@ import CVEnumbersExtractor
 import CVEdescriptionAndSolutionsGetter
 import windows_7
 import textwrap
+
+from tkinter import filedialog
 import csv 
 import operator
-
 root = tk.Tk() #creates the actual window
 
 
@@ -315,6 +316,114 @@ def switch_tab(tab_name):
         hostbase_button_tab.place(relx=0.90, rely=0.00, relwidth=0.20, relheight=0.07, anchor='n')
 
     if tab_name =="hostbase":
+        ip_content = tk.StringVar()
+        entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=ip_content)
+        entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
+
+        def scanFiles(): 
+            filename = filedialog.askdirectory(initialdir = "/", 
+                                            title = "Select a Directory")
+            filename = "Scanning: " + filename
+            entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=filename)
+            entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
+            entry_ip.insert(tk.END,filename)
+    
+
+        scan_file_button = tk.Button(frame, text="Scan Directory", bg="#1e92eb", fg='white', command= scanFiles)
+        scan_file_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
+
+        quarantine_file_button = tk.Button(frame, text="Show Quarantined Files", bg="#1e92eb", fg='white', command= lambda:press_block())
+        quarantine_file_button.place(relx =0.85, rely=0.2, relwidth=0.10, relheight=0.065, anchor='n')
+
+        release_button = tk.Button(frame, text="Show Released Files", bg="#1e92eb", fg='white', command= lambda:press_remove())
+        release_button.place(relx =.85, rely=0.3, relwidth=0.10, relheight=0.065, anchor='n')
+
+       
+    
+       
+    # Change label contents 
+
+       
+
+        # Create a File Explorer label 
+        
+        # Grid method is chosen for placing 
+        # the widgets at respective positions  
+        # in a table like structure by 
+        # specifying rows and columns 
+        
+        #button_file_button_tab.grid(column = 1, row = 2) 
+
+        #button_exit.grid(column = 1,row = 3) 
+
+
+
+        '''
+        Jeffs Please Helps Good Sirire
+
+        def result_box_display(text, num = 0):
+        '''
+        #This function will display success/failure/update messages in the bottom corner for users 
+        '''
+        resultbox.delete(0, tk.END)
+        resultbox.insert(tk.END, text)
+        if num == 1:
+            resultbox.insert(tk.END, "Please add new rule in the Confluence documents!")
+
+        def clear_placeholder(event):
+        '''
+        #If a user clicks on the comment entry box, then this function will delete the placeholder within the comment box
+        '''
+        entry.delete(0, tk.END)
+
+        def add_placeholder(self):
+        '''
+        #If the user clicks out of the comment box and inputs no text, then this function will add in the placeholder text again
+        '''
+        if not entry.get():
+            entry.insert(0, 'Please enter comment here:')
+
+        def resize_image(event):
+        '''
+        #This function will resize the background image to match/expand to the window size
+        '''
+        new_width = event.width
+        new_height = event.height
+        image = copy_of_image.resize((new_width, new_height))
+        photo = ImageTk.PhotoImage(image)
+        label.config(image = photo)
+        label.image = photo #avoid garbage collection
+
+        #Image and properties to resize image to window size
+        image = Image.open("C:\\elastalert\\scripts\\landscape.png")
+        copy_of_image = image.copy()
+        photo = ImageTk.PhotoImage(image)
+        label = ttk.Label(root, image = photo)
+        label.bind('<Configure>', resize_image)
+        label.pack(fill='both', expand = 'yes')
+
+
+
+        tk.Label(root, text='Field',font='Helvetica 12 bold').place(relx =0.150, rely=0.025, relwidth=0.095, relheight=0.025, anchor='n')
+        tk.Label(root, text='Value',font='Helvetica 12 bold').place(relx =0.30, rely=0.025, relwidth=0.095, relheight=0.025, anchor='n')
+        tk.Label(root, text='Select Annotation Stage',font='Helvetica 12 bold').place(relx =0.26, rely=0.885, relwidth=0.16, relheight=0.025, anchor='n')
+
+        # Comment Entry
+        content = tk.StringVar()
+        entry= tk.Entry(root, textvariable=content)
+        entry.insert(0, 'Please enter comment here:')
+        entry.place(relx=0.10, rely=0.95, relwidth=0.50, relheight=0.025)
+
+        entry.bind("<FocusIn>", clear_placeholder)
+        #entry.bind("<FocusOut>", add_placeholder) 
+
+
+        '''
+
+
+        
+
+
 
         # show home button_tab
         home_button_tab = tk.Button(root, text="Home", bg="#6db8f2", fg='white', command= lambda:switch_tab("home")) #when pressed (lambda), executes command. without "lambda" the command will run on launch of code regardless if it was pressed or not  

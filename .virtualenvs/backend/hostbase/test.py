@@ -1,22 +1,21 @@
-# -*- coding: iso-8859-1 -*-
-import subprocess, sys
+import re
+#pattern = re.compile("Scanned files: (\d{0,})")
 
-p = subprocess.Popen(["powershell.exe", 
-               "cd C:/Users/Jessi/Downloads/clamav-0.102.1-win-x64-portable;.\clamscan"], 
-              stdout=sys.stdout)
-p.communicate()
+scannedfiles = []
+scannedDir = []
+infected = []
+with open ("clamAVresultsCMD.txt", "r") as r:
+    while True:
+        line = r.readline()
+        if not line: break
+        scannedfiles += re.findall(r'Scanned files: (\d{0,})', line)
+        scannedDir += re.findall(r'Scanned directories: (\d{0,})', line)
+        infected += re.findall(r'Infected files: (\d{0,})', line)
 
-'''
-import os, re
+fileScanned = scannedfiles[0]
+dirScanned = scannedDir[0]
+filesInfected = infected[0]
 
-print("running hostbase scan")
-#this command works for jeff's machine, which is Windows. Need to test if it works for other windows machine too
-WinCommand = "cd C:\Users\Jessi\Downloads\clamav-0.102.1-win-x64-portable"
-WinCommand2 = ".\clamscan > portscandata.txt"
-
-#change which command variable to run depending on which OS you are using
-os.system(WinCommand)
-os.system(WinCommand2)
-
-print("finished scan")
-'''
+print(fileScanned)
+print(dirScanned)
+print(filesInfected)
