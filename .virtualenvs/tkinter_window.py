@@ -12,7 +12,7 @@ import CVEnumbersExtractor
 import CVEdescriptionAndSolutionsGetter
 import windows_7
 import textwrap
-
+import hostBaseScan
 from tkinter import filedialog
 import csv 
 import operator
@@ -323,10 +323,12 @@ def switch_tab(tab_name):
         def scanFiles(): 
             filename = filedialog.askdirectory(initialdir = "/", 
                                             title = "Select a Directory")
+            directory=filename
             filename = "Scanning: " + filename
             entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=filename)
             entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
             entry_ip.insert(tk.END,filename)
+            hostBaseScan.hostBaseScan(directory)
     
 
         scan_file_button = tk.Button(frame, text="Scan Directory", bg="#1e92eb", fg='white', command= scanFiles)
