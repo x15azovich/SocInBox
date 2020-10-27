@@ -47,7 +47,7 @@ def switch_tab(tab_name):
 
         print("CSV sorted!")
 
-    def create_table():
+    def create_table(arg = ""):
         #creates frame 
         table_frame = Frame(frame)
         table_frame.place(relx =0.50, rely=0.20, relwidth= 0.85, relheight=0.75, anchor='n')
@@ -62,14 +62,17 @@ def switch_tab(tab_name):
         tree.column("Vulnerability",  anchor ='c') 
         #tree.column("Description",  anchor ='c') 
         # Defining header column
-        tree['show'] = 'headings'
-        tree.pack(expand=YES, fill=BOTH)
-        tree.heading("IP Address", text="IP Address")
-        tree.column("IP Address", minwidth=0, width=200,stretch=NO)
-        tree.heading("Vulnerability", text="Vulnerability")
-        tree.column("Vulnerability", minwidth=0, width=200,stretch=NO) 
-        tree.heading("Description", text="Description")
-        tree.column("Description", minwidth=0, width=1250,stretch=NO)
+        if arg == "Network":
+            print("hi")
+        else:
+            tree['show'] = 'headings'
+            tree.pack(expand=YES, fill=BOTH)
+            tree.heading("IP Address", text="IP Address")
+            tree.column("IP Address", minwidth=0, width=200,stretch=NO)
+            tree.heading("Vulnerability", text="Vulnerability")
+            tree.column("Vulnerability", minwidth=0, width=200,stretch=NO) 
+            tree.heading("Description", text="Description")
+            tree.column("Description", minwidth=0, width=1250,stretch=NO)
 
         return tree
 
@@ -106,7 +109,6 @@ def switch_tab(tab_name):
         ip_content = tk.StringVar()
         entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=ip_content)
         entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
-        
         scan_button = tk.Button(frame, text="Scan", bg="#1e92eb", fg='white', command= lambda:press_scan())
         scan_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
 
@@ -270,6 +272,9 @@ def switch_tab(tab_name):
         unblock_button = tk.Button(frame, text="Unblock IP", bg="#1e92eb", fg='white', command= lambda:press_remove())
         unblock_button.place(relx =0.85, rely=0.2, relwidth=0.10, relheight=0.065, anchor='n')
 
+        show_blocked_ips_button = tk.Button(frame, text="Block IP", bg="#1e92eb", fg='white', command= lambda:show_blocked_ips())
+        show_blocked_ips_button.place(relx =0.85, rely=0.30, relwidth=0.10, relheight=0.065, anchor='n')
+
         def press_block():
             ip_address = block_ip_content.get()
 
@@ -287,13 +292,18 @@ def switch_tab(tab_name):
             ip_address = unblock_ip_content.get()
 
             try:
-                print(ip_address)
+                #print(ip_address)
                 # https://github.com/scipag/vulscan
                 windows_7.check_admin()
                 windows_7.delete_rule("Remove Blocked IP From Console", ip_address)
                 print("success")
             except:
                 print("YOu FAIL")
+        
+        def show_blocked_ips():
+            tree = create_table("Network")
+
+        #show blocked ips via a button
 
         # show home button_tab
         home_button_tab = tk.Button(root, text="Home", bg="#6db8f2", fg='white', command= lambda:switch_tab("home")) #when pressed (lambda), executes command. without "lambda" the command will run on launch of code regardless if it was pressed or not  
