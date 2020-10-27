@@ -10,16 +10,19 @@ def hostBaseScan(userDir):
     print("running hostbase scan")
 
     #this command works for jeff's machine, which is Windows. Need to test if it works for other windows machine too
-
+    print(userDir)
+    userDir = userDir.replace("/","\\")
+    
     #userDir = "C:\ClamAVSupport" #example directory for testing purposes
-    command = f'cmd /c "cd {userDir} & .\clamscan > clamAVresults.txt"' 
+    command = f'cmd /c "D:\Jeff\ClamAV\clamscan.exe --recursive {userDir} > D:\Jeff\ClamAV\clamAVresults.txt"' 
+    #command = f'cmd /c "cd {userDir} & D:\Jeff\ClamAV\clamscan.exe > D:\Jeff\ClamAV\clamAVresults.txt"' 
     os.system(command)
 
     scannedfiles = []
     scannedDir = []
     infected = []
 
-    filePath = f"{userDir}\clamAVresults.txt"
+    filePath = "D:\Jeff\ClamAV\clamAVresults.txt"
 
     with open (filePath, "r") as r:
         while True:
