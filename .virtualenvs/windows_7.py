@@ -17,11 +17,11 @@ def add_rule(rule_name, ip_address):
 	""" Add rule to Windows Firewall """
 	my_file = open("list_of_bad_ips.txt", "r")
 	content_list = my_file.readlines()
-	print(content_list)
+	#print(content_list)
 	content_list.append(ip_address)
-	print(content_list)
-	print(rule_name)
-	print(ip_address)
+	#print(content_list)
+	#print(rule_name)
+	#print(ip_address)
 	for x in content_list:
 		subprocess.call(
 			f'netsh advfirewall firewall add rule name="{rule_name}" dir=in interface=any action=block remoteip={x}', 
@@ -56,9 +56,9 @@ def delete_rule(rule_name):
 def delete_ip(rule_name, ip_address):
 	my_file = open("list_of_bad_ips.txt", "r")
 	content_list = my_file.readlines()
-	print(content_list)
+	#print(content_list)
 	content_list.remove(ip_address)
-	print(content_list)
+	#print(content_list)
 	""" Enable/Disable specific rule, 0 = Disable / 1 = Enable """
 	for x in content_list:
 		subprocess.call(
