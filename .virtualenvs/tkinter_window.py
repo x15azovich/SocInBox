@@ -350,7 +350,20 @@ def switch_tab(tab_name):
         release_button = tk.Button(frame, text="Show Released Files", bg="#1e92eb", fg='white', command= lambda:press_remove())
         release_button.place(relx =.85, rely=0.3, relwidth=0.10, relheight=0.065, anchor='n')
 
+       '''
        
+----------- SCAN SUMMARY -----------
+Known viruses: 8929191
+Engine version: 0.102.1
+Scanned directories: 482
+Scanned files: 3145
+Infected files: 0
+Total errors: 1
+Data scanned: 250.13 MB
+Data read: 1743.71 MB (ratio 0.14:1)
+Time: 126.951 sec (2 m 6 s)
+
+       '''
     
        
     # Change label contents 
