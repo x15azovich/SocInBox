@@ -50,21 +50,19 @@ def switch_tab(tab_name):
     def create_table(arg = ""):
         #creates frame 
         table_frame = Frame(frame)
-        table_frame.place(relx =0.50, rely=0.20, relwidth= 0.85, relheight=0.75, anchor='n')
-        #creates treeview table within the "table_frame"
-        tree = ttk.Treeview(table_frame, selectmode="extended", columns=("IP Address", "Vulnerability" ,"Description")) 
-        #treeview config
-        style = ttk.Style(root)
-        style.configure("Treeview", rowheight=90)
-        tree.configure(style="Treeview")
-        #Anchors the text to be aligned in the center 
-        tree.column("IP Address",  anchor ='c')
-        tree.column("Vulnerability",  anchor ='c') 
-        #tree.column("Description",  anchor ='c') 
-        # Defining header column
-        if arg == "Network":
-            print("hi")
-        else:
+
+        if arg == "Scanning":
+            table_frame.place(relx =0.50, rely=0.20, relwidth= 0.85, relheight=0.75, anchor='n')
+            tree = ttk.Treeview(table_frame, selectmode="extended", columns=("IP Address", "Vulnerability" ,"Description")) 
+            #treeview config
+            style = ttk.Style(root)
+            style.configure("Treeview", rowheight=90)
+            tree.configure(style="Treeview")
+            #Anchors the text to be aligned in the center 
+            tree.column("IP Address",  anchor ='c')
+            tree.column("Vulnerability",  anchor ='c') 
+            #tree.column("Description",  anchor ='c') 
+            # Defining header column
             tree['show'] = 'headings'
             tree.pack(expand=YES, fill=BOTH)
             tree.heading("IP Address", text="IP Address")
@@ -73,6 +71,25 @@ def switch_tab(tab_name):
             tree.column("Vulnerability", minwidth=0, width=200,stretch=NO) 
             tree.heading("Description", text="Description")
             tree.column("Description", minwidth=0, width=1250,stretch=NO)
+        if arg == "Network":
+            print("hi")
+        
+        if arg == "Hostbase":
+            table_frame.place(relx =0.50, rely=0.20, relwidth= 0.55, relheight=0.75, anchor='n')
+            tree = ttk.Treeview(table_frame, selectmode="extended", columns=("Scan Summary","")) 
+            #treeview config
+            style = ttk.Style(root)
+            style.configure("Treeview", rowheight=50)
+            tree.configure(style="Treeview")
+            tree.column("Scan Summary",  anchor ='c') 
+
+            # Defining header column
+            tree['show'] = 'headings'
+
+            tree.pack(expand=YES, fill=BOTH)
+            tree.heading("Scan Summary", text="Scan Summary")
+            tree.column("Scan Summary", minwidth=0, width=1050,stretch=NO)
+ 
 
         return tree
 
@@ -151,7 +168,7 @@ def switch_tab(tab_name):
                 entry_ip.insert(0, 'Error: No data dound for ' + ip_address + "!" )
 
             else:
-                tree = create_table()
+                tree = create_table("Scanning")
  
                 print("Appending Data")
 
@@ -331,15 +348,27 @@ def switch_tab(tab_name):
         entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
 
         def scanFiles(): 
-            filename = filedialog.askdirectory(initialdir = "/", 
-                                            title = "Select a Directory")
-            directory=filename
-            filename = "Scanning: " + filename
-            entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=filename)
-            entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
-            entry_ip.insert(tk.END,filename)
-            hostBaseScan.hostBaseScan(directory)
-    
+            # filename = filedialog.askdirectory(initialdir = "/", 
+            #                                 title = "Select a Directory")
+            # directory=filename
+            # filename = "Scanning: " + filename
+            # entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=filename)
+            # entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
+            # entry_ip.insert(tk.END,filename)
+            # fileScanned, dirScanned, filesInfected, userDir, filePath= hostBaseScan.hostBaseScan(directory)
+
+            tree = create_table("Hostbase")
+            filePath = "D:\Jeff\ClamAV\clamAVresults.txt"
+            f  = open(filePath, "r")
+            lines = f.readlines()
+            insert_line = False
+            for line in lines:
+                if insert_line == True:
+                    tree.insert("", 'end', text ="", values =(line,line))
+                if "SCAN SUMMARY" in line :
+                    insert_line = True
+            f.close() 
+
 
         scan_file_button = tk.Button(frame, text="Scan Directory", bg="#1e92eb", fg='white', command= scanFiles)
         scan_file_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
@@ -349,22 +378,6 @@ def switch_tab(tab_name):
 
         release_button = tk.Button(frame, text="Show Released Files", bg="#1e92eb", fg='white', command= lambda:press_remove())
         release_button.place(relx =.85, rely=0.3, relwidth=0.10, relheight=0.065, anchor='n')
-
-       '''
-       
------------ SCAN SUMMARY -----------
-Known viruses: 8929191
-Engine version: 0.102.1
-Scanned directories: 482
-Scanned files: 3145
-Infected files: 0
-Total errors: 1
-Data scanned: 250.13 MB
-Data read: 1743.71 MB (ratio 0.14:1)
-Time: 126.951 sec (2 m 6 s)
-
-       '''
-    
        
     # Change label contents 
 

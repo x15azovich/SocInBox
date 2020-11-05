@@ -42,4 +42,4 @@ def hostBaseScan(userDir):
 
 
     print("finished scan")
-    return fileScanned, dirScanned, filesInfected, userDir
+    return fileScanned, dirScanned, filesInfected, userDir, filePath
