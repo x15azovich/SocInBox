@@ -16,5 +16,4 @@ def hostBaseScan(userDir):
             if not line: break
             result += re.findall(r'found (.*) threats', line)
     print("finished scan")
-    filesInfected = result[0]
-    return filesInfected, userDir, filePath
+    return "Found " + result[0] + " threat(s)"
