@@ -1,3 +1,0 @@
-Scan starting...
-Scan finished.
-Scanning C:\Users\Jessi\Desktop\ScanTest found no threats.

@@ -12,7 +12,7 @@ import CVEnumbersExtractor
 import CVEdescriptionAndSolutionsGetter
 import windows_7
 import textwrap
-
+import hostBaseScan
 from tkinter import filedialog
 import csv 
 import operator
@@ -47,7 +47,7 @@ def switch_tab(tab_name):
 
         print("CSV sorted!")
 
-    def create_table():
+    def create_table(arg = ""):
         #creates frame 
         table_frame = Frame(frame)
         table_frame.place(relx =0.50, rely=0.20, relwidth= 0.85, relheight=0.75, anchor='n')
@@ -62,14 +62,17 @@ def switch_tab(tab_name):
         tree.column("Vulnerability",  anchor ='c') 
         #tree.column("Description",  anchor ='c') 
         # Defining header column
-        tree['show'] = 'headings'
-        tree.pack(expand=YES, fill=BOTH)
-        tree.heading("IP Address", text="IP Address")
-        tree.column("IP Address", minwidth=0, width=200,stretch=NO)
-        tree.heading("Vulnerability", text="Vulnerability")
-        tree.column("Vulnerability", minwidth=0, width=200,stretch=NO) 
-        tree.heading("Description", text="Description")
-        tree.column("Description", minwidth=0, width=1250,stretch=NO)
+        if arg == "Network":
+            print("hi")
+        else:
+            tree['show'] = 'headings'
+            tree.pack(expand=YES, fill=BOTH)
+            tree.heading("IP Address", text="IP Address")
+            tree.column("IP Address", minwidth=0, width=200,stretch=NO)
+            tree.heading("Vulnerability", text="Vulnerability")
+            tree.column("Vulnerability", minwidth=0, width=200,stretch=NO) 
+            tree.heading("Description", text="Description")
+            tree.column("Description", minwidth=0, width=1250,stretch=NO)
 
         return tree
 
@@ -106,7 +109,6 @@ def switch_tab(tab_name):
         ip_content = tk.StringVar()
         entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=ip_content)
         entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
-        
         scan_button = tk.Button(frame, text="Scan", bg="#1e92eb", fg='white', command= lambda:press_scan())
         scan_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
 
@@ -270,6 +272,9 @@ def switch_tab(tab_name):
         unblock_button = tk.Button(frame, text="Unblock IP", bg="#1e92eb", fg='white', command= lambda:press_remove())
         unblock_button.place(relx =0.85, rely=0.2, relwidth=0.10, relheight=0.065, anchor='n')
 
+        show_blocked_ips_button = tk.Button(frame, text="Block IP", bg="#1e92eb", fg='white', command= lambda:show_blocked_ips())
+        show_blocked_ips_button.place(relx =0.85, rely=0.30, relwidth=0.10, relheight=0.065, anchor='n')
+
         def press_block():
             ip_address = block_ip_content.get()
 
@@ -287,13 +292,18 @@ def switch_tab(tab_name):
             ip_address = unblock_ip_content.get()
 
             try:
-                print(ip_address)
+                #print(ip_address)
                 # https://github.com/scipag/vulscan
                 windows_7.check_admin()
                 windows_7.delete_rule("Remove Blocked IP From Console", ip_address)
                 print("success")
             except:
                 print("YOu FAIL")
+        
+        def show_blocked_ips():
+            tree = create_table("Network")
+
+        #show blocked ips via a button
 
         # show home button_tab
         home_button_tab = tk.Button(root, text="Home", bg="#6db8f2", fg='white', command= lambda:switch_tab("home")) #when pressed (lambda), executes command. without "lambda" the command will run on launch of code regardless if it was pressed or not  
@@ -323,10 +333,12 @@ def switch_tab(tab_name):
         def scanFiles(): 
             filename = filedialog.askdirectory(initialdir = "/", 
                                             title = "Select a Directory")
+            directory=filename
             filename = "Scanning: " + filename
             entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=filename)
             entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
             entry_ip.insert(tk.END,filename)
+            hostBaseScan.hostBaseScan(directory)
     
 
         scan_file_button = tk.Button(frame, text="Scan Directory", bg="#1e92eb", fg='white', command= scanFiles)
@@ -338,7 +350,20 @@ def switch_tab(tab_name):
         release_button = tk.Button(frame, text="Show Released Files", bg="#1e92eb", fg='white', command= lambda:press_remove())
         release_button.place(relx =.85, rely=0.3, relwidth=0.10, relheight=0.065, anchor='n')
 
+       '''
        
+----------- SCAN SUMMARY -----------
+Known viruses: 8929191
+Engine version: 0.102.1
+Scanned directories: 482
+Scanned files: 3145
+Infected files: 0
+Total errors: 1
+Data scanned: 250.13 MB
+Data read: 1743.71 MB (ratio 0.14:1)
+Time: 126.951 sec (2 m 6 s)
+
+       '''
     
        
     # Change label contents 
