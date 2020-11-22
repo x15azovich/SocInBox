@@ -41,7 +41,6 @@ def switch_tab(tab_name):
         with open(csv_input_file, "w", newline='') as f:
             fileWriter = csv.writer(f)
             for row in sortedlist:
-                print(row)
                 fileWriter.writerow(row)
 
 
@@ -51,7 +50,7 @@ def switch_tab(tab_name):
         #creates frame 
         table_frame = Frame(frame)
 
-        if arg == "Scanning":
+        if arg == "Scanning" or arg == "Patching":
             table_frame.place(relx =0.50, rely=0.20, relwidth= 0.85, relheight=0.75, anchor='n')
             tree = ttk.Treeview(table_frame, selectmode="extended", columns=("IP Address", "Vulnerability" ,"Description")) 
             #treeview config
@@ -195,10 +194,11 @@ def switch_tab(tab_name):
 
                         #print(line)
                         if line not in data:
-                            #print("write to csv\n")
+                            print("write to csv\n")
+                            print(line)
                             writer.writerow({'IP Address': ip_address, 'Vulnerability': i, 'Description': og_description}) #writes to csv file
-                        else:
-                            print("throw away\n")
+                        # else:
+                        #     print("throw away\n")
              
 
             sort_csv(csvfile)
@@ -233,7 +233,7 @@ def switch_tab(tab_name):
         # 3. display csv on data table
         # 4. have a "patch" button to remove from data table and remove from csv 
         # 5. refresh and show data table again 
-        tree = create_table()
+        tree = create_table("Patching")
 
         with open(csvfile, mode='r', newline="") as csv_file:
             reader = csv.reader(csv_file)
