@@ -2,41 +2,18 @@
 #userDir is the user's entered directory for scanning, use this information to access the clamAVresults.txt like this: {userDir}/clamAVresults.txt
 
 import subprocess, sys, re, os
-scannedDir = 0
-scannedFiles = 0
-InfectedFiles = 0
 
 def hostBaseScan(userDir):
     print("running hostbase scan")
-
-    #this command works for jeff's machine, which is Windows. Need to test if it works for other windows machine too
-
-    #userDir = "C:\ClamAVSupport" #example directory for testing purposes
-    command = f'cmd /c "cd {userDir} & .\clamscan > clamAVresults.txt"' 
+    #userDir = "C:\\Users\\Jessi\Desktop\\ScanTest" #example directory for testing purposes
+    filePath = f"{userDir}\\hostbaseScanResults.txt"
+    command = f'cmd /c "cd %ProgramFiles%\Windows Defender & .\MpCmdRun.exe -Scan -ScanType 3 -File {userDir} > {filePath}"'
     os.system(command)
-
-    scannedfiles = []
-    scannedDir = []
-    infected = []
-
-    filePath = f"{userDir}\clamAVresults.txt"
-
+    result = []
     with open (filePath, "r") as r:
         while True:
             line = r.readline()
             if not line: break
-            scannedfiles += re.findall(r'Scanned files: (\d{0,})', line)
-            scannedDir += re.findall(r'Scanned directories: (\d{0,})', line)
-            infected += re.findall(r'Infected files: (\d{0,})', line)
-
-    fileScanned = scannedfiles[0]
-    dirScanned = scannedDir[0]
-    filesInfected = infected[0]
-
-    print(fileScanned)
-    print(dirScanned)
-    print(filesInfected)
-
-
+            result += re.findall(r'found (.*) threats', line)
     print("finished scan")
-    return fileScanned, dirScanned, filesInfected, userDir
+    return "Found " + result[0] + " threat(s)"
