@@ -45,3 +45,8 @@ def getPastDetections(OutputfilePath):
             if mo is not None:
                 result += (mo.group(1)) + ", "
     return result
+
+#takes in threatName, which is the name of threat that is desired to be restored or unquarantined. (the threat name can be found in the output of running the listQuarantine method)
+def restore(threatName):
+    command3 = f'cmd /c "cd %ProgramFiles%\Windows Defender & .\MpCmdRun.exe -Restore -Name {threatName}"'
+    os.system(command3)
