@@ -18,6 +18,7 @@ import csv
 import operator
 root = tk.Tk() #creates the actual window
 
+# import vulners -> pip install -U vulners ##https://pypi.org/project/vulners/
 
 frame = Frame(root, background ="#03021a") #creates frame and makes it dark blue 
 frame.pack(fill='both', expand=True)
@@ -28,12 +29,10 @@ root.title("TKINTER > KIVY")
 root.geometry("1920x1080") #sets the size of the GUI box 
 #root.state("zoomed") #makes window full 
 
-
-csvfile = r'C:\Users\Jeff\Desktop\SocInBox\.virtualenvs\database.csv'
-
+directory = os.getcwd()
+csvfile = directory + "\database.csv"
 
 def switch_tab(tab_name):
-
     def sort_csv(csv_input_file):
         reader = csv.reader(open(csv_input_file), delimiter=",")
         sortedlist = sorted(reader, key=operator.itemgetter(1), reverse=True)
@@ -117,10 +116,21 @@ def switch_tab(tab_name):
         hostbase_button_tab = tk.Button(text="Hostbase", bg="#054a80", fg='white', command= lambda:switch_tab("hostbase"))
         hostbase_button_tab.place(relx=0.90, rely=0.00, relwidth=0.20, relheight=0.07, anchor='n')
 
+        home_label = Label(frame, font ="Calibri 15 bold", bg= "#03021a",  fg='white',  text = "Socimple automatically performs scan everyday at [time of day], but if you would like to perform a new scan now, you can do so by clicking the scan button") 
+        home_label.place(relx=0.450, rely=0.10, relwidth=0.90, relheight=0.065, anchor='n')
+        
+        # scan button
+        scan_button = tk.Button(frame, text="Scan", bg="#1e92eb", fg='white', command= lambda:press_scan())
+        scan_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
+
+        def press_scan():
+            switch_tab("scanning")
+
     if tab_name =="scanning":
 
         # need to create and sort database of all scans to pass into patching using either CSV.
         # sort data by newest csv
+
 
         ip_content = tk.StringVar()
         entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=ip_content)
@@ -348,14 +358,14 @@ def switch_tab(tab_name):
         entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
 
         def scanFiles(): 
-            # filename = filedialog.askdirectory(initialdir = "/", 
-            #                                 title = "Select a Directory")
-            # directory=filename
-            # filename = "Scanning: " + filename
-            # entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=filename)
-            # entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
-            # entry_ip.insert(tk.END,filename)
-            # fileScanned, dirScanned, filesInfected, userDir, filePath= hostBaseScan.hostBaseScan(directory)
+            filename = filedialog.askdirectory(initialdir = "/", 
+                                            title = "Select a Directory")
+            directory=filename
+            filename = "Scanning: " + filename
+            entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=filename)
+            entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
+            entry_ip.insert(tk.END,filename)
+            fileScanned, dirScanned, filesInfected, userDir, filePath= hostBaseScan.hostBaseScan(directory)
 
             tree = create_table("Hostbase")
             filePath = "D:\Jeff\ClamAV\clamAVresults.txt"
