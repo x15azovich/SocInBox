@@ -74,19 +74,19 @@ def switch_tab(tab_name):
         
         if arg == "Hostbase":
             table_frame.place(relx =0.50, rely=0.20, relwidth= 0.55, relheight=0.75, anchor='n')
-            tree = ttk.Treeview(table_frame, selectmode="extended", columns=("Scan Summary","")) 
+            tree = ttk.Treeview(table_frame, selectmode="extended", columns=("Summary","")) 
             #treeview config
             style = ttk.Style(root)
             style.configure("Treeview", rowheight=50)
             tree.configure(style="Treeview")
-            tree.column("Scan Summary",  anchor ='c') 
+            tree.column("Summary",  anchor ='c') 
 
             # Defining header column
             tree['show'] = 'headings'
 
             tree.pack(expand=YES, fill=BOTH)
-            tree.heading("Scan Summary", text="Scan Summary")
-            tree.column("Scan Summary", minwidth=0, width=1050,stretch=NO)
+            tree.heading("Summary", text="Summary")
+            tree.column("Summary", minwidth=0, width=1050,stretch=YES)
  
 
         return tree
@@ -354,39 +354,61 @@ def switch_tab(tab_name):
 
     if tab_name =="hostbase":
         ip_content = tk.StringVar()
-        entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=ip_content)
-        entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
+        entry = tk.Entry(frame, font = "Calibri 15", textvariable=ip_content)
+        entry.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
 
         def scanFiles(): 
             filename = filedialog.askdirectory(initialdir = "/", 
                                             title = "Select a Directory")
             directory=filename
             filename = "Scanning: " + filename
-            entry_ip = tk.Entry(frame, font = "Calibri 15", textvariable=filename)
-            entry_ip.place(relx=0.50, rely=0.10, relwidth=0.40, relheight=0.065, anchor='n')
-            entry_ip.insert(tk.END,filename)
-            fileScanned, dirScanned, filesInfected, userDir, filePath= hostBaseScan.hostBaseScan(directory)
+            entry.insert(tk.END,filename)
 
+            lines = hostBaseScan.scan(directory)
             tree = create_table("Hostbase")
-            filePath = "D:\Jeff\ClamAV\clamAVresults.txt"
-            f  = open(filePath, "r")
-            lines = f.readlines()
-            insert_line = False
-            for line in lines:
-                if insert_line == True:
-                    tree.insert("", 'end', text ="", values =(line,line))
-                if "SCAN SUMMARY" in line :
-                    insert_line = True
-            f.close() 
+            
+            for line in lines.split("\n"):
+                tree.insert("", 'end', text ="", values =[line])
+        
+        def showQuaratineFiles():
+            #shows current quaratine files ------------- def listQuarantine(OutputfilePath):
+            try:
+                result = hostBaseScan.listQuarantine(entry)
+            except: 
+                result = hostBaseScan.listQuarantine(directory+"\\")
+                entry.insert(tk.END,"Directory doesn't work")
 
+            result = '''The following items are quarantine:
+ThreatName = Trojan:PowerShell/Powersploit.H
+file:C:\\Users\\Anthony\\Documents\\Downloads\\AllBrowserHistory.ps1 quarantined at 12/5/2020 9:06:07 PM (UTC)
+file:C:\\Users\\Anthony\\Documents\\Downloads\\GetAll.ps1 quarantined at 12/5/2020 9:12:09 PM (UTC)
+file:C:\\Users\\Anthony\\Documents\\Downloads\\GetAll.ps1 quarantined at 12/5/2020 9:12:32 PM (UTC)
+file:C:\\Users\\Anthony\\Documents\\Downloads\\GetAll.ps1 quarantined at 12/5/2020 9:12:57 PM (UTC)
+            '''
+            tree = create_table("Hostbase")
+            for line in result.split("\n"):
+                tree.insert("", 'end', text ="", values =[line])
+
+        def showAllFiles():
+            # shows all past/current quaratined files ============== def getPastDetections(OutputfilePath)
+            try:
+                result = hostBaseScan.getPastDetections(entry)
+            except: 
+                result = hostBaseScan.getPastDetections(directory+"\\")
+                entry.insert(tk.END,"Directory doesn't work")
+            
+            tree = create_table("Hostbase")
+            for line in result.split("\n"):
+                tree.insert("", 'end', text ="", values =[line])
+             
 
         scan_file_button = tk.Button(frame, text="Scan Directory", bg="#1e92eb", fg='white', command= scanFiles)
         scan_file_button.place(relx =0.85, rely=0.10, relwidth=0.10, relheight=0.065, anchor='n')
 
-        quarantine_file_button = tk.Button(frame, text="Show Quarantined Files", bg="#1e92eb", fg='white', command= lambda:press_block())
+        quarantine_file_button = tk.Button(frame, text="Show Quarantined Files", bg="#1e92eb", fg='white', command= lambda:showQuaratineFiles())
         quarantine_file_button.place(relx =0.85, rely=0.2, relwidth=0.10, relheight=0.065, anchor='n')
 
-        release_button = tk.Button(frame, text="Show Released Files", bg="#1e92eb", fg='white', command= lambda:press_remove())
+        release_button = tk.Button(frame, text="Show Released Files", bg="#1e92eb", fg='white', command= lambda:showAllFiles())
         release_button.place(relx =.85, rely=0.3, relwidth=0.10, relheight=0.065, anchor='n')
        
     # Change label contents 
